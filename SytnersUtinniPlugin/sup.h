@@ -1,5 +1,6 @@
 #pragma once
 
+#ifndef IMPERIAL_ROYAL_HEADER_GUARD
 /**
 
     o
@@ -21,5 +22,7 @@
   `+.__._._+~'  Imperial Royal Header Guard
   
  **/
+#define IMPERIAL_ROYAL_HEADER_GUARD
+#endif
  
 using utinni_plugin = int;
