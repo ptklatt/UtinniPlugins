@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheJawaToolboxDotNet", "TheJawaToolboxDotNet\TheJawaToolboxDotNet.csproj", "{02B0592B-4399-4E04-97FC-73C101DDBBA8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EA1E6CED-6315-486A-8AA7-D41DF9D34888} = {EA1E6CED-6315-486A-8AA7-D41DF9D34888}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TheJawaToolbox", "TheJawaToolbox\TheJawaToolbox.vcxproj", "{EA1E6CED-6315-486A-8AA7-D41DF9D34888}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+		RelWithDbgInfo|x86 = RelWithDbgInfo|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02B0592B-4399-4E04-97FC-73C101DDBBA8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{02B0592B-4399-4E04-97FC-73C101DDBBA8}.Debug|x86.Build.0 = Debug|Any CPU
+		{02B0592B-4399-4E04-97FC-73C101DDBBA8}.Release|x86.ActiveCfg = Release|Any CPU
+		{02B0592B-4399-4E04-97FC-73C101DDBBA8}.Release|x86.Build.0 = Release|Any CPU
+		{02B0592B-4399-4E04-97FC-73C101DDBBA8}.RelWithDbgInfo|x86.ActiveCfg = RelWithDbgInfo|Any CPU
+		{02B0592B-4399-4E04-97FC-73C101DDBBA8}.RelWithDbgInfo|x86.Build.0 = RelWithDbgInfo|Any CPU
+		{EA1E6CED-6315-486A-8AA7-D41DF9D34888}.Debug|x86.ActiveCfg = Debug|Win32
+		{EA1E6CED-6315-486A-8AA7-D41DF9D34888}.Release|x86.ActiveCfg = Release|Win32
+		{EA1E6CED-6315-486A-8AA7-D41DF9D34888}.Release|x86.Build.0 = Release|Win32
+		{EA1E6CED-6315-486A-8AA7-D41DF9D34888}.RelWithDbgInfo|x86.ActiveCfg = RelWithDbgInfo|Win32
+		{EA1E6CED-6315-486A-8AA7-D41DF9D34888}.RelWithDbgInfo|x86.Build.0 = RelWithDbgInfo|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3EE6409B-CD5A-4229-A2D4-0754E1C0982C}
+	EndGlobalSection
+EndGlobal
