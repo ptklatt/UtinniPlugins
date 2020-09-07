@@ -30,7 +30,7 @@
         {
             this.chkWireframe = new System.Windows.Forms.CheckBox();
             this.chkRenderSkeletons = new System.Windows.Forms.CheckBox();
-            this.btnReloadTextures = new UtinniUiDotNet.Controls.UtinniButton();
+            this.btnReloadTextures = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             this.SuspendLayout();
             // 
             // chkWireframe
@@ -86,6 +86,6 @@
 
         private System.Windows.Forms.CheckBox chkWireframe;
         private System.Windows.Forms.CheckBox chkRenderSkeletons;
-        private UtinniUiDotNet.Controls.UtinniButton btnReloadTextures;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnReloadTextures;
     }
 }

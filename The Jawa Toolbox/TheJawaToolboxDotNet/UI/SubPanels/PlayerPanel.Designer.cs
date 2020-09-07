@@ -31,12 +31,12 @@
             this.nudZ = new System.Windows.Forms.NumericUpDown();
             this.nudY = new System.Windows.Forms.NumericUpDown();
             this.nudX = new System.Windows.Forms.NumericUpDown();
-            this.btnTeleport = new UtinniUiDotNet.Controls.UtinniButton();
+            this.btnTeleport = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             this.trkbSpeed = new System.Windows.Forms.TrackBar();
             this.nudSpeed = new System.Windows.Forms.NumericUpDown();
             this.lblSpeed = new System.Windows.Forms.Label();
-            this.btnToggleModel = new UtinniUiDotNet.Controls.UtinniButton();
-            this.btnToggleFreeCam = new UtinniUiDotNet.Controls.UtinniButton();
+            this.btnToggleModel = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnToggleFreeCam = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             ((System.ComponentModel.ISupportInitialize)(this.nudZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudX)).BeginInit();
@@ -221,11 +221,11 @@
         internal System.Windows.Forms.NumericUpDown nudZ;
         internal System.Windows.Forms.NumericUpDown nudY;
         internal System.Windows.Forms.NumericUpDown nudX;
-        private UtinniUiDotNet.Controls.UtinniButton btnTeleport;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnTeleport;
         private System.Windows.Forms.TrackBar trkbSpeed;
         private System.Windows.Forms.Label lblSpeed;
         internal System.Windows.Forms.NumericUpDown nudSpeed;
-        private UtinniUiDotNet.Controls.UtinniButton btnToggleModel;
-        private UtinniUiDotNet.Controls.UtinniButton btnToggleFreeCam;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnToggleModel;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnToggleFreeCam;
     }
 }

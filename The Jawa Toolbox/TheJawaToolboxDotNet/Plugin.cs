@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using TJT.UI.SubPanels;
 using UtinniCoreDotNet.PluginFramework;
+using UtinniCoreDotNet.UI.Controls;
 using UtinniCoreDotNet.Utility;
 
 namespace TJT
 {
     public class TheJawaToolboxPlugin : IEditorPlugin
     {
-        private readonly List<EditorPanelBase> panels = new List<EditorPanelBase>();
+        private readonly List<SubPanelContainer> panels = new List<SubPanelContainer>();
 
         public TheJawaToolboxPlugin()
         {
@@ -20,24 +21,24 @@ namespace TJT
 
             // ToDo show/hide panels based on avail GroundScene, obj, etc
 
-            panels.AddRange(new EditorPanelBase[]
+            panels.Add(new SubPanelContainer("Controls", new SubPanel[]
             {
                 new ScenePanel(this),
                 new PlayerPanel(),
                 new GraphicsPanel(),
                 new MiscPanel()
-            });
+            }));
         }
 
         public PluginInformation Information { get; }
 
         public EventHandler<AddUndoCommandEventArgs> AddUndoCommand { get; set; }
 
-        public List<EditorPanelBase> GetStandalonePanels()
+        public List<SubPanelContainer> GetStandalonePanels()
         {
             return panels;
         }
 
-        public List<EditorPanelBase> GetSubPanels() { return null; }
+        public List<SubPanel> GetSubPanels() { return null; }
     }
 }

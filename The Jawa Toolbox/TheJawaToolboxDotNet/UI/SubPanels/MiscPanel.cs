@@ -1,10 +1,10 @@
 ﻿using System;
 using TJT.SWG;
-using UtinniCoreDotNet.PluginFramework;
+using UtinniCoreDotNet.UI.Controls;
 
 namespace TJT.UI.SubPanels
 {
-    public partial class MiscPanel : EditorPanelBase
+    public partial class MiscPanel : SubPanel
     {
         private readonly CuiImpl cui;
         private readonly MiscImpl misc;

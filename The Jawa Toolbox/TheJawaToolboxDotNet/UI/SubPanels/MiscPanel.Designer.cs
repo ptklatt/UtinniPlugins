@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.txtCreateObject = new System.Windows.Forms.TextBox();
-            this.btnCreateObject = new UtinniUiDotNet.Controls.UtinniButton();
-            this.btnCreateAppearance = new UtinniUiDotNet.Controls.UtinniButton();
+            this.btnCreateObject = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnCreateAppearance = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             this.txtCreateAppearance = new System.Windows.Forms.TextBox();
-            this.btnReloadUi = new UtinniUiDotNet.Controls.UtinniButton();
-            this.btnRestartMusic = new UtinniUiDotNet.Controls.UtinniButton();
+            this.btnReloadUi = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnRestartMusic = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             this.SuspendLayout();
             // 
             // txtCreateObject
@@ -136,10 +136,10 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtCreateObject;
-        private UtinniUiDotNet.Controls.UtinniButton btnCreateObject;
-        private UtinniUiDotNet.Controls.UtinniButton btnCreateAppearance;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnCreateObject;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnCreateAppearance;
         private System.Windows.Forms.TextBox txtCreateAppearance;
-        private UtinniUiDotNet.Controls.UtinniButton btnReloadUi;
-        private UtinniUiDotNet.Controls.UtinniButton btnRestartMusic;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnReloadUi;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnRestartMusic;
     }
 }

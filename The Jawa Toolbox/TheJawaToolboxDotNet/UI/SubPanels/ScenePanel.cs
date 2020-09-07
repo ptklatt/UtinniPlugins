@@ -1,6 +1,7 @@
 ﻿using System;
 using TJT.SWG;
 using UtinniCoreDotNet.PluginFramework;
+using UtinniCoreDotNet.UI.Controls;
 
 namespace TJT.UI.SubPanels
 {
@@ -9,7 +10,7 @@ namespace TJT.UI.SubPanels
         void UpdateTimeOfDay(int timeOfDay);
     }
 
-    public partial class ScenePanel : EditorPanelBase, IScenePanel
+    public partial class ScenePanel : SubPanel, IScenePanel
     {
         private readonly GroundSceneImpl groundScene;
         private readonly WorldSnapshotImpl worldSnapshot;

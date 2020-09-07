@@ -1,10 +1,10 @@
 ﻿using System;
 using TJT.SWG;
-using UtinniCoreDotNet.PluginFramework;
+using UtinniCoreDotNet.UI.Controls;
 
 namespace TJT.UI.SubPanels
 {
-    public partial class PlayerPanel : EditorPanelBase
+    public partial class PlayerPanel : SubPanel
     {
         private readonly PlayerObjectImpl playerObject;
 
