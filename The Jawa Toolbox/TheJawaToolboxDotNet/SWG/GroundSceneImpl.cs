@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using TJT.UI.SubPanels;
 using UtinniCore.Utinni;
 using UtinniCoreDotNet.Callbacks;
@@ -7,13 +8,33 @@ namespace TJT.SWG
 {
     public class GroundSceneImpl
     {
-        private IScenePanel scenePanel;
+        private readonly IScenePanel scenePanel;
 
         public GroundSceneImpl(IScenePanel scenePanel)
         {
             this.scenePanel = scenePanel;
 
+            GameCallbacks.AddInstallCallback(OnInstallCallback);
             Task updateView = UpdateView();
+        }
+
+        private void OnInstallCallback()
+        {
+            var dirInfo = Game.Repository.GetDirectoryInfo("terrain");
+
+            List<string> terrains = new List<string>();
+
+            for (int i = 0; i < dirInfo.Size; i++)
+            {
+                string terrainFile = Game.Repository.GetFilenameAt(dirInfo.StartIndex + i);
+
+                if (terrainFile.EndsWith(".trn"))
+                {
+                    terrains.Add(terrainFile);
+                }
+            }
+
+            scenePanel.SetCmbScenes(terrains);
         }
 
         public void Load(string sceneName, string avatarObjectFilename)

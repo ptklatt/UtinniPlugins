@@ -1,4 +1,7 @@
-﻿using UtinniCore.Utinni;
+﻿using System.Collections.Generic;
+using System.IO;
+using TJT.UI.SubPanels;
+using UtinniCore.Utinni;
 using UtinniCoreDotNet.Callbacks;
 using UtinniCoreDotNet.Commands;
 using UtinniCoreDotNet.PluginFramework;
@@ -7,15 +10,37 @@ namespace TJT.SWG
 {
     public class WorldSnapshotImpl
     {
+        private readonly IScenePanel scenePanel;
         private readonly IEditorPlugin editorPlugin;
 
-        public WorldSnapshotImpl(IEditorPlugin editorPlugin)
+        public WorldSnapshotImpl(IScenePanel scenePanel, IEditorPlugin editorPlugin)
         {
+            this.scenePanel = scenePanel;
             this.editorPlugin = editorPlugin;
 
+            GameCallbacks.AddInstallCallback(OnInstallCallback);
             ObjectCallbacks.AddOnTargetCallback(OnTarget);
             ImGuiCallbacks.AddOnPositionChangedCallback(OnPositionChanged);
             ImGuiCallbacks.AddOnRotationChangedCallback(OnRotationChanged);
+        }
+
+        private void OnInstallCallback()
+        {
+            var dirInfo = Game.Repository.GetDirectoryInfo("snapshot");
+
+            List<string> snapshots = new List<string>();
+
+            for (int i = 0; i < dirInfo.Size; i++)
+            {
+                string snapshotFile = Game.Repository.GetFilenameAt(dirInfo.StartIndex + i);
+
+                if (snapshotFile.EndsWith(".ws"))
+                {
+                    snapshots.Add(Path.GetFileNameWithoutExtension(snapshotFile));
+                }
+            }
+
+            scenePanel.SetCmbSnapshots(snapshots);
         }
 
         public void Load(string filename)
