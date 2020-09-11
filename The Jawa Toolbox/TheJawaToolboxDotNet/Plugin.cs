@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using TJT.UI.SubPanels;
 using UtinniCoreDotNet.PluginFramework;
 using UtinniCoreDotNet.UI.Controls;
@@ -33,6 +34,8 @@ namespace TJT
         public PluginInformation Information { get; }
 
         public EventHandler<AddUndoCommandEventArgs> AddUndoCommand { get; set; }
+
+        public List<Form> GetForms() { return null; }
 
         public List<SubPanelContainer> GetStandalonePanels()
         {

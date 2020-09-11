@@ -48,6 +48,7 @@
             this.trkbTimeOfDay = new System.Windows.Forms.TrackBar();
             this.lblTimeOfDay = new System.Windows.Forms.Label();
             this.btnUnloadScene = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.chkEnableNodeEditing = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudWeatherIndex)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trkbTimeOfDay)).BeginInit();
             this.SuspendLayout();
@@ -293,10 +294,22 @@
             this.btnUnloadScene.UseVisualStyleBackColor = false;
             this.btnUnloadScene.Click += new System.EventHandler(this.btnUnloadScene_Click);
             // 
+            // chkEnableNodeEditing
+            // 
+            this.chkEnableNodeEditing.AutoSize = true;
+            this.chkEnableNodeEditing.Location = new System.Drawing.Point(289, 183);
+            this.chkEnableNodeEditing.Name = "chkEnableNodeEditing";
+            this.chkEnableNodeEditing.Size = new System.Drawing.Size(122, 17);
+            this.chkEnableNodeEditing.TabIndex = 344;
+            this.chkEnableNodeEditing.Text = "Enable Node editing";
+            this.chkEnableNodeEditing.UseVisualStyleBackColor = true;
+            this.chkEnableNodeEditing.CheckedChanged += new System.EventHandler(this.chkEnableNodeEditing_CheckedChanged);
+            // 
             // ScenePanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.chkEnableNodeEditing);
             this.Controls.Add(this.btnUnloadScene);
             this.Controls.Add(this.lblTimeOfDay);
             this.Controls.Add(this.trkbTimeOfDay);
@@ -348,5 +361,6 @@
         private System.Windows.Forms.TrackBar trkbTimeOfDay;
         private System.Windows.Forms.Label lblTimeOfDay;
         private UtinniCoreDotNet.UI.Controls.UtinniButton btnUnloadScene;
+        private System.Windows.Forms.CheckBox chkEnableNodeEditing;
     }
 }

@@ -109,5 +109,10 @@ namespace TJT.UI.SubPanels
             }
         }
 
+        private void chkEnableNodeEditing_CheckedChanged(object sender, EventArgs e)
+        {
+            worldSnapshot.EnableNodeEditing = chkEnableNodeEditing.Checked;
+            worldSnapshot.OnTarget();
+        }
     }
 }

@@ -14,6 +14,7 @@ namespace TJT.SWG
         private readonly IEditorPlugin editorPlugin;
 
         public WorldSnapshotImpl(IScenePanel scenePanel, IEditorPlugin editorPlugin)
+        public bool EnableNodeEditing;
         {
             this.scenePanel = scenePanel;
             this.editorPlugin = editorPlugin;
@@ -105,11 +106,11 @@ namespace TJT.SWG
         public void OnTarget()
         {
             var target = Game.PlayerLookAtTargetObject;
-            if (target == null)
+            if (target == null || !EnableNodeEditing)
             {
                 UtinniCore.ImguiGizmo.imgui_impl.Disable();
             }
-            else
+            else if (EnableNodeEditing)
             {
                 UtinniCore.ImguiGizmo.imgui_impl.Enable(target);
             }
