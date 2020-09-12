@@ -1,11 +1,11 @@
 ﻿using TJT.UI;
 using UtinniCoreDotNet.Callbacks;
+using UtinniCoreDotNet.Hotkeys;
 
 namespace TJT.SWG
 {
     public class PlayerObjectImpl
     {
-        public PlayerObjectImpl() { }
         private readonly ISceneAvailability sceneAvailability;
         public PlayerObjectImpl(ISceneAvailability sceneAvailability, HotkeyManager hotkeyManager)
         {
@@ -13,6 +13,7 @@ namespace TJT.SWG
             GameCallbacks.AddSetupSceneCall(OnSetupSceneCallback);
             GameCallbacks.AddCleanupSceneCall(OnCleanupCallback);
 
+            hotkeyManager.Hotkeys.Add(new Hotkey("ToggleFreeCam", "Tab", ToggleFreeCam, false));
         }
 
         private void OnSetupSceneCallback()

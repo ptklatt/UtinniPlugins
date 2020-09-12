@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using TJT.SWG;
+using UtinniCoreDotNet.Hotkeys;
 using UtinniCoreDotNet.PluginFramework;
 using UtinniCoreDotNet.UI.Controls;
 
 namespace TJT.UI.SubPanels
 {
-    public interface IScenePanel
+    public interface IScenePanel : ISceneAvailability
     {
+        void UpdateSnapshotNodeEditingMode(bool enable);
         void SetCmbScenes(List<string> scenes);
         void SetCmbSnapshots(List<string> snapshots);
         void UpdateTimeOfDay(int timeOfDay);
@@ -18,12 +20,12 @@ namespace TJT.UI.SubPanels
         private readonly GroundSceneImpl groundScene;
         private readonly WorldSnapshotImpl worldSnapshot;
 
-        public ScenePanel(IEditorPlugin editorPlugin) : base("Scene")
+        public ScenePanel(HotkeyManager hotkeyManager, IEditorPlugin editorPlugin) : base("Scene", true)
         {
             InitializeComponent();
 
-            groundScene = new GroundSceneImpl(this);
-            worldSnapshot = new WorldSnapshotImpl(this, editorPlugin);
+            groundScene = new GroundSceneImpl(this, hotkeyManager);
+            worldSnapshot = new WorldSnapshotImpl(this, editorPlugin, hotkeyManager);
         }
 
         private void btnLoadScene_Click(object sender, EventArgs e)
@@ -61,7 +63,7 @@ namespace TJT.UI.SubPanels
             worldSnapshot.Save();
         }
 
-        private void BtnAddSnapshotNode_Click(object sender, EventArgs e)
+        private void btnAddSnapshotNode_Click(object sender, EventArgs e)
         {
             worldSnapshot.AddNode(txtSnapshotNodeFilename.Text);
         }
@@ -84,6 +86,18 @@ namespace TJT.UI.SubPanels
         private void chkAllowTargetEverything_CheckedChanged(object sender, EventArgs e)
         {
             groundScene.AllowTargetEverything(chkAllowTargetEverything.Checked);
+        }
+
+        private void chkEnableNodeEditing_CheckedChanged(object sender, EventArgs e)
+        {
+            worldSnapshot.UpdateNodeEditingMode(chkEnableNodeEditing.Checked);
+        }
+
+        public void UpdateSnapshotNodeEditingMode(bool enable)
+        {
+            chkEnableNodeEditing.CheckedChanged -= chkEnableNodeEditing_CheckedChanged;
+            chkEnableNodeEditing.Checked = enable;
+            chkEnableNodeEditing.CheckedChanged += chkEnableNodeEditing_CheckedChanged;
         }
 
         public void SetCmbScenes(List<string> scenes)
@@ -134,10 +148,5 @@ namespace TJT.UI.SubPanels
             }
         }
 
-        private void chkEnableNodeEditing_CheckedChanged(object sender, EventArgs e)
-        {
-            worldSnapshot.EnableNodeEditing = chkEnableNodeEditing.Checked;
-            worldSnapshot.OnTarget();
-        }
     }
 }

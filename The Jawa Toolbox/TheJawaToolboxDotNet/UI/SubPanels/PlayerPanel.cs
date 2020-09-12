@@ -1,5 +1,6 @@
 ﻿using System;
 using TJT.SWG;
+using UtinniCoreDotNet.Hotkeys;
 using UtinniCoreDotNet.UI.Controls;
 
 namespace TJT.UI.SubPanels
@@ -8,11 +9,11 @@ namespace TJT.UI.SubPanels
     {
         private readonly PlayerObjectImpl playerObject;
 
-        public PlayerPanel() : base("Player")
+        public PlayerPanel(HotkeyManager hotkeyManager) : base("Player")
         {
             InitializeComponent();
 
-            playerObject = new PlayerObjectImpl();
+            playerObject = new PlayerObjectImpl(this, hotkeyManager);
         }
 
         private void btnTeleport_Click(object sender, EventArgs e)

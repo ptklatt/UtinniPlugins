@@ -4,6 +4,7 @@ using TJT.UI.SubPanels;
 using UtinniCore.Utinni;
 using UtinniCoreDotNet.Callbacks;
 using UtinniCoreDotNet.Commands;
+using UtinniCoreDotNet.Hotkeys;
 using UtinniCoreDotNet.PluginFramework;
 
 namespace TJT.SWG
@@ -13,8 +14,9 @@ namespace TJT.SWG
         private readonly IScenePanel scenePanel;
         private readonly IEditorPlugin editorPlugin;
 
-        public WorldSnapshotImpl(IScenePanel scenePanel, IEditorPlugin editorPlugin)
         public bool EnableNodeEditing;
+
+        public WorldSnapshotImpl(IScenePanel scenePanel, IEditorPlugin editorPlugin, HotkeyManager hotkeyManager)
         {
             this.scenePanel = scenePanel;
             this.editorPlugin = editorPlugin;
@@ -23,6 +25,8 @@ namespace TJT.SWG
             ObjectCallbacks.AddOnTargetCallback(OnTarget);
             ImGuiCallbacks.AddOnPositionChangedCallback(OnPositionChanged);
             ImGuiCallbacks.AddOnRotationChangedCallback(OnRotationChanged);
+
+            hotkeyManager.Hotkeys.Add(new Hotkey("ToggleSnapshotNodeEditingMode", "Oemtilde", ToggleNodeEditing, false));
         }
 
         private void OnInstallCallback()
@@ -101,6 +105,19 @@ namespace TJT.SWG
                     WorldSnapshot.RemoveNode(node);
                 }
             });
+        }
+
+        public void ToggleNodeEditing()
+        {
+            bool result = !EnableNodeEditing;
+            scenePanel.UpdateSnapshotNodeEditingMode(result);
+            UpdateNodeEditingMode(result);
+        }
+
+        public void UpdateNodeEditingMode(bool value)
+        {
+            EnableNodeEditing = value;
+            OnTarget();
         }
 
         public void OnTarget()

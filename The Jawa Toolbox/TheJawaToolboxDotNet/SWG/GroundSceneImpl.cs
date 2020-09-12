@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using TJT.UI.SubPanels;
 using UtinniCore.Utinni;
 using UtinniCoreDotNet.Callbacks;
+using UtinniCoreDotNet.Hotkeys;
 
 namespace TJT.SWG
 {
@@ -10,7 +11,7 @@ namespace TJT.SWG
     {
         private readonly IScenePanel scenePanel;
 
-        public GroundSceneImpl(IScenePanel scenePanel)
+        public GroundSceneImpl(IScenePanel scenePanel, HotkeyManager hotkeyManager)
         {
             this.scenePanel = scenePanel;
 
