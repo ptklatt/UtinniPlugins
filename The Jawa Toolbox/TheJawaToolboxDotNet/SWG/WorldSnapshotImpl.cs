@@ -106,13 +106,23 @@ namespace TJT.SWG
         public void OnTarget()
         {
             var target = Game.PlayerLookAtTargetObject;
-            if (target == null || !EnableNodeEditing)
+
+            if (target == null)
             {
                 UtinniCore.ImguiGizmo.imgui_impl.Disable();
             }
-            else if (EnableNodeEditing)
+            else
             {
-                UtinniCore.ImguiGizmo.imgui_impl.Enable(target);
+                WorldSnapshotReaderWriter.Node node = WorldSnapshotReaderWriter.Get().GetNodeByNetworkId(target.NetworkId);
+
+                if (node == null || !EnableNodeEditing)
+                {
+                    UtinniCore.ImguiGizmo.imgui_impl.Disable();
+                }
+                else if (EnableNodeEditing)
+                {
+                    UtinniCore.ImguiGizmo.imgui_impl.Enable(target);
+                }
             }
         }
 
