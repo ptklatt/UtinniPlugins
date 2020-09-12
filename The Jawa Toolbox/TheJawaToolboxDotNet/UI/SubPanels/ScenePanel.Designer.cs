@@ -39,7 +39,7 @@
             this.cmbSnapshots = new System.Windows.Forms.ComboBox();
             this.btnUnloadSnapshot = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             this.btnSaveSnapshot = new UtinniCoreDotNet.UI.Controls.UtinniButton();
-            this.BtnAddSnapshotNode = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnAddSnapshotNode = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             this.btnRemoveSnapshotNode = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             this.txtSnapshotNodeFilename = new System.Windows.Forms.TextBox();
             this.chkAllowTargetEverything = new System.Windows.Forms.CheckBox();
@@ -102,6 +102,7 @@
             // btnReloadScene
             // 
             this.btnReloadScene.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnReloadScene.Enabled = false;
             this.btnReloadScene.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnReloadScene.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnReloadScene.Location = new System.Drawing.Point(165, 56);
@@ -115,6 +116,7 @@
             // btnReloadSnapshot
             // 
             this.btnReloadSnapshot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnReloadSnapshot.Enabled = false;
             this.btnReloadSnapshot.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnReloadSnapshot.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnReloadSnapshot.Location = new System.Drawing.Point(165, 124);
@@ -128,6 +130,7 @@
             // btnLoadSnapshot
             // 
             this.btnLoadSnapshot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnLoadSnapshot.Enabled = false;
             this.btnLoadSnapshot.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnLoadSnapshot.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnLoadSnapshot.Location = new System.Drawing.Point(3, 124);
@@ -160,6 +163,7 @@
             // btnUnloadSnapshot
             // 
             this.btnUnloadSnapshot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnUnloadSnapshot.Enabled = false;
             this.btnUnloadSnapshot.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnUnloadSnapshot.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnUnloadSnapshot.Location = new System.Drawing.Point(84, 124);
@@ -173,6 +177,7 @@
             // btnSaveSnapshot
             // 
             this.btnSaveSnapshot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnSaveSnapshot.Enabled = false;
             this.btnSaveSnapshot.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSaveSnapshot.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnSaveSnapshot.Location = new System.Drawing.Point(336, 95);
@@ -183,22 +188,24 @@
             this.btnSaveSnapshot.UseVisualStyleBackColor = false;
             this.btnSaveSnapshot.Click += new System.EventHandler(this.btnSaveSnapshot_Click);
             // 
-            // BtnAddSnapshotNode
+            // btnAddSnapshotNode
             // 
-            this.BtnAddSnapshotNode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.BtnAddSnapshotNode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.BtnAddSnapshotNode.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.BtnAddSnapshotNode.Location = new System.Drawing.Point(3, 179);
-            this.BtnAddSnapshotNode.Name = "BtnAddSnapshotNode";
-            this.BtnAddSnapshotNode.Size = new System.Drawing.Size(109, 23);
-            this.BtnAddSnapshotNode.TabIndex = 334;
-            this.BtnAddSnapshotNode.Text = "Add Node";
-            this.BtnAddSnapshotNode.UseVisualStyleBackColor = false;
-            this.BtnAddSnapshotNode.Click += new System.EventHandler(this.BtnAddSnapshotNode_Click);
+            this.btnAddSnapshotNode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnAddSnapshotNode.Enabled = false;
+            this.btnAddSnapshotNode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAddSnapshotNode.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAddSnapshotNode.Location = new System.Drawing.Point(3, 179);
+            this.btnAddSnapshotNode.Name = "btnAddSnapshotNode";
+            this.btnAddSnapshotNode.Size = new System.Drawing.Size(109, 23);
+            this.btnAddSnapshotNode.TabIndex = 334;
+            this.btnAddSnapshotNode.Text = "Add Node";
+            this.btnAddSnapshotNode.UseVisualStyleBackColor = false;
+            this.btnAddSnapshotNode.Click += new System.EventHandler(this.btnAddSnapshotNode_Click);
             // 
             // btnRemoveSnapshotNode
             // 
             this.btnRemoveSnapshotNode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnRemoveSnapshotNode.Enabled = false;
             this.btnRemoveSnapshotNode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRemoveSnapshotNode.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnRemoveSnapshotNode.Location = new System.Drawing.Point(118, 179);
@@ -238,6 +245,7 @@
             // 
             this.nudWeatherIndex.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.nudWeatherIndex.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.nudWeatherIndex.Enabled = false;
             this.nudWeatherIndex.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.nudWeatherIndex.Location = new System.Drawing.Point(3, 208);
             this.nudWeatherIndex.Maximum = new decimal(new int[] {
@@ -263,6 +271,7 @@
             // 
             // trkbTimeOfDay
             // 
+            this.trkbTimeOfDay.Enabled = false;
             this.trkbTimeOfDay.LargeChange = 1;
             this.trkbTimeOfDay.Location = new System.Drawing.Point(3, 234);
             this.trkbTimeOfDay.Maximum = 1000;
@@ -284,6 +293,7 @@
             // btnUnloadScene
             // 
             this.btnUnloadScene.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnUnloadScene.Enabled = false;
             this.btnUnloadScene.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnUnloadScene.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnUnloadScene.Location = new System.Drawing.Point(84, 56);
@@ -318,7 +328,7 @@
             this.Controls.Add(this.chkAllowTargetEverything);
             this.Controls.Add(this.txtSnapshotNodeFilename);
             this.Controls.Add(this.btnRemoveSnapshotNode);
-            this.Controls.Add(this.BtnAddSnapshotNode);
+            this.Controls.Add(this.btnAddSnapshotNode);
             this.Controls.Add(this.btnSaveSnapshot);
             this.Controls.Add(this.btnUnloadSnapshot);
             this.Controls.Add(this.btnReloadSnapshot);
@@ -352,7 +362,7 @@
         private System.Windows.Forms.ComboBox cmbSnapshots;
         private UtinniCoreDotNet.UI.Controls.UtinniButton btnUnloadSnapshot;
         private UtinniCoreDotNet.UI.Controls.UtinniButton btnSaveSnapshot;
-        private UtinniCoreDotNet.UI.Controls.UtinniButton BtnAddSnapshotNode;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnAddSnapshotNode;
         private UtinniCoreDotNet.UI.Controls.UtinniButton btnRemoveSnapshotNode;
         private System.Windows.Forms.TextBox txtSnapshotNodeFilename;
         private System.Windows.Forms.CheckBox chkAllowTargetEverything;

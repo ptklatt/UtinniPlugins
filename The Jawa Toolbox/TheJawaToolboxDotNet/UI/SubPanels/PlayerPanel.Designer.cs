@@ -49,6 +49,7 @@
             this.nudZ.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.nudZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nudZ.DecimalPlaces = 3;
+            this.nudZ.Enabled = false;
             this.nudZ.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.nudZ.Location = new System.Drawing.Point(169, 48);
             this.nudZ.Maximum = new decimal(new int[] {
@@ -72,6 +73,7 @@
             this.nudY.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.nudY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nudY.DecimalPlaces = 3;
+            this.nudY.Enabled = false;
             this.nudY.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.nudY.Location = new System.Drawing.Point(86, 48);
             this.nudY.Maximum = new decimal(new int[] {
@@ -95,6 +97,7 @@
             this.nudX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.nudX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nudX.DecimalPlaces = 3;
+            this.nudX.Enabled = false;
             this.nudX.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.nudX.Location = new System.Drawing.Point(3, 48);
             this.nudX.Maximum = new decimal(new int[] {
@@ -116,6 +119,7 @@
             // btnTeleport
             // 
             this.btnTeleport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnTeleport.Enabled = false;
             this.btnTeleport.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnTeleport.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnTeleport.Location = new System.Drawing.Point(252, 48);
@@ -128,6 +132,7 @@
             // 
             // trkbSpeed
             // 
+            this.trkbSpeed.Enabled = false;
             this.trkbSpeed.LargeChange = 1;
             this.trkbSpeed.Location = new System.Drawing.Point(3, 3);
             this.trkbSpeed.Maximum = 100;
@@ -142,6 +147,7 @@
             this.nudSpeed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.nudSpeed.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nudSpeed.DecimalPlaces = 3;
+            this.nudSpeed.Enabled = false;
             this.nudSpeed.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.nudSpeed.Location = new System.Drawing.Point(169, 3);
             this.nudSpeed.Maximum = new decimal(new int[] {
@@ -168,6 +174,7 @@
             // btnToggleModel
             // 
             this.btnToggleModel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnToggleModel.Enabled = false;
             this.btnToggleModel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnToggleModel.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnToggleModel.Location = new System.Drawing.Point(3, 74);
@@ -181,6 +188,7 @@
             // btnToggleFreeCam
             // 
             this.btnToggleFreeCam.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnToggleFreeCam.Enabled = false;
             this.btnToggleFreeCam.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnToggleFreeCam.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnToggleFreeCam.Location = new System.Drawing.Point(105, 74);

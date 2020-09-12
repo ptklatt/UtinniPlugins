@@ -65,6 +65,7 @@
     <Compile Include="UI\SubPanels\GraphicsPanel.Designer.cs">
       <DependentUpon>GraphicsPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\ISceneAvailability.cs" />
     <Compile Include="UI\SubPanels\MiscPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>

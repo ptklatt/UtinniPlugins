@@ -15,6 +15,9 @@ namespace TJT.SWG
             this.scenePanel = scenePanel;
 
             GameCallbacks.AddInstallCallback(OnInstallCallback);
+            GameCallbacks.AddSetupSceneCall(OnSetupSceneCallback);
+            GameCallbacks.AddCleanupSceneCall(OnCleanupCallback);
+
             Task updateView = UpdateView();
         }
 
@@ -35,6 +38,16 @@ namespace TJT.SWG
             }
 
             scenePanel.SetCmbScenes(terrains);
+        }
+
+        private void OnSetupSceneCallback()
+        {
+            scenePanel.UpdateSceneAvailability(true);
+        }
+
+        private void OnCleanupCallback()
+        {
+            scenePanel.UpdateSceneAvailability(false);
         }
 
         public void Load(string sceneName, string avatarObjectFilename)
@@ -97,7 +110,6 @@ namespace TJT.SWG
                         scenePanel.UpdateTimeOfDay((int)(Terrain.Get().TimeOfDay * 1000)); // multiply by 1000f to get the correct trackbar value
                     });
                 }
-               
             }
         }
     }

@@ -4,7 +4,7 @@ using UtinniCoreDotNet.UI.Controls;
 
 namespace TJT.UI.SubPanels
 {
-    public partial class PlayerPanel : SubPanel
+    public partial class PlayerPanel : SubPanel, ISceneAvailability
     {
         private readonly PlayerObjectImpl playerObject;
 
@@ -39,6 +39,28 @@ namespace TJT.UI.SubPanels
         private void btnToggleModel_Click(object sender, EventArgs e)
         {
             playerObject.ToggleModel();
+        }
+
+        private bool previousIsSceneActive;
+        public void UpdateSceneAvailability(bool isSceneActive)
+        {
+            if (previousIsSceneActive == isSceneActive)
+            {
+                return;
+            }
+
+            btnTeleport.Enabled = isSceneActive;
+            btnToggleFreeCam.Enabled = isSceneActive;
+            btnToggleModel.Enabled = isSceneActive;
+
+            nudX.Enabled = isSceneActive;
+            nudY.Enabled = isSceneActive;
+            nudZ.Enabled = isSceneActive;
+
+            nudSpeed.Enabled = isSceneActive;
+            trkbSpeed.Enabled = isSceneActive;
+
+            previousIsSceneActive = isSceneActive;
         }
     }
 }

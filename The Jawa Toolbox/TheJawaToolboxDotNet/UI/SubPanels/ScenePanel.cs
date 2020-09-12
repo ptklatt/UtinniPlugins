@@ -98,6 +98,31 @@ namespace TJT.UI.SubPanels
             cmbSnapshots.SelectedIndex = 0;
         }
 
+        private bool previousIsSceneActive;
+        public void UpdateSceneAvailability(bool isSceneActive)
+        {
+            if (previousIsSceneActive == isSceneActive)
+            {
+                return;
+            }
+
+            btnUnloadScene.Enabled = isSceneActive;
+            btnReloadScene.Enabled = isSceneActive;
+
+            cmbSnapshots.Enabled = isSceneActive;
+            btnLoadSnapshot.Enabled = isSceneActive;
+            btnSaveSnapshot.Enabled = isSceneActive;
+            btnReloadSnapshot.Enabled = isSceneActive;
+            btnUnloadSnapshot.Enabled = isSceneActive;
+
+            btnAddSnapshotNode.Enabled = isSceneActive;
+            btnRemoveSnapshotNode.Enabled = isSceneActive;
+            nudWeatherIndex.Enabled = isSceneActive;
+            trkbTimeOfDay.Enabled = isSceneActive;
+
+            previousIsSceneActive = isSceneActive;
+        }
+
         public void UpdateTimeOfDay(int timeOfDay)
         {
             if (trkbTimeOfDay.Created)

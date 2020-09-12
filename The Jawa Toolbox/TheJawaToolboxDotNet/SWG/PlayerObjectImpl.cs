@@ -1,10 +1,29 @@
-﻿using UtinniCoreDotNet.Callbacks;
+﻿using TJT.UI;
+using UtinniCoreDotNet.Callbacks;
 
 namespace TJT.SWG
 {
     public class PlayerObjectImpl
     {
         public PlayerObjectImpl() { }
+        private readonly ISceneAvailability sceneAvailability;
+        public PlayerObjectImpl(ISceneAvailability sceneAvailability, HotkeyManager hotkeyManager)
+        {
+            this.sceneAvailability = sceneAvailability;
+            GameCallbacks.AddSetupSceneCall(OnSetupSceneCallback);
+            GameCallbacks.AddCleanupSceneCall(OnCleanupCallback);
+
+        }
+
+        private void OnSetupSceneCallback()
+        {
+            sceneAvailability.UpdateSceneAvailability(true);
+        }
+
+        private void OnCleanupCallback()
+        {
+            sceneAvailability.UpdateSceneAvailability(false);
+        }
 
         public void Teleport(float x, float y, float z)
         {

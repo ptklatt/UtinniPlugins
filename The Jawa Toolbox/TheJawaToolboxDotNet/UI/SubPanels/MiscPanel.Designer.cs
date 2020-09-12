@@ -53,6 +53,7 @@
             // btnCreateObject
             // 
             this.btnCreateObject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnCreateObject.Enabled = false;
             this.btnCreateObject.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCreateObject.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnCreateObject.Location = new System.Drawing.Point(3, 29);
@@ -66,6 +67,7 @@
             // btnCreateAppearance
             // 
             this.btnCreateAppearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnCreateAppearance.Enabled = false;
             this.btnCreateAppearance.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCreateAppearance.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnCreateAppearance.Location = new System.Drawing.Point(3, 84);

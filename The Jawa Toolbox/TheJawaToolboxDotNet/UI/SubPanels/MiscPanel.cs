@@ -4,7 +4,7 @@ using UtinniCoreDotNet.UI.Controls;
 
 namespace TJT.UI.SubPanels
 {
-    public partial class MiscPanel : SubPanel
+    public partial class MiscPanel : SubPanel, ISceneAvailability
     {
         private readonly CuiImpl cui;
         private readonly MiscImpl misc;
@@ -14,7 +14,7 @@ namespace TJT.UI.SubPanels
             InitializeComponent();
 
             cui = new CuiImpl();;
-            misc = new MiscImpl();
+            misc = new MiscImpl(this);
         }
 
         private void btnCreateObject_Click(object sender, EventArgs e)
@@ -35,6 +35,20 @@ namespace TJT.UI.SubPanels
         private void btnRestartMusic_Click(object sender, EventArgs e)
         {
             cui.RestartMusic();
+        }
+
+        private bool previousIsSceneActive;
+        public void UpdateSceneAvailability(bool isSceneActive)
+        {
+            if (previousIsSceneActive == isSceneActive)
+            {
+                return;
+            }
+
+            btnCreateObject.Enabled = isSceneActive;
+            btnCreateAppearance.Enabled = isSceneActive;
+
+            previousIsSceneActive = isSceneActive;
         }
     }
 }
