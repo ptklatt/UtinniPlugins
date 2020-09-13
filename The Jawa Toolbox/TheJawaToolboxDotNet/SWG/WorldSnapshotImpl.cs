@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using TJT.UI.SubPanels;
+using UtinniCore.Swg.Math;
 using UtinniCore.Utinni;
+using UtinniCore.Utinni.CuiHud;
 using UtinniCoreDotNet.Callbacks;
 using UtinniCoreDotNet.Commands;
 using UtinniCoreDotNet.Hotkeys;
@@ -16,6 +18,8 @@ namespace TJT.SWG
 
         public bool EnableNodeEditing;
 
+        private WorldSnapshotReaderWriter.Node copiedNode;
+
         public WorldSnapshotImpl(IScenePanel scenePanel, IEditorPlugin editorPlugin, HotkeyManager hotkeyManager)
         {
             this.scenePanel = scenePanel;
@@ -27,6 +31,8 @@ namespace TJT.SWG
             ImGuiCallbacks.AddOnRotationChangedCallback(OnRotationChanged);
 
             hotkeyManager.Hotkeys.Add(new Hotkey("ToggleSnapshotNodeEditingMode", "Oemtilde", ToggleNodeEditing, false));
+            hotkeyManager.Hotkeys.Add(new Hotkey("Copy Node", "Shift, Control + C", CopyNode, false));
+            hotkeyManager.Hotkeys.Add(new Hotkey("Paste Node", "Shift, Control  + V", PasteNode, false));
         }
 
         private void OnInstallCallback()
@@ -171,6 +177,41 @@ namespace TJT.SWG
                 {
                     node.Transform.CopyRotation(obj.Transform);
                     editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new WorldSnapshotNodeRotationChangedCommand(node, allowMerge)));
+                }
+            });
+        }
+
+        public void CopyNode()
+        {
+            GroundSceneCallbacks.AddUpdateLoopCall(() =>
+            {
+                var obj = Game.PlayerLookAtTargetObject;
+
+                if (obj != null)
+                {
+                    WorldSnapshotReaderWriter.Node node = WorldSnapshotReaderWriter.Get().GetNodeByNetworkId(obj.NetworkId);
+
+                    if (node != null)
+                    {
+                        copiedNode = node;
+                    }
+                }
+            });
+        }
+
+        public void PasteNode()
+        {
+            GroundSceneCallbacks.AddUpdateLoopCall(() =>
+            {
+                if (copiedNode != null)
+                {
+                    var copiedTransform = new Transform(copiedNode.Transform)
+                    {
+                        Position = cui_hud.GetCursorWorldPosition()
+                    };
+
+                    var newNode = WorldSnapshot.CreateNodeCopy(copiedNode, copiedTransform);
+                    editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new AddWorldSnapshotNodeCommand(newNode)));
                 }
             });
         }
