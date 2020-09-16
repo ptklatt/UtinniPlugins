@@ -57,8 +57,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SWG\MiscImpl.cs" />
     <Compile Include="Plugin.cs" />
+    <Compile Include="SWG\MiscImpl.cs" />
     <Compile Include="UI\SubPanels\GraphicsPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>

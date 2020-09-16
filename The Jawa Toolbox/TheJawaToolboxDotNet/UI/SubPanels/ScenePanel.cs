@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TJT.SWG;
+using UtinniCore.Utinni;
 using UtinniCoreDotNet.Hotkeys;
 using UtinniCoreDotNet.PluginFramework;
 using UtinniCoreDotNet.UI.Controls;
@@ -20,12 +21,33 @@ namespace TJT.UI.SubPanels
         private readonly GroundSceneImpl groundScene;
         private readonly WorldSnapshotImpl worldSnapshot;
 
-        public ScenePanel(HotkeyManager hotkeyManager, IEditorPlugin editorPlugin) : base("Scene", true)
+        private UtINI ini;
+
+        public ScenePanel(IEditorPlugin editorPlugin, HotkeyManager hotkeyManager, UtINI ini) : base("Scene", true)
         {
             InitializeComponent();
 
             groundScene = new GroundSceneImpl(this, hotkeyManager);
             worldSnapshot = new WorldSnapshotImpl(this, editorPlugin, hotkeyManager);
+
+            this.ini = ini;
+
+            CreateSettings();
+            ini.Load();
+
+            txtAvatarObjectFilename.Text = ini.GetString("Scene", "defaultAvatarFilename");
+            txtSnapshotNodeFilename.Text = ini.GetString("Scene", "defaultSnapshotNodeObjectFilename");
+
+            chkAllowTargetEverything.Checked = ini.GetBool("Scene", "autoAllowTargetEverything");
+        }
+
+        private void CreateSettings()
+        {
+            ini.AddSetting("Scene", "defaultAvatarFilename", "object/creature/player/shared_human_male.iff", UtINI.Value.Types.VtString);
+            ini.AddSetting("Scene", "defaultTerrainFilename", "terrain/naboo.trn", UtINI.Value.Types.VtString);
+            ini.AddSetting("Scene", "defaultSnapshotName", "naboo", UtINI.Value.Types.VtString);
+            ini.AddSetting("Scene", "defaultSnapshotNodeObjectFilename", "object/tangible/furniture/cheap/shared_armoire_s01.iff", UtINI.Value.Types.VtString);
+            ini.AddSetting("Scene", "autoAllowTargetEverything", "false", UtINI.Value.Types.VtBool);
         }
 
         private void btnLoadScene_Click(object sender, EventArgs e)
@@ -103,13 +125,29 @@ namespace TJT.UI.SubPanels
         public void SetCmbScenes(List<string> scenes)
         {
             cmbScenes.Items.AddRange(scenes.ToArray());
-            cmbScenes.SelectedIndex = 0;
+            int index = cmbScenes.Items.IndexOf(ini.GetString("Scene", "defaultTerrainFilename"));
+            if (index >= 0)
+            {
+                cmbScenes.SelectedIndex = index;
+            }
+            else
+            {
+                cmbScenes.SelectedIndex = 0;
+            }
         }
 
         public void SetCmbSnapshots(List<string> snapshots)
         {
             cmbSnapshots.Items.AddRange(snapshots.ToArray());
-            cmbSnapshots.SelectedIndex = 0;
+            int index = cmbSnapshots.Items.IndexOf(ini.GetString("Scene", "defaultSnapshotName"));
+            if (index >= 0)
+            {
+                cmbSnapshots.SelectedIndex = index;
+            }
+            else
+            {
+                cmbSnapshots.SelectedIndex = 0;
+            }
         }
 
         private bool previousIsSceneActive;

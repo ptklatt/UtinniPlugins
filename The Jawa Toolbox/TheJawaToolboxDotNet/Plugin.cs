@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 using TJT.UI.SubPanels;
+using UtinniCore.Utinni;
 using UtinniCoreDotNet.Hotkeys;
 using UtinniCoreDotNet.PluginFramework;
 using UtinniCoreDotNet.UI.Controls;
@@ -13,6 +16,7 @@ namespace TJT
     {
         private readonly HotkeyManager hotkeyManager = new HotkeyManager(false);
         private readonly List<SubPanelContainer> panels = new List<SubPanelContainer>();
+        private readonly UtINI ini;
 
         public TheJawaToolboxPlugin()
         {
@@ -22,12 +26,14 @@ namespace TJT
 
             Log.Info("Created: The Jawa Toolbox");
 
+            ini = new UtINI(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\settings.ini");
+
             panels.Add(new SubPanelContainer("Controls", new SubPanel[]
             {
-                new ScenePanel(hotkeyManager, this),
+                new ScenePanel(this, hotkeyManager, ini),
                 new PlayerPanel(hotkeyManager),
-                new GraphicsPanel(),
-                new MiscPanel()
+                new GraphicsPanel(ini),
+                new MiscPanel(ini)
             }));
             
             hotkeyManager.CreateSettings();

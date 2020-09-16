@@ -1,5 +1,6 @@
 ﻿using System;
 using TJT.SWG;
+using UtinniCore.Utinni;
 using UtinniCoreDotNet.UI.Controls;
 
 namespace TJT.UI.SubPanels
@@ -9,12 +10,24 @@ namespace TJT.UI.SubPanels
         private readonly CuiImpl cui;
         private readonly MiscImpl misc;
 
-        public MiscPanel() : base("Misc")
+        public MiscPanel(UtINI ini) : base("Misc")
         {
             InitializeComponent();
 
-            cui = new CuiImpl();;
+            cui = new CuiImpl();
             misc = new MiscImpl(this);
+
+            CreateSettings(ini);
+            ini.Load();
+
+            txtCreateObject.Text = ini.GetString("Misc", "defaultCreateObjectFilename");
+            txtCreateAppearance.Text = ini.GetString("Misc", "defaultCreateAppearanceFilename");
+        }
+
+        private void CreateSettings(UtINI ini)
+        {
+            ini.AddSetting("Misc", "defaultCreateObjectFilename", "object/tangible/furniture/cheap/shared_armoire_s01.iff", UtINI.Value.Types.VtString);
+            ini.AddSetting("Misc", "defaultCreateAppearanceFilename", "appearance/frn_all_chep_cabinet_s01.apt", UtINI.Value.Types.VtString);
         }
 
         private void btnCreateObject_Click(object sender, EventArgs e)
