@@ -134,6 +134,8 @@ namespace TJT.UI.SubPanels
             {
                 cmbScenes.SelectedIndex = 0;
             }
+
+            btnLoadScene.Enabled = true;
         }
 
         public void SetCmbSnapshots(List<string> snapshots)

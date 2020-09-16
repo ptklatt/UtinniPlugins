@@ -89,6 +89,7 @@
             // btnLoadScene
             // 
             this.btnLoadScene.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnLoadScene.Enabled = false;
             this.btnLoadScene.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnLoadScene.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnLoadScene.Location = new System.Drawing.Point(3, 56);
