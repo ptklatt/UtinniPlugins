@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
+using TJT.UI;
 using TJT.UI.SubPanels;
 using UtinniCore.Utinni;
 using UtinniCoreDotNet.Hotkeys;
 using UtinniCoreDotNet.PluginFramework;
 using UtinniCoreDotNet.UI.Controls;
+using UtinniCoreDotNet.UI.Forms;
 using UtinniCoreDotNet.Utility;
 
 namespace TJT
@@ -15,6 +17,7 @@ namespace TJT
     public class TheJawaToolboxPlugin : IEditorPlugin
     {
         private readonly HotkeyManager hotkeyManager = new HotkeyManager(false);
+        private readonly List<IEditorForm> forms = new List<IEditorForm>();
         private readonly List<SubPanelContainer> panels = new List<SubPanelContainer>();
         private readonly UtINI ini;
 
@@ -49,7 +52,10 @@ namespace TJT
             return hotkeyManager;
         }
 
-        public List<Form> GetForms() { return null; }
+        public List<IEditorForm> GetForms()
+        {
+            return forms;
+        }
 
         public List<SubPanelContainer> GetStandalonePanels()
         {
