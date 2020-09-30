@@ -28,41 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtCreateObject = new System.Windows.Forms.TextBox();
-            this.btnCreateObject = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnRestartMusic = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnReloadUi = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             this.btnCreateAppearance = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             this.txtCreateAppearance = new System.Windows.Forms.TextBox();
-            this.btnReloadUi = new UtinniCoreDotNet.UI.Controls.UtinniButton();
-            this.btnRestartMusic = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnCreateObject = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.txtCreateObject = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // txtCreateObject
+            // btnRestartMusic
             // 
-            this.txtCreateObject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCreateObject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCreateObject.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCreateObject.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txtCreateObject.Location = new System.Drawing.Point(3, 3);
-            this.txtCreateObject.Name = "txtCreateObject";
-            this.txtCreateObject.ReadOnly = true;
-            this.txtCreateObject.Size = new System.Drawing.Size(411, 20);
-            this.txtCreateObject.TabIndex = 322;
-            this.txtCreateObject.Text = "object/tangible/furniture/cheap/shared_armoire_s01.iff";
+            this.btnRestartMusic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnRestartMusic.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRestartMusic.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRestartMusic.Location = new System.Drawing.Point(90, 113);
+            this.btnRestartMusic.Name = "btnRestartMusic";
+            this.btnRestartMusic.Size = new System.Drawing.Size(81, 23);
+            this.btnRestartMusic.TabIndex = 327;
+            this.btnRestartMusic.Text = "Restart Music";
+            this.btnRestartMusic.UseVisualStyleBackColor = false;
+            this.btnRestartMusic.Click += new System.EventHandler(this.btnRestartMusic_Click);
             // 
-            // btnCreateObject
+            // btnReloadUi
             // 
-            this.btnCreateObject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnCreateObject.Enabled = false;
-            this.btnCreateObject.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCreateObject.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnCreateObject.Location = new System.Drawing.Point(3, 29);
-            this.btnCreateObject.Name = "btnCreateObject";
-            this.btnCreateObject.Size = new System.Drawing.Size(109, 23);
-            this.btnCreateObject.TabIndex = 323;
-            this.btnCreateObject.Text = "Create Object";
-            this.btnCreateObject.UseVisualStyleBackColor = false;
-            this.btnCreateObject.Click += new System.EventHandler(this.btnCreateObject_Click);
+            this.btnReloadUi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnReloadUi.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnReloadUi.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnReloadUi.Location = new System.Drawing.Point(3, 113);
+            this.btnReloadUi.Name = "btnReloadUi";
+            this.btnReloadUi.Size = new System.Drawing.Size(81, 23);
+            this.btnReloadUi.TabIndex = 326;
+            this.btnReloadUi.Text = "Reload UI";
+            this.btnReloadUi.UseVisualStyleBackColor = false;
+            this.btnReloadUi.Click += new System.EventHandler(this.btnReloadUi_Click);
             // 
             // btnCreateAppearance
             // 
@@ -72,7 +70,7 @@
             this.btnCreateAppearance.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnCreateAppearance.Location = new System.Drawing.Point(3, 84);
             this.btnCreateAppearance.Name = "btnCreateAppearance";
-            this.btnCreateAppearance.Size = new System.Drawing.Size(109, 23);
+            this.btnCreateAppearance.Size = new System.Drawing.Size(118, 23);
             this.btnCreateAppearance.TabIndex = 325;
             this.btnCreateAppearance.Text = "Create Appearance";
             this.btnCreateAppearance.UseVisualStyleBackColor = false;
@@ -92,31 +90,33 @@
             this.txtCreateAppearance.TabIndex = 324;
             this.txtCreateAppearance.Text = "appearance/frn_all_chep_cabinet_s01.apt";
             // 
-            // btnReloadUi
+            // btnCreateObject
             // 
-            this.btnReloadUi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnReloadUi.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnReloadUi.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnReloadUi.Location = new System.Drawing.Point(3, 113);
-            this.btnReloadUi.Name = "btnReloadUi";
-            this.btnReloadUi.Size = new System.Drawing.Size(81, 23);
-            this.btnReloadUi.TabIndex = 326;
-            this.btnReloadUi.Text = "Reload UI";
-            this.btnReloadUi.UseVisualStyleBackColor = false;
-            this.btnReloadUi.Click += new System.EventHandler(this.btnReloadUi_Click);
+            this.btnCreateObject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnCreateObject.Enabled = false;
+            this.btnCreateObject.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCreateObject.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnCreateObject.Location = new System.Drawing.Point(3, 29);
+            this.btnCreateObject.Name = "btnCreateObject";
+            this.btnCreateObject.Size = new System.Drawing.Size(118, 23);
+            this.btnCreateObject.TabIndex = 323;
+            this.btnCreateObject.Text = "Create Object";
+            this.btnCreateObject.UseVisualStyleBackColor = false;
+            this.btnCreateObject.Click += new System.EventHandler(this.btnCreateObject_Click);
             // 
-            // btnRestartMusic
+            // txtCreateObject
             // 
-            this.btnRestartMusic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnRestartMusic.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRestartMusic.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRestartMusic.Location = new System.Drawing.Point(90, 113);
-            this.btnRestartMusic.Name = "btnRestartMusic";
-            this.btnRestartMusic.Size = new System.Drawing.Size(81, 23);
-            this.btnRestartMusic.TabIndex = 327;
-            this.btnRestartMusic.Text = "Restart Music";
-            this.btnRestartMusic.UseVisualStyleBackColor = false;
-            this.btnRestartMusic.Click += new System.EventHandler(this.btnRestartMusic_Click);
+            this.txtCreateObject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCreateObject.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCreateObject.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCreateObject.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.txtCreateObject.Location = new System.Drawing.Point(3, 3);
+            this.txtCreateObject.Name = "txtCreateObject";
+            this.txtCreateObject.ReadOnly = true;
+            this.txtCreateObject.Size = new System.Drawing.Size(411, 20);
+            this.txtCreateObject.TabIndex = 322;
+            this.txtCreateObject.Text = "object/tangible/furniture/cheap/shared_armoire_s01.iff";
             // 
             // MiscPanel
             // 

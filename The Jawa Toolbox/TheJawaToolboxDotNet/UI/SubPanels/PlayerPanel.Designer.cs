@@ -179,7 +179,7 @@
             this.btnToggleModel.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnToggleModel.Location = new System.Drawing.Point(3, 74);
             this.btnToggleModel.Name = "btnToggleModel";
-            this.btnToggleModel.Size = new System.Drawing.Size(96, 23);
+            this.btnToggleModel.Size = new System.Drawing.Size(107, 23);
             this.btnToggleModel.TabIndex = 39;
             this.btnToggleModel.Text = "Toggle Model";
             this.btnToggleModel.UseVisualStyleBackColor = false;
@@ -191,9 +191,9 @@
             this.btnToggleFreeCam.Enabled = false;
             this.btnToggleFreeCam.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnToggleFreeCam.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnToggleFreeCam.Location = new System.Drawing.Point(105, 74);
+            this.btnToggleFreeCam.Location = new System.Drawing.Point(116, 74);
             this.btnToggleFreeCam.Name = "btnToggleFreeCam";
-            this.btnToggleFreeCam.Size = new System.Drawing.Size(96, 23);
+            this.btnToggleFreeCam.Size = new System.Drawing.Size(107, 23);
             this.btnToggleFreeCam.TabIndex = 40;
             this.btnToggleFreeCam.Text = "Toggle Free Cam";
             this.btnToggleFreeCam.UseVisualStyleBackColor = false;
