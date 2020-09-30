@@ -17,11 +17,9 @@ namespace TJT.UI
     public partial class FormObjectBrowser : Form, IEditorForm
     {
         private readonly IEditorPlugin editorPlugin;
-
         private readonly Dictionary<string, List<string>> objectRepo = new Dictionary<string, List<string>>();
 
         private UtinniCore.Utinni.Object dragDropObject;
-
 
         public FormObjectBrowser(IEditorPlugin editorPlugin)
         {
@@ -173,23 +171,32 @@ namespace TJT.UI
 
         private void lbFiles_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left && lbFiles.SelectedItem != null)
+            lbFiles.SelectedIndex = lbFiles.IndexFromPoint(e.X, e.Y);
+
+            if (lbFiles.SelectedItem == null)
+            {
+                return;
+            }
+
+            if (e.Button == MouseButtons.Left)
             {
                 lbFiles.DoDragDrop(lbFiles.SelectedItem, DragDropEffects.Copy);
+            }
+            else if (e.Button == MouseButtons.Right)
+            {
+                cmsObjectFile.Show(Cursor.Position);
             }
         }
 
         private void CreateDragDropObject(string filename)
         {
-            var player = Game.Player;
             var camera = GroundScene.Get().CurrentCamera;
-
-            if (player == null || camera == null)
+            if (camera == null)
             {
                 return;
             }
 
-            var newTransform = new Transform(player.ObjectToParent)
+            var newTransform = new Transform(camera.Transform)
             {
                 Position = cui_hud.GetCursorWorldPosition()
             };
@@ -211,7 +218,6 @@ namespace TJT.UI
 
                 var pob = PortalPropertyTemplateList.GetPobByCrcString(PersistentCrcString.Ctor(objTemplate.PortalLayoutFilename));
                 dragDropObject.SetAppearance(Appearance.Create(pob.ExteriorAppearanceName));
-                UtinniCore.Utinni.RenderWorld.render_world.AddObjectNotifications(dragDropObject); // ToDo see if the dupe call is needed (Copied from TJT)
             }
 
             dragDropObject.ClientObject.SetParentCell(camera.ParentCell);
@@ -232,36 +238,19 @@ namespace TJT.UI
                 return;
             }
 
-            Transform newTransform;
-
-            var camera = GroundScene.Get().CurrentCamera;
-            if (camera.ParentObject == null)
+            Transform newTransform = new Transform(GroundScene.Get().CurrentCamera.Transform)
             {
-                newTransform = new Transform(Game.Player.ObjectToParent)
-                {
-                    Position = position
-                };
-            }
-            else
-            {
-                Transform o2c = new Transform();
-                Transform w2c = new Transform();
-                Transform c2w = camera.ParentObject.TransformO2w;
-
-                w2c.Invert(c2w);
-                o2c.Multiply(w2c, dragDropObject.Transform);
-
-                newTransform = o2c;
-            }
+                Position = position
+            };
 
             dragDropObject.TransformO2w = newTransform;
         }
 
-        private void ConvertDragDropObjectToWorldSnapshotNode()
+        private void ConvertDragDropObjectToWorldSnapshotNode(string objectFilename)
         {
             GroundSceneCallbacks.AddUpdateLoopCall(() =>
             {
-                WorldSnapshotReaderWriter.Node node = WorldSnapshot.CreateAddNode(dragDropObject.TemplateFilename, dragDropObject.Transform);
+                WorldSnapshotReaderWriter.Node node = WorldSnapshot.CreateAddNode(objectFilename, dragDropObject.Transform);
 
                 if (node != null)
                 {
@@ -276,7 +265,7 @@ namespace TJT.UI
 
         private void OnDragDrop(object sender, DragEventArgs e)
         {
-            ConvertDragDropObjectToWorldSnapshotNode();
+            ConvertDragDropObjectToWorldSnapshotNode((string)e.Data.GetData(DataFormats.Text));
         }
 
         private void OnDragEnter(object sender, DragEventArgs e)
@@ -313,11 +302,45 @@ namespace TJT.UI
             var point = pnl.PointToClient(Cursor.Position);
             GroundSceneCallbacks.AddUpdateLoopCall(() =>
             {
-                var pos = cui_hud.CollideCursorWithWorld(point.X, point.Y);
-                UpdateDragDropObjectPosition(pos);
+                Vector pos = new Vector();
+                if (cui_hud.CollideCursorWithWorld(point.X, point.Y, pos, dragDropObject))
+                {
+                    UpdateDragDropObjectPosition(pos);
+                }
             });
         }
 
+        private void CreateSnapshotNodeAtPlayer()
+        {
+            GroundSceneCallbacks.AddUpdateLoopCall(() =>
+            {
+                WorldSnapshotReaderWriter.Node node = WorldSnapshot.CreateAddNode((string)lbFiles.SelectedItem, Game.Player.Transform);
+
+                if (node != null)
+                {
+                    editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new AddWorldSnapshotNodeCommand(node)));
+                }
+            });
+        }
+
+        private void btnCreateSnapshotNodesAtPlayer_Click(object sender, EventArgs e)
+        {
+            // ToDo SelectChanged events for listbox are broken with manual add, implement enable/disable of the controls down the road instead of this check
+            if (lbFiles.SelectedIndex == -1 || GroundScene.Get() == null)
+            {
+                return; 
+            }
+
+            for (int i = 0; i < nudSnapshotNodeCount.Value; i++)
+            {
+                CreateSnapshotNodeAtPlayer();
+            }
+        }
+
+        private void tsmiCreateSnapshotNodeAtPlayer_Click(object sender, EventArgs e)
+        {
+            CreateSnapshotNodeAtPlayer();
+        }
     }
 }
 
