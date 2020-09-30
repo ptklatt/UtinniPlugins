@@ -59,6 +59,12 @@
   <ItemGroup>
     <Compile Include="Plugin.cs" />
     <Compile Include="SWG\MiscImpl.cs" />
+    <Compile Include="UI\FormObjectBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormObjectBrowser.designer.cs">
+      <DependentUpon>FormObjectBrowser.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\SubPanels\GraphicsPanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     <Compile Include="SWG\WorldSnapshotImpl.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="UI\FormObjectBrowser.resx">
+      <DependentUpon>FormObjectBrowser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\SubPanels\GraphicsPanel.resx">
       <DependentUpon>GraphicsPanel.cs</DependentUpon>
     </EmbeddedResource>

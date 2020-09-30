@@ -21,7 +21,7 @@ namespace TJT.UI.SubPanels
         private readonly GroundSceneImpl groundScene;
         private readonly WorldSnapshotImpl worldSnapshot;
 
-        private UtINI ini;
+        private readonly UtINI ini;
 
         public ScenePanel(IEditorPlugin editorPlugin, HotkeyManager hotkeyManager, UtINI ini) : base("Scene", true)
         {

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using System.Windows.Forms;
 using TJT.UI;
 using TJT.UI.SubPanels;
 using UtinniCore.Utinni;
@@ -30,6 +29,8 @@ namespace TJT
             Log.Info("Created: The Jawa Toolbox");
 
             ini = new UtINI(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\settings.ini");
+
+            forms.Add(new FormObjectBrowser(this));
 
             panels.Add(new SubPanelContainer("Controls", new SubPanel[]
             {

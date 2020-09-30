@@ -308,7 +308,7 @@
             // chkEnableNodeEditing
             // 
             this.chkEnableNodeEditing.AutoSize = true;
-            this.chkEnableNodeEditing.Location = new System.Drawing.Point(289, 183);
+            this.chkEnableNodeEditing.Location = new System.Drawing.Point(295, 128);
             this.chkEnableNodeEditing.Name = "chkEnableNodeEditing";
             this.chkEnableNodeEditing.Size = new System.Drawing.Size(122, 17);
             this.chkEnableNodeEditing.TabIndex = 344;
