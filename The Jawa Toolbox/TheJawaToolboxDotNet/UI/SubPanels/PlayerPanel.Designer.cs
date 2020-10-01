@@ -37,6 +37,7 @@
             this.lblSpeed = new System.Windows.Forms.Label();
             this.btnToggleModel = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             this.btnToggleFreeCam = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnResetSpeed = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             ((System.ComponentModel.ISupportInitialize)(this.nudZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudX)).BeginInit();
@@ -134,8 +135,8 @@
             // 
             this.trkbSpeed.Enabled = false;
             this.trkbSpeed.LargeChange = 1;
-            this.trkbSpeed.Location = new System.Drawing.Point(3, 3);
-            this.trkbSpeed.Maximum = 100;
+            this.trkbSpeed.Location = new System.Drawing.Point(0, 6);
+            this.trkbSpeed.Maximum = 1000;
             this.trkbSpeed.Name = "trkbSpeed";
             this.trkbSpeed.Size = new System.Drawing.Size(160, 45);
             this.trkbSpeed.TabIndex = 36;
@@ -149,9 +150,9 @@
             this.nudSpeed.DecimalPlaces = 3;
             this.nudSpeed.Enabled = false;
             this.nudSpeed.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.nudSpeed.Location = new System.Drawing.Point(169, 3);
+            this.nudSpeed.Location = new System.Drawing.Point(166, 6);
             this.nudSpeed.Maximum = new decimal(new int[] {
-            99999,
+            1000,
             0,
             0,
             0});
@@ -165,7 +166,7 @@
             // lblSpeed
             // 
             this.lblSpeed.AutoSize = true;
-            this.lblSpeed.Location = new System.Drawing.Point(252, 5);
+            this.lblSpeed.Location = new System.Drawing.Point(249, 8);
             this.lblSpeed.Name = "lblSpeed";
             this.lblSpeed.Size = new System.Drawing.Size(38, 13);
             this.lblSpeed.TabIndex = 38;
@@ -199,10 +200,25 @@
             this.btnToggleFreeCam.UseVisualStyleBackColor = false;
             this.btnToggleFreeCam.Click += new System.EventHandler(this.btnToggleFreeCam_Click);
             // 
+            // btnResetSpeed
+            // 
+            this.btnResetSpeed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnResetSpeed.Enabled = false;
+            this.btnResetSpeed.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnResetSpeed.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnResetSpeed.Location = new System.Drawing.Point(296, 3);
+            this.btnResetSpeed.Name = "btnResetSpeed";
+            this.btnResetSpeed.Size = new System.Drawing.Size(75, 23);
+            this.btnResetSpeed.TabIndex = 41;
+            this.btnResetSpeed.Text = "Reset";
+            this.btnResetSpeed.UseVisualStyleBackColor = false;
+            this.btnResetSpeed.Click += new System.EventHandler(this.btnResetSpeed_Click);
+            // 
             // PlayerPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnResetSpeed);
             this.Controls.Add(this.btnToggleFreeCam);
             this.Controls.Add(this.btnToggleModel);
             this.Controls.Add(this.lblSpeed);
@@ -235,5 +251,6 @@
         internal System.Windows.Forms.NumericUpDown nudSpeed;
         private UtinniCoreDotNet.UI.Controls.UtinniButton btnToggleModel;
         private UtinniCoreDotNet.UI.Controls.UtinniButton btnToggleFreeCam;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnResetSpeed;
     }
 }

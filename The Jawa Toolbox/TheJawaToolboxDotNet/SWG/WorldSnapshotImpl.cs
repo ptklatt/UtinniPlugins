@@ -33,8 +33,8 @@ namespace TJT.SWG
             hotkeyManager.Hotkeys.Add(new Hotkey("ToggleSnapshotNodeEditingMode", "Oemtilde", ToggleNodeEditing, false));
             hotkeyManager.Hotkeys.Add(new Hotkey("Copy Node", "Shift, Control + C", CopyNode, false));
             hotkeyManager.Hotkeys.Add(new Hotkey("Paste Node", "Shift, Control  + V", PasteNode, false));
-            hotkeyManager.Hotkeys.Add(new Hotkey("Duplicate Node", "Shift, Control  + D", DuplicateNode, false));
-            hotkeyManager.Hotkeys.Add(new Hotkey("Delete Node", "Delete", RemoveNode, false));
+            hotkeyManager.Hotkeys.Add(new Hotkey("Duplicate Node", "Shift, Control + D", DuplicateNode, false));
+            hotkeyManager.Hotkeys.Add(new Hotkey("Delete Node", "Shift, Control + Delete", RemoveNode, false));
         }
 
         private void OnInstallCallback()

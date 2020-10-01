@@ -5,7 +5,12 @@ using UtinniCoreDotNet.UI.Controls;
 
 namespace TJT.UI.SubPanels
 {
-    public partial class PlayerPanel : SubPanel, ISceneAvailability
+    public interface IPlayerPanel : ISceneAvailability
+    {
+        void UpdateSpeed(float value);
+    }
+
+    public partial class PlayerPanel : SubPanel, IPlayerPanel
     {
         private readonly PlayerObjectImpl playerObject;
 
@@ -30,6 +35,11 @@ namespace TJT.UI.SubPanels
         {
             trkbSpeed.Value = (int) nudSpeed.Value;
             playerObject.SetSpeed((float)nudSpeed.Value);
+        }
+
+        private void btnResetSpeed_Click(object sender, EventArgs e)
+        {
+            playerObject.ResetSpeed();
         }
 
         private void btnToggleFreeCam_Click(object sender, EventArgs e)
@@ -63,5 +73,21 @@ namespace TJT.UI.SubPanels
 
             previousIsSceneActive = isSceneActive;
         }
+
+        public void UpdateSpeed(float value)
+        {
+            BeginInvoke((Action)(() =>
+            {
+                nudSpeed.ValueChanged -= nudSpeed_ValueChanged;
+                trkbSpeed.ValueChanged -= trkbSpeed_Scroll;
+
+                nudSpeed.Value = (decimal) value;
+                trkbSpeed.Value = (int) value;
+
+                nudSpeed.ValueChanged += nudSpeed_ValueChanged;
+                trkbSpeed.ValueChanged += trkbSpeed_Scroll;
+            }));
+        }
+
     }
 }
