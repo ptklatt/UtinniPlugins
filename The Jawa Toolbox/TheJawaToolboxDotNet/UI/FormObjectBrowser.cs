@@ -190,13 +190,14 @@ namespace TJT.UI
 
         private void CreateDragDropObject(string filename)
         {
+            var player = Game.Player;
             var camera = GroundScene.Get().CurrentCamera;
-            if (camera == null)
+            if (player == null || camera == null)
             {
                 return;
             }
 
-            var newTransform = new Transform(camera.Transform)
+            var newTransform = new Transform(player.Transform)
             {
                 Position = cui_hud.GetCursorWorldPosition()
             };
