@@ -71,22 +71,21 @@ namespace TJT.UI.SubPanels
             nudSpeed.Enabled = isSceneActive;
             trkbSpeed.Enabled = isSceneActive;
 
+            btnResetSpeed.Enabled = isSceneActive;
+
             previousIsSceneActive = isSceneActive;
         }
 
         public void UpdateSpeed(float value)
         {
-            BeginInvoke((Action)(() =>
-            {
-                nudSpeed.ValueChanged -= nudSpeed_ValueChanged;
-                trkbSpeed.ValueChanged -= trkbSpeed_Scroll;
+            nudSpeed.ValueChanged -= nudSpeed_ValueChanged;
+            trkbSpeed.ValueChanged -= trkbSpeed_Scroll;
 
-                nudSpeed.Value = (decimal) value;
-                trkbSpeed.Value = (int) value;
+            nudSpeed.Value = (decimal)value;
+            trkbSpeed.Value = (int)value;
 
-                nudSpeed.ValueChanged += nudSpeed_ValueChanged;
-                trkbSpeed.ValueChanged += trkbSpeed_Scroll;
-            }));
+            nudSpeed.ValueChanged += nudSpeed_ValueChanged;
+            trkbSpeed.ValueChanged += trkbSpeed_Scroll;
         }
 
     }

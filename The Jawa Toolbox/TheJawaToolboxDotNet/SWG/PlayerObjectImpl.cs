@@ -1,4 +1,6 @@
-﻿using TJT.UI.SubPanels;
+﻿using System.Threading.Tasks;
+using TJT.UI.SubPanels;
+using UtinniCore.Utinni;
 using UtinniCoreDotNet.Callbacks;
 using UtinniCoreDotNet.Hotkeys;
 
@@ -7,29 +9,30 @@ namespace TJT.SWG
     public class PlayerObjectImpl
     {
         private float defaultSpeed;
-        private readonly IPlayerPanel sceneAvailability;
+        //private float modifiedSpeed;
+        private readonly IPlayerPanel playerPanel;
         public PlayerObjectImpl(IPlayerPanel sceneAvailability, HotkeyManager hotkeyManager)
         {
-            this.sceneAvailability = sceneAvailability;
+            this.playerPanel = sceneAvailability;
             GameCallbacks.AddSetupSceneCall(OnSetupSceneCallback);
             GameCallbacks.AddCleanupSceneCall(OnCleanupCallback);
 
             hotkeyManager.Hotkeys.Add(new Hotkey("ToggleFreeCam", "Tab", ToggleFreeCam, false));
             hotkeyManager.Hotkeys.Add(new Hotkey("HalfSpeed", "Shift, Control + F4", HalfSpeed, false));
             hotkeyManager.Hotkeys.Add(new Hotkey("DoubleSpeed", "Shift, Control + F5", DoubleSpeed, false));
+            // hotkeyManager.Hotkeys.Add(new Hotkey("ToggleDefaultSpeed", "Shift, Control + F6", ToggleFreeCam, false)); ToDo
         }
 
         private void OnSetupSceneCallback()
         {
-            sceneAvailability.UpdateSceneAvailability(true);
-            defaultSpeed = GetSpeed();
-            sceneAvailability.UpdateSpeed(defaultSpeed);
+            playerPanel.UpdateSceneAvailability(true);
+            Task updateView = UpdateView();
         }
 
         private void OnCleanupCallback()
         {
-            sceneAvailability.UpdateSceneAvailability(false);
-            sceneAvailability.UpdateSpeed(0);
+            playerPanel.UpdateSceneAvailability(false);
+            playerPanel.UpdateSpeed(0);
         }
 
         public void Teleport(float x, float y, float z)
@@ -44,6 +47,7 @@ namespace TJT.SWG
         {
             GroundSceneCallbacks.AddUpdateLoopCall(() =>
             {
+                //modifiedSpeed = value;
                 UtinniCore.Utinni.PlayerObject.player_object.SetSpeed(value);
             });
         }
@@ -59,27 +63,34 @@ namespace TJT.SWG
             {
                 UtinniCore.Utinni.PlayerObject.player_object.SetSpeed(defaultSpeed);
             });
+
+            playerPanel.UpdateSpeed(defaultSpeed);
         }
 
         public void HalfSpeed()
         {
             float value = GetSpeed() / 2;
             SetSpeed(value);
-            sceneAvailability.UpdateSpeed(value);
+            playerPanel.UpdateSpeed(value);
         }
 
         public void DoubleSpeed()
         {
             float value = GetSpeed() * 2;
             SetSpeed(value);
-            sceneAvailability.UpdateSpeed(value);
+            playerPanel.UpdateSpeed(value);
+        }
+
+        public void ToggleDefaultSpeed()
+        {
+            // ToDo
         }
 
         public void ToggleFreeCam()
         {
             GroundSceneCallbacks.AddUpdateLoopCall(() =>
             {
-                UtinniCore.Utinni.GroundScene.Get().ToggleFreeCamera();
+                GroundScene.Get().ToggleFreeCamera();
             });
         }
 
@@ -89,6 +100,20 @@ namespace TJT.SWG
             {
                 UtinniCore.Utinni.PlayerObject.player_object.TogglePlayerAppearance();
             });
+        }
+
+        private async Task UpdateView()
+        {
+            while (true)
+            {
+                await Task.Delay(1);
+                if (GroundScene.Get() != null && Game.Player != null && GetSpeed() > 0f)
+                {
+                    defaultSpeed = GetSpeed();
+                    playerPanel.UpdateSpeed(defaultSpeed);
+                    break;
+                }
+            }
         }
     }
 }
