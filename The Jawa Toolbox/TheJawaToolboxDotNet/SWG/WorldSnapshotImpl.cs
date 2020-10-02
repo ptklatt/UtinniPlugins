@@ -8,24 +8,27 @@ using UtinniCoreDotNet.Callbacks;
 using UtinniCoreDotNet.Commands;
 using UtinniCoreDotNet.Hotkeys;
 using UtinniCoreDotNet.PluginFramework;
+using UtinniCoreDotNet.Utility;
 
 namespace TJT.SWG
 {
     public class WorldSnapshotImpl
     {
-        private readonly IScenePanel scenePanel;
+        private readonly ISnapshotPanel snapshotPanel;
         private readonly IEditorPlugin editorPlugin;
 
         public bool EnableNodeEditing;
 
         private WorldSnapshotReaderWriter.Node copiedNode;
 
-        public WorldSnapshotImpl(IScenePanel scenePanel, IEditorPlugin editorPlugin, HotkeyManager hotkeyManager)
+        public WorldSnapshotImpl(ISnapshotPanel snapshotPanel, IEditorPlugin editorPlugin, HotkeyManager hotkeyManager)
         {
-            this.scenePanel = scenePanel;
+            this.snapshotPanel = snapshotPanel;
             this.editorPlugin = editorPlugin;
 
             GameCallbacks.AddInstallCallback(OnInstallCallback);
+            GameCallbacks.AddSetupSceneCall(OnSetupSceneCallback);
+            GameCallbacks.AddCleanupSceneCall(OnCleanupCallback);
             ObjectCallbacks.AddOnTargetCallback(OnTarget);
             ImGuiCallbacks.AddOnPositionChangedCallback(OnPositionChanged);
             ImGuiCallbacks.AddOnRotationChangedCallback(OnRotationChanged);
@@ -55,7 +58,17 @@ namespace TJT.SWG
                 }
             }
 
-            scenePanel.SetCmbSnapshots(snapshots);
+            snapshotPanel.SetCmbSnapshots(snapshots);
+        }
+
+        private void OnSetupSceneCallback()
+        {
+            snapshotPanel.UpdateSceneAvailability(true);
+        }
+
+        private void OnCleanupCallback()
+        {
+            snapshotPanel.UpdateSceneAvailability(false);
         }
 
         public void Load(string filename)
@@ -120,7 +133,7 @@ namespace TJT.SWG
         public void ToggleNodeEditing()
         {
             bool result = !EnableNodeEditing;
-            scenePanel.UpdateSnapshotNodeEditingMode(result);
+            snapshotPanel.UpdateSnapshotNodeEditingMode(result);
             UpdateNodeEditingMode(result);
         }
 
@@ -137,6 +150,7 @@ namespace TJT.SWG
             if (target == null)
             {
                 UtinniCore.ImguiGizmo.imgui_impl.Disable();
+                snapshotPanel.UpdateSelectedNodeControls(null);
             }
             else
             {
@@ -150,6 +164,14 @@ namespace TJT.SWG
                 {
                     UtinniCore.ImguiGizmo.imgui_impl.Enable(target);
                 }
+
+                string cellName = "";
+                if (target.ParentCell != null)
+                {
+                    cellName = target.ParentCell.Name;
+                }
+
+                snapshotPanel.UpdateSelectedNodeControls(node, cellName, target.ClientObject.GameObjectTypeName + " (" + target.ClientObject.GameObjectType + ")");
             }
         }
 
@@ -165,6 +187,7 @@ namespace TJT.SWG
                 {
                     node.Transform.Position = obj.Transform.Position;
                     editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new WorldSnapshotNodePositionChangedCommand(node, allowMerge)));
+                    snapshotPanel.UpdateSelectedNodeControlsPosition(node.Transform.Position);
                 }
             });
         }
@@ -181,6 +204,52 @@ namespace TJT.SWG
                 {
                     node.Transform.CopyRotation(obj.Transform);
                     editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new WorldSnapshotNodeRotationChangedCommand(node, allowMerge)));
+                    //snapshotPanel.UpdateSelectedNodeControlsPosition(node.Transform.RotationAxis);
+                }
+            });
+        }
+
+        public void SetSelectedNodePosition(float x, float y, float z)
+        {
+            GroundSceneCallbacks.AddUpdateLoopCall(() =>
+            {
+                var obj = Game.PlayerLookAtTargetObject;
+                WorldSnapshotReaderWriter.Node node = WorldSnapshotReaderWriter.Get().GetNodeByNetworkId(obj.NetworkId);
+
+                if (node != null)
+                {
+                    node.Transform.SetPosition(x, y, z);
+
+                    if (node.ParentId != 0)
+                    {
+                        Vector oldO2w = obj.ObjectToWorld.Position;
+                        Vector oldO2p = obj.ObjectToParent.Position;
+
+                        Vector deltaPos = new Vector(oldO2p.X - x, oldO2p.Y - y, oldO2p.Z - z);
+                        obj.ObjectToWorld.Position = new Vector(oldO2w + deltaPos);
+                        obj.ObjectToParent.SetPosition(x, y, z);
+                    }
+                    else
+                    {
+                        obj.Transform.SetPosition(x, y, z);
+                    }
+
+                    editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new WorldSnapshotNodeRotationChangedCommand(node, true)));
+                }
+            });
+        }
+
+        public void SetRadius(float radius)
+        {
+            GroundSceneCallbacks.AddUpdateLoopCall(() =>
+            {
+                var obj = Game.PlayerLookAtTargetObject;
+                WorldSnapshotReaderWriter.Node node = WorldSnapshotReaderWriter.Get().GetNodeByNetworkId(obj.NetworkId);
+
+                if (node != null)
+                {
+                    node.Radius = radius;
+                    // ToDo add an Undo command for radius?
                 }
             });
         }

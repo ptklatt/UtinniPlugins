@@ -35,6 +35,7 @@ namespace TJT
             panels.Add(new SubPanelContainer("Controls", new SubPanel[]
             {
                 new ScenePanel(this, hotkeyManager, ini),
+                new SnapshotPanel(this, hotkeyManager, ini), 
                 new PlayerPanel(hotkeyManager),
                 new GraphicsPanel(ini),
                 new MiscPanel(ini)

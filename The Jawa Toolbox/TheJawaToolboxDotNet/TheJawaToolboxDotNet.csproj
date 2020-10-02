@@ -84,6 +84,12 @@
     <Compile Include="UI\SubPanels\PlayerPanel.Designer.cs">
       <DependentUpon>PlayerPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\SubPanels\SnapshotPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\SubPanels\SnapshotPanel.Designer.cs">
+      <DependentUpon>SnapshotPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\SubPanels\ScenePanel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -108,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SubPanels\PlayerPanel.resx">
       <DependentUpon>PlayerPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SubPanels\SnapshotPanel.resx">
+      <DependentUpon>SnapshotPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SubPanels\ScenePanel.resx">
       <DependentUpon>ScenePanel.cs</DependentUpon>
