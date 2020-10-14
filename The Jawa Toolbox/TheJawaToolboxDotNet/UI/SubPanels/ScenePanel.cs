@@ -63,9 +63,10 @@ namespace TJT.UI.SubPanels
             groundScene.SetWeatherIndex((int)nudWeatherIndex.Value);
         }
 
-        private void trkbTimeOfDay_Scroll(object sender, EventArgs e)
+        private void sldTimeOfDay_ValueChanged(object sender, EventArgs e)
         {
-            groundScene.SetTimeOfDay(trkbTimeOfDay.Value);
+            groundScene.SetTimeOfDay(sldTimeOfDay.Value);
+
         }
 
         private void chkAllowTargetEverything_CheckedChanged(object sender, EventArgs e)
@@ -101,18 +102,18 @@ namespace TJT.UI.SubPanels
             btnReloadScene.Enabled = isSceneActive;
 
             nudWeatherIndex.Enabled = isSceneActive;
-            trkbTimeOfDay.Enabled = isSceneActive;
+            sldTimeOfDay.Enabled = isSceneActive;
 
             previousIsSceneActive = isSceneActive;
         }
 
         public void UpdateTimeOfDay(int timeOfDay)
         {
-            if (trkbTimeOfDay.Created)
+            if (sldTimeOfDay.Created)
             {
                 BeginInvoke((Action)(() =>
                 {
-                    trkbTimeOfDay.Value = timeOfDay;
+                    sldTimeOfDay.Value = timeOfDay; 
                 }));
             }
         }

@@ -1,7 +1,9 @@
 ﻿using System;
 using TJT.SWG;
+using UtinniCore.Utinni;
 using UtinniCoreDotNet.Hotkeys;
 using UtinniCoreDotNet.UI.Controls;
+using UtinniCoreDotNet.Utility;
 
 namespace TJT.UI.SubPanels
 {
@@ -26,14 +28,14 @@ namespace TJT.UI.SubPanels
             playerObject.Teleport((float)nudX.Value, (float)nudY.Value, (float)nudZ.Value);
         }
 
-        private void trkbSpeed_Scroll(object sender, EventArgs e)
+        private void sldSpeed_ValueChanged(object sender, EventArgs e)
         {
-            nudSpeed.Value = trkbSpeed.Value;
+            nudSpeed.Value = (decimal) sldSpeed.Value;
         }
 
         private void nudSpeed_ValueChanged(object sender, EventArgs e)
         {
-            trkbSpeed.Value = (int) nudSpeed.Value;
+            sldSpeed.Value = (int) nudSpeed.Value;
             playerObject.SetSpeed((float)nudSpeed.Value);
         }
 
@@ -69,7 +71,7 @@ namespace TJT.UI.SubPanels
             nudZ.Enabled = isSceneActive;
 
             nudSpeed.Enabled = isSceneActive;
-            trkbSpeed.Enabled = isSceneActive;
+            sldSpeed.Enabled = isSceneActive;
 
             btnResetSpeed.Enabled = isSceneActive;
 
@@ -79,14 +81,32 @@ namespace TJT.UI.SubPanels
         public void UpdateSpeed(float value)
         {
             nudSpeed.ValueChanged -= nudSpeed_ValueChanged;
-            trkbSpeed.ValueChanged -= trkbSpeed_Scroll;
+            sldSpeed.ValueChanged -= sldSpeed_ValueChanged;
 
             nudSpeed.Value = (decimal)value;
-            trkbSpeed.Value = (int)value;
+            sldSpeed.Value = value;
 
             nudSpeed.ValueChanged += nudSpeed_ValueChanged;
-            trkbSpeed.ValueChanged += trkbSpeed_Scroll;
+            sldSpeed.ValueChanged += sldSpeed_ValueChanged;
         }
 
+        private bool hideCell;
+
+        private void utinniButton1_Click(object sender, EventArgs e)
+        {
+            //var cell = Game.Player.ParentCell.AppearanceObject;
+
+            //RenderWorldCamera.ClearExcludedObjects();
+
+            //hideCell = !hideCell;
+            //if (hideCell)
+            //{
+            //    RenderWorldCamera.AddExcludedObject(cell);
+            //}
+
+            string result = Game.Camera.ParentCell.Name + ": " + Game.Camera.ParentCell.Index;
+            Log.InfoSimple(result);
+
+        }
     }
 }
