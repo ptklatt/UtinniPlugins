@@ -8,11 +8,11 @@ using UtinniCore.Utinni;
 using UtinniCore.Utinni.CuiHud;
 using UtinniCoreDotNet.Callbacks;
 using UtinniCoreDotNet.Commands;
+using UtinniCoreDotNet.Hotkeys;
 using UtinniCoreDotNet.PluginFramework;
 using UtinniCoreDotNet.UI;
 using UtinniCoreDotNet.UI.Forms;
 using UtinniCoreDotNet.UI.Theme;
-using UtinniCoreDotNet.Utility;
 using Appearance = UtinniCore.Utinni.Appearance;
 
 namespace TJT.UI
@@ -29,7 +29,6 @@ namespace TJT.UI
             InitializeComponent();
 
             this.editorPlugin = editorPlugin;
-
             tvDirectories.BackColor = Colors.PrimaryHighlight();
             lbFiles.BackColor = Colors.PrimaryHighlight();
 
@@ -44,6 +43,8 @@ namespace TJT.UI
             GameDragDropEventHandlers.OnDragDrop += OnDragDrop;
             GameDragDropEventHandlers.OnDragEnter += OnDragEnter;
             GameDragDropEventHandlers.OnDragOver += OnDragOver;
+
+            editorPlugin.GetHotkeyManager().Hotkeys.Add(new Hotkey("ToggleKeepOnTop", "Shift, Control + T", ToggleKeepOnTop, false));
         }
 
         private async Task LoadRepo()
@@ -138,7 +139,6 @@ namespace TJT.UI
             if (tvDirectories.SelectedNode != null && tvDirectories.SelectedNode != previousNode)
             {
                 string dirPath = tvDirectories.SelectedNode.Text + '/';
-
                 // Loop backwards through the TreeView nodes to assemble the full path
                 TreeNode curNode = tvDirectories.SelectedNode;
                 while (curNode.Parent != null)
@@ -146,12 +146,18 @@ namespace TJT.UI
                     curNode = curNode.Parent;
                     dirPath = curNode.Text + "/" + dirPath;
                 }
+                txtDirectoryPath.Text = dirPath;
 
                 lbFiles.BeginUpdate();
                 lbFiles.Items.Clear();
                 if (objectRepo.TryGetValue(dirPath, out List<string> filenames))
                 {
-                    currentFilenames = filenames;
+                    currentFilenames = new List<string>();
+                    foreach (string fn in filenames)
+                    {
+                        currentFilenames.Add(fn.Substring(fn.LastIndexOf('/') + 1));
+                    }
+
                     lbFiles.Items.AddRange(currentFilenames.ToArray());
                     previousNode = tvDirectories.SelectedNode;
                 }
@@ -207,7 +213,7 @@ namespace TJT.UI
             var moveDelta = e.Location - (Size) mouseDownPos;
             if (e.Button == MouseButtons.Left && lbFiles.SelectedItem != null && (moveDelta.X >= 5 || moveDelta.Y >= 5))
             {
-                lbFiles.DoDragDrop(lbFiles.SelectedItem, DragDropEffects.Copy);
+                lbFiles.DoDragDrop("object/" + txtDirectoryPath.Text +  lbFiles.SelectedItem, DragDropEffects.Copy);
             }
         }
         private void lbFiles_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -385,8 +391,15 @@ namespace TJT.UI
             CreateSnapshotNodeAtPlayer();
         }
 
-        
+        private void ToggleKeepOnTop()
+        {
+            chkKeepOnTop.Checked = !chkKeepOnTop.Checked;
+        }
 
+        private void chkKeepOnTop_CheckedChanged(object sender, EventArgs e)
+        {
+            TopMost = chkKeepOnTop.Checked;
+        }
     }
 }
 
