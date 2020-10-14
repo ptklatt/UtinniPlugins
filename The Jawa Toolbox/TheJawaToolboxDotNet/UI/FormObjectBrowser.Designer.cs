@@ -38,6 +38,7 @@
             this.btnCreateSnapshotNodesAtPlayer = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             this.cmsObjectFile = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiCreateSnapshotNodeAtPlayer = new System.Windows.Forms.ToolStripMenuItem();
+            this.chkUsePlayerRotation = new UtinniCoreDotNet.UI.Controls.UtinniToggle();
             ((System.ComponentModel.ISupportInitialize)(this.nudSnapshotNodeCount)).BeginInit();
             this.cmsObjectFile.SuspendLayout();
             this.SuspendLayout();
@@ -157,11 +158,22 @@
             this.tsmiCreateSnapshotNodeAtPlayer.Text = "Create Snapshot node at player";
             this.tsmiCreateSnapshotNodeAtPlayer.Click += new System.EventHandler(this.tsmiCreateSnapshotNodeAtPlayer_Click);
             // 
+            // chkUsePlayerRotation
+            // 
+            this.chkUsePlayerRotation.DrawOutline = false;
+            this.chkUsePlayerRotation.Location = new System.Drawing.Point(237, 411);
+            this.chkUsePlayerRotation.Name = "chkUsePlayerRotation";
+            this.chkUsePlayerRotation.Size = new System.Drawing.Size(155, 20);
+            this.chkUsePlayerRotation.TabIndex = 341;
+            this.chkUsePlayerRotation.Text = "Use player rotation";
+            this.chkUsePlayerRotation.UseVisualStyleBackColor = true;
+            // 
             // FormObjectBrowser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 471);
+            this.Controls.Add(this.chkUsePlayerRotation);
             this.Controls.Add(this.nudSnapshotNodeCount);
             this.Controls.Add(this.lblCreateSnapshotNodesAtPlayer);
             this.Controls.Add(this.btnCreateSnapshotNodesAtPlayer);
@@ -189,5 +201,6 @@
         internal UtinniCoreDotNet.UI.Controls.UtinniNumericUpDown nudSnapshotNodeCount;
         private System.Windows.Forms.ContextMenuStrip cmsObjectFile;
         private System.Windows.Forms.ToolStripMenuItem tsmiCreateSnapshotNodeAtPlayer;
+        private UtinniCoreDotNet.UI.Controls.UtinniToggle chkUsePlayerRotation;
     }
 }

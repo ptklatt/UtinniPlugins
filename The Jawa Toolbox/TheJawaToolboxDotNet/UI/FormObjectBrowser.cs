@@ -212,11 +212,19 @@ namespace TJT.UI
                 return;
             }
 
-            var newTransform = new Transform(player.Transform)
+            Transform newTransform;
+            if (chkUsePlayerRotation.Checked)
+            { 
+                newTransform = new Transform(player.Transform)
+                {
+                    Position = cui_hud.GetCursorWorldPosition()
+                };
+            }
+            else
             {
-                Position = cui_hud.GetCursorWorldPosition()
-            };
-
+                newTransform = new Transform();
+            }
+           
             var objTemplate = ObjectTemplateList.GetObjectTemplateByFilename(filename);
             if (objTemplate == null)
             {
@@ -254,7 +262,7 @@ namespace TJT.UI
                 return;
             }
 
-            Transform newTransform = new Transform(GroundScene.Get().CurrentCamera.Transform)
+            Transform newTransform = new Transform(dragDropObject.Transform)
             {
                 Position = position
             };
