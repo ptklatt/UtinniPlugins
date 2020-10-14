@@ -31,10 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.tvDirectories = new System.Windows.Forms.TreeView();
             this.lbFiles = new System.Windows.Forms.ListBox();
-            this.lblFilter = new System.Windows.Forms.Label();
-            this.txtFilter = new System.Windows.Forms.TextBox();
-            this.lblCreateSnapshotNodesAtPlayer = new System.Windows.Forms.Label();
-            this.nudSnapshotNodeCount = new System.Windows.Forms.NumericUpDown();
+            this.lblFilter = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
+            this.txtFilter = new UtinniCoreDotNet.UI.Controls.UtinniTextbox();
+            this.lblCreateSnapshotNodesAtPlayer = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
+            this.nudSnapshotNodeCount = new UtinniCoreDotNet.UI.Controls.UtinniNumericUpDown();
             this.btnCreateSnapshotNodesAtPlayer = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             this.cmsObjectFile = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiCreateSnapshotNodeAtPlayer = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,9 +47,9 @@
             this.tvDirectories.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.tvDirectories.HideSelection = false;
-            this.tvDirectories.Location = new System.Drawing.Point(12, 12);
+            this.tvDirectories.Location = new System.Drawing.Point(12, 37);
             this.tvDirectories.Name = "tvDirectories";
-            this.tvDirectories.Size = new System.Drawing.Size(216, 421);
+            this.tvDirectories.Size = new System.Drawing.Size(216, 396);
             this.tvDirectories.TabIndex = 0;
             this.tvDirectories.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvDirectories_AfterSelect);
             // 
@@ -60,9 +60,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbFiles.FormattingEnabled = true;
             this.lbFiles.IntegralHeight = false;
-            this.lbFiles.Location = new System.Drawing.Point(234, 12);
+            this.lbFiles.Location = new System.Drawing.Point(234, 37);
             this.lbFiles.Name = "lbFiles";
-            this.lbFiles.Size = new System.Drawing.Size(554, 392);
+            this.lbFiles.Size = new System.Drawing.Size(554, 367);
             this.lbFiles.TabIndex = 1;
             this.lbFiles.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbFiles_MouseDown);
             // 
@@ -70,6 +70,7 @@
             // 
             this.lblFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblFilter.AutoSize = true;
+            this.lblFilter.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.lblFilter.Location = new System.Drawing.Point(11, 442);
             this.lblFilter.Name = "lblFilter";
             this.lblFilter.Size = new System.Drawing.Size(29, 13);
@@ -80,6 +81,9 @@
             // 
             this.txtFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtFilter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtFilter.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.txtFilter.Location = new System.Drawing.Point(46, 439);
             this.txtFilter.Name = "txtFilter";
             this.txtFilter.Size = new System.Drawing.Size(742, 20);
@@ -90,6 +94,7 @@
             // 
             this.lblCreateSnapshotNodesAtPlayer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCreateSnapshotNodesAtPlayer.AutoSize = true;
+            this.lblCreateSnapshotNodesAtPlayer.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.lblCreateSnapshotNodesAtPlayer.Location = new System.Drawing.Point(485, 415);
             this.lblCreateSnapshotNodesAtPlayer.Name = "lblCreateSnapshotNodesAtPlayer";
             this.lblCreateSnapshotNodesAtPlayer.Size = new System.Drawing.Size(167, 13);
@@ -101,9 +106,11 @@
             this.nudSnapshotNodeCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.nudSnapshotNodeCount.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.nudSnapshotNodeCount.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.nudSnapshotNodeCount.DrawOutline = false;
             this.nudSnapshotNodeCount.Enabled = false;
             this.nudSnapshotNodeCount.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.nudSnapshotNodeCount.Location = new System.Drawing.Point(660, 413);
+            this.nudSnapshotNodeCount.Margin = new System.Windows.Forms.Padding(0);
             this.nudSnapshotNodeCount.Minimum = new decimal(new int[] {
             1,
             0,
@@ -124,6 +131,7 @@
             // 
             this.btnCreateSnapshotNodesAtPlayer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCreateSnapshotNodesAtPlayer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnCreateSnapshotNodesAtPlayer.DrawOutline = false;
             this.btnCreateSnapshotNodesAtPlayer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCreateSnapshotNodesAtPlayer.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.btnCreateSnapshotNodesAtPlayer.Location = new System.Drawing.Point(706, 410);
@@ -131,6 +139,7 @@
             this.btnCreateSnapshotNodesAtPlayer.Size = new System.Drawing.Size(82, 23);
             this.btnCreateSnapshotNodesAtPlayer.TabIndex = 41;
             this.btnCreateSnapshotNodesAtPlayer.Text = "Create";
+            this.btnCreateSnapshotNodesAtPlayer.UseDisableColor = true;
             this.btnCreateSnapshotNodesAtPlayer.UseVisualStyleBackColor = false;
             this.btnCreateSnapshotNodesAtPlayer.Click += new System.EventHandler(this.btnCreateSnapshotNodesAtPlayer_Click);
             // 
@@ -173,11 +182,11 @@
 
         private System.Windows.Forms.TreeView tvDirectories;
         private System.Windows.Forms.ListBox lbFiles;
-        private System.Windows.Forms.Label lblFilter;
-        private System.Windows.Forms.TextBox txtFilter;
+        private UtinniCoreDotNet.UI.Controls.UtinniLabel lblFilter;
+        private UtinniCoreDotNet.UI.Controls.UtinniTextbox txtFilter;
         private UtinniCoreDotNet.UI.Controls.UtinniButton btnCreateSnapshotNodesAtPlayer;
-        private System.Windows.Forms.Label lblCreateSnapshotNodesAtPlayer;
-        internal System.Windows.Forms.NumericUpDown nudSnapshotNodeCount;
+        private UtinniCoreDotNet.UI.Controls.UtinniLabel lblCreateSnapshotNodesAtPlayer;
+        internal UtinniCoreDotNet.UI.Controls.UtinniNumericUpDown nudSnapshotNodeCount;
         private System.Windows.Forms.ContextMenuStrip cmsObjectFile;
         private System.Windows.Forms.ToolStripMenuItem tsmiCreateSnapshotNodeAtPlayer;
     }

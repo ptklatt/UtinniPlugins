@@ -10,11 +10,13 @@ using UtinniCoreDotNet.Commands;
 using UtinniCoreDotNet.PluginFramework;
 using UtinniCoreDotNet.UI;
 using UtinniCoreDotNet.UI.Forms;
+using UtinniCoreDotNet.UI.Theme;
+using UtinniCoreDotNet.Utility;
 using Appearance = UtinniCore.Utinni.Appearance;
 
 namespace TJT.UI
 {
-    public partial class FormObjectBrowser : Form, IEditorForm
+    public partial class FormObjectBrowser : UtinniForm, IEditorForm
     {
         private readonly IEditorPlugin editorPlugin;
         private readonly Dictionary<string, List<string>> objectRepo = new Dictionary<string, List<string>>();
@@ -26,6 +28,15 @@ namespace TJT.UI
             InitializeComponent();
 
             this.editorPlugin = editorPlugin;
+
+            tvDirectories.BackColor = Colors.PrimaryHighlight();
+            lbFiles.BackColor = Colors.PrimaryHighlight();
+
+            tvDirectories.ForeColor = Colors.Font();
+            lbFiles.ForeColor = Colors.Font();
+
+            tvDirectories.BorderStyle = BorderStyle.None;
+            lbFiles.BorderStyle = BorderStyle.None;
 
             Task loadRepo = LoadRepo();
 
@@ -175,8 +186,12 @@ namespace TJT.UI
 
             if (lbFiles.SelectedItem == null)
             {
+                btnCreateSnapshotNodesAtPlayer.Enabled = false;
+                nudSnapshotNodeCount.Enabled = false;
                 return;
             }
+            btnCreateSnapshotNodesAtPlayer.Enabled = true;
+            nudSnapshotNodeCount.Enabled = true;
 
             if (e.Button == MouseButtons.Left)
             {
