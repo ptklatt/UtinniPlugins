@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UtinniCore.Swg.Math;
@@ -180,8 +181,10 @@ namespace TJT.UI
             lbFiles.EndUpdate();
         }
 
+        private System.Drawing.Point mouseDownPos;
         private void lbFiles_MouseDown(object sender, MouseEventArgs e)
         {
+            mouseDownPos = e.Location;
             lbFiles.SelectedIndex = lbFiles.IndexFromPoint(e.X, e.Y);
 
             if (lbFiles.SelectedItem == null)
@@ -193,16 +196,32 @@ namespace TJT.UI
             btnCreateSnapshotNodesAtPlayer.Enabled = true;
             nudSnapshotNodeCount.Enabled = true;
 
-            if (e.Button == MouseButtons.Left)
-            {
-                lbFiles.DoDragDrop(lbFiles.SelectedItem, DragDropEffects.Copy);
-            }
-            else if (e.Button == MouseButtons.Right)
+            if (e.Button == MouseButtons.Right)
             {
                 cmsObjectFile.Show(Cursor.Position);
             }
         }
 
+        private void lbFiles_MouseMove(object sender, MouseEventArgs e)
+        {
+            var moveDelta = e.Location - (Size) mouseDownPos;
+            if (e.Button == MouseButtons.Left && lbFiles.SelectedItem != null && (moveDelta.X >= 5 || moveDelta.Y >= 5))
+            {
+                lbFiles.DoDragDrop(lbFiles.SelectedItem, DragDropEffects.Copy);
+            }
+        }
+        private void lbFiles_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            // ToDo SelectChanged events for listbox are broken with manual add, implement enable/disable of the controls down the road instead of this check
+            if (lbFiles.SelectedIndex == -1 || GroundScene.Get() == null)
+            {
+                return;
+            }
+            if (e.Button == MouseButtons.Left)
+            {
+                CreateSnapshotNodeAtPlayer(); // ToDo add a different spawn location if in freecam
+            }
+        }
         private void CreateDragDropObject(string filename)
         {
             var player = Game.Player;
@@ -365,6 +384,9 @@ namespace TJT.UI
         {
             CreateSnapshotNodeAtPlayer();
         }
+
+        
+
     }
 }
 

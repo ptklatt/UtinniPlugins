@@ -65,7 +65,9 @@
             this.lbFiles.Name = "lbFiles";
             this.lbFiles.Size = new System.Drawing.Size(554, 367);
             this.lbFiles.TabIndex = 1;
+            this.lbFiles.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbFiles_MouseDoubleClick);
             this.lbFiles.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbFiles_MouseDown);
+            this.lbFiles.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lbFiles_MouseMove);
             // 
             // lblFilter
             // 
