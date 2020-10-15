@@ -20,6 +20,8 @@ namespace TJT.UI
     public partial class FormObjectBrowser : UtinniForm, IEditorForm
     {
         private readonly IEditorPlugin editorPlugin;
+        private readonly UtINI ini;
+
         private readonly Dictionary<string, List<string>> objectRepo = new Dictionary<string, List<string>>();
 
         private UtinniCore.Utinni.Object dragDropObject;
@@ -30,6 +32,15 @@ namespace TJT.UI
             InitializeComponent();
 
             this.editorPlugin = editorPlugin;
+            ini = editorPlugin.GetConfig();
+
+            CreateSettings();
+            ini.Load();
+
+            Width = ini.GetInt("ObjectBrowser", "width");
+            Height = ini.GetInt("ObjectBrowser", "height");
+            chkKeepOnTop.Checked = ini.GetBool("ObjectBrowser", "keepOnTop");
+
             tvDirectories.BackColor = Colors.PrimaryHighlight();
             lbFiles.BackColor = Colors.PrimaryHighlight();
 
@@ -46,6 +57,13 @@ namespace TJT.UI
             GameDragDropEventHandlers.OnDragOver += OnDragOver;
 
             editorPlugin.GetHotkeyManager().Hotkeys.Add(new Hotkey("ToggleKeepOnTop", "Shift, Control + T", ToggleKeepOnTop, false));
+        }
+
+        private void CreateSettings()
+        {
+            ini.AddSetting("ObjectBrowser", "width", "525", UtINI.Value.Types.VtInt);
+            ini.AddSetting("ObjectBrowser", "height", "510", UtINI.Value.Types.VtInt);
+            ini.AddSetting("ObjectBrowser", "keepOnTop", "true", UtINI.Value.Types.VtBool);
         }
 
         private async Task LoadRepo()

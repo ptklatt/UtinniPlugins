@@ -32,7 +32,6 @@ namespace TJT.UI.SubPanels
             ini.Load();
 
             txtAvatarObjectFilename.Text = ini.GetString("Scene", "defaultAvatarFilename");
-
             chkAllowTargetEverything.Checked = ini.GetBool("Scene", "autoAllowTargetEverything");
         }
 

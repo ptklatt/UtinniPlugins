@@ -52,7 +52,7 @@
             this.tvDirectories.HideSelection = false;
             this.tvDirectories.Location = new System.Drawing.Point(12, 37);
             this.tvDirectories.Name = "tvDirectories";
-            this.tvDirectories.Size = new System.Drawing.Size(216, 407);
+            this.tvDirectories.Size = new System.Drawing.Size(216, 406);
             this.tvDirectories.TabIndex = 0;
             this.tvDirectories.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvDirectories_AfterSelect);
             // 
@@ -65,7 +65,7 @@
             this.lbFiles.IntegralHeight = false;
             this.lbFiles.Location = new System.Drawing.Point(234, 63);
             this.lbFiles.Name = "lbFiles";
-            this.lbFiles.Size = new System.Drawing.Size(232, 381);
+            this.lbFiles.Size = new System.Drawing.Size(279, 380);
             this.lbFiles.TabIndex = 1;
             this.lbFiles.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbFiles_MouseDoubleClick);
             this.lbFiles.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lbFiles_MouseDown);
@@ -76,7 +76,7 @@
             this.lblFilter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblFilter.AutoSize = true;
             this.lblFilter.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblFilter.Location = new System.Drawing.Point(11, 482);
+            this.lblFilter.Location = new System.Drawing.Point(11, 481);
             this.lblFilter.Name = "lblFilter";
             this.lblFilter.Size = new System.Drawing.Size(29, 13);
             this.lblFilter.TabIndex = 2;
@@ -89,9 +89,9 @@
             this.txtFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtFilter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFilter.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txtFilter.Location = new System.Drawing.Point(46, 479);
+            this.txtFilter.Location = new System.Drawing.Point(46, 478);
             this.txtFilter.Name = "txtFilter";
-            this.txtFilter.Size = new System.Drawing.Size(420, 20);
+            this.txtFilter.Size = new System.Drawing.Size(467, 20);
             this.txtFilter.TabIndex = 3;
             this.txtFilter.TextChanged += new System.EventHandler(this.txtFilter_TextChanged);
             // 
@@ -100,7 +100,7 @@
             this.lblCreateSnapshotNodesAtPlayer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblCreateSnapshotNodesAtPlayer.AutoSize = true;
             this.lblCreateSnapshotNodesAtPlayer.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblCreateSnapshotNodesAtPlayer.Location = new System.Drawing.Point(175, 456);
+            this.lblCreateSnapshotNodesAtPlayer.Location = new System.Drawing.Point(175, 455);
             this.lblCreateSnapshotNodesAtPlayer.Name = "lblCreateSnapshotNodesAtPlayer";
             this.lblCreateSnapshotNodesAtPlayer.Size = new System.Drawing.Size(167, 13);
             this.lblCreateSnapshotNodesAtPlayer.TabIndex = 42;
@@ -114,7 +114,7 @@
             this.nudSnapshotNodeCount.DrawOutline = false;
             this.nudSnapshotNodeCount.Enabled = false;
             this.nudSnapshotNodeCount.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.nudSnapshotNodeCount.Location = new System.Drawing.Point(345, 453);
+            this.nudSnapshotNodeCount.Location = new System.Drawing.Point(345, 452);
             this.nudSnapshotNodeCount.Margin = new System.Windows.Forms.Padding(0);
             this.nudSnapshotNodeCount.Minimum = new decimal(new int[] {
             1,
@@ -139,7 +139,7 @@
             this.btnCreateSnapshotNodesAtPlayer.DrawOutline = false;
             this.btnCreateSnapshotNodesAtPlayer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCreateSnapshotNodesAtPlayer.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnCreateSnapshotNodesAtPlayer.Location = new System.Drawing.Point(388, 453);
+            this.btnCreateSnapshotNodesAtPlayer.Location = new System.Drawing.Point(388, 452);
             this.btnCreateSnapshotNodesAtPlayer.Name = "btnCreateSnapshotNodesAtPlayer";
             this.btnCreateSnapshotNodesAtPlayer.Size = new System.Drawing.Size(82, 20);
             this.btnCreateSnapshotNodesAtPlayer.TabIndex = 41;
@@ -166,7 +166,7 @@
             // 
             this.chkUsePlayerRotation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkUsePlayerRotation.DrawOutline = false;
-            this.chkUsePlayerRotation.Location = new System.Drawing.Point(14, 453);
+            this.chkUsePlayerRotation.Location = new System.Drawing.Point(14, 452);
             this.chkUsePlayerRotation.Name = "chkUsePlayerRotation";
             this.chkUsePlayerRotation.Size = new System.Drawing.Size(155, 20);
             this.chkUsePlayerRotation.TabIndex = 341;
@@ -193,14 +193,14 @@
             this.txtDirectoryPath.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.txtDirectoryPath.Location = new System.Drawing.Point(234, 37);
             this.txtDirectoryPath.Name = "txtDirectoryPath";
-            this.txtDirectoryPath.Size = new System.Drawing.Size(232, 20);
+            this.txtDirectoryPath.Size = new System.Drawing.Size(279, 20);
             this.txtDirectoryPath.TabIndex = 343;
             // 
             // FormObjectBrowser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(478, 511);
+            this.ClientSize = new System.Drawing.Size(525, 510);
             this.Controls.Add(this.txtDirectoryPath);
             this.Controls.Add(this.chkKeepOnTop);
             this.Controls.Add(this.chkUsePlayerRotation);
