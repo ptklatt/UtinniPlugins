@@ -23,6 +23,7 @@ namespace TJT.UI
         private readonly Dictionary<string, List<string>> objectRepo = new Dictionary<string, List<string>>();
 
         private UtinniCore.Utinni.Object dragDropObject;
+        private bool hasValidDragLocation;
 
         public FormObjectBrowser(IEditorPlugin editorPlugin)
         {
@@ -228,6 +229,7 @@ namespace TJT.UI
                 CreateSnapshotNodeAtPlayer(); // ToDo add a different spawn location if in freecam
             }
         }
+
         private void CreateDragDropObject(string filename)
         {
             var player = Game.Player;
@@ -299,6 +301,14 @@ namespace TJT.UI
         {
             GroundSceneCallbacks.AddUpdateLoopCall(() =>
             {
+                if (!hasValidDragLocation)
+                {
+                    // Cleanup the temporary DragDrop object
+                    dragDropObject.Remove();
+                    dragDropObject = null;
+                    return;
+                }
+
                 WorldSnapshotReaderWriter.Node node = WorldSnapshot.CreateAddNode(objectFilename, dragDropObject.Transform);
 
                 if (node != null)
@@ -328,6 +338,7 @@ namespace TJT.UI
                 {
                     string dragData = (string)e.Data.GetData(DataFormats.Text); // ToDo custom format 
 
+                    hasValidDragLocation = false;
                     GroundSceneCallbacks.AddUpdateLoopCall(() =>
                     {
                         CreateDragDropObject(dragData);
@@ -354,6 +365,7 @@ namespace TJT.UI
                 Vector pos = new Vector();
                 if (cui_hud.CollideCursorWithWorld(point.X, point.Y, pos, dragDropObject))
                 {
+                    hasValidDragLocation = true;
                     UpdateDragDropObjectPosition(pos);
                 }
             });
