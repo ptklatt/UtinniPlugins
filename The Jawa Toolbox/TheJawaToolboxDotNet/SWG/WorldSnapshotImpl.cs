@@ -8,6 +8,7 @@ using UtinniCoreDotNet.Callbacks;
 using UtinniCoreDotNet.Commands;
 using UtinniCoreDotNet.Hotkeys;
 using UtinniCoreDotNet.PluginFramework;
+using UtinniCoreDotNet.Utility;
 
 namespace TJT.SWG
 {
@@ -32,13 +33,12 @@ namespace TJT.SWG
             ImGuiCallbacks.AddOnPositionChangedCallback(OnPositionChanged);
             ImGuiCallbacks.AddOnRotationChangedCallback(OnRotationChanged);
 
-            hotkeyManager.Hotkeys.Add(new Hotkey("ToggleSnapshotNodeEditingMode", "Oemtilde", ToggleNodeEditing, false));
-            hotkeyManager.Hotkeys.Add(new Hotkey("Save Snapshot", "Shift, Control + S", Save, false));
-
-            hotkeyManager.Hotkeys.Add(new Hotkey("Copy Node", "Shift, Control + C", CopyNode, false));
-            hotkeyManager.Hotkeys.Add(new Hotkey("Paste Node", "Shift, Control  + V", PasteNode, false));
-            hotkeyManager.Hotkeys.Add(new Hotkey("Duplicate Node", "Shift, Control + D", DuplicateNode, false));
-            hotkeyManager.Hotkeys.Add(new Hotkey("Delete Node", "Shift, Control + Delete", RemoveNode, false));
+            hotkeyManager.Hotkeys.Add(new Hotkey("ToggleSnapshotNodeEditingMode", "Oemtilde", ToggleNodeEditing, true));
+            hotkeyManager.Hotkeys.Add(new Hotkey("Save Snapshot", "Control + S", Save, true));
+            hotkeyManager.Hotkeys.Add(new Hotkey("Copy Node", "Control + C", CopyNode, true));
+            hotkeyManager.Hotkeys.Add(new Hotkey("Paste Node", "Control + V", PasteNode, true));
+            hotkeyManager.Hotkeys.Add(new Hotkey("Duplicate Node", "Control + D", DuplicateNode, true));
+            hotkeyManager.Hotkeys.Add(new Hotkey("Delete Node", "Delete", RemoveNode, true));
         }
 
         private void OnInstallCallback()
@@ -117,16 +117,19 @@ namespace TJT.SWG
 
         public void RemoveNode()
         {
-            GroundSceneCallbacks.AddUpdateLoopCall(() =>
+            if (EnableNodeEditing)
             {
-                WorldSnapshotReaderWriter.Node node = WorldSnapshotReaderWriter.Get().GetNodeByNetworkId(Game.PlayerLookAtTargetObject.NetworkId);
-
-                if (node != null)
+                GroundSceneCallbacks.AddUpdateLoopCall(() =>
                 {
-                    editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new RemoveWorldSnapshotNodeCommand(node)));
-                    WorldSnapshot.RemoveNode(node);
-                }
-            });
+                    WorldSnapshotReaderWriter.Node node = WorldSnapshotReaderWriter.Get().GetNodeByNetworkId(Game.PlayerLookAtTargetObject.NetworkId);
+
+                    if (node != null)
+                    {
+                        editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new RemoveWorldSnapshotNodeCommand(node)));
+                        WorldSnapshot.RemoveNode(node);
+                    }
+                });
+            }
         }
 
         public void ToggleNodeEditing()

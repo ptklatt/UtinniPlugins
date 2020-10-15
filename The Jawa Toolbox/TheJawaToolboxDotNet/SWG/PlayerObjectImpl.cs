@@ -17,9 +17,9 @@ namespace TJT.SWG
             GameCallbacks.AddSetupSceneCall(OnSetupSceneCallback);
             GameCallbacks.AddCleanupSceneCall(OnCleanupCallback);
 
-            hotkeyManager.Hotkeys.Add(new Hotkey("ToggleFreeCam", "Tab", ToggleFreeCam, false));
-            hotkeyManager.Hotkeys.Add(new Hotkey("HalfSpeed", "Shift, Control + F4", HalfSpeed, false));
-            hotkeyManager.Hotkeys.Add(new Hotkey("DoubleSpeed", "Shift, Control + F5", DoubleSpeed, false));
+            hotkeyManager.Hotkeys.Add(new Hotkey("ToggleFreeCam", "Shift + Tab", ToggleFreeCam, true));
+            hotkeyManager.Hotkeys.Add(new Hotkey("HalfSpeed", "F4", HalfSpeed, true));
+            hotkeyManager.Hotkeys.Add(new Hotkey("DoubleSpeed", "F5", DoubleSpeed, true));
             // hotkeyManager.Hotkeys.Add(new Hotkey("ToggleDefaultSpeed", "Shift, Control + F6", ToggleFreeCam, false)); ToDo
         }
 
