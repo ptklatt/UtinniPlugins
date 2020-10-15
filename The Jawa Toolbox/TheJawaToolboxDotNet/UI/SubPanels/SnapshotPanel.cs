@@ -37,12 +37,14 @@ namespace TJT.UI.SubPanels
             ini.Load();
 
             txtNewNodeFilename.Text = ini.GetString("Snapshot", "defaultNodeObjectFilename");
+            chkEnableNodeEditing.Checked = ini.GetBool("Snapshot", "autoEnableSnapshotEditing");
         }
 
         private void CreateSettings()
         {
             ini.AddSetting("Snapshot", "defaultSnapshotName", "naboo", UtINI.Value.Types.VtString);
             ini.AddSetting("Snapshot", "defaultNodeObjectFilename", "object/tangible/furniture/cheap/shared_armoire_s01.iff", UtINI.Value.Types.VtString);
+            ini.AddSetting("Snapshot", "autoEnableSnapshotEditing", "false", UtINI.Value.Types.VtBool);
         }
 
         private void btnLoadSnapshot_Click(object sender, EventArgs e)

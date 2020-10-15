@@ -56,7 +56,7 @@ namespace TJT.UI
             GameDragDropEventHandlers.OnDragEnter += OnDragEnter;
             GameDragDropEventHandlers.OnDragOver += OnDragOver;
 
-            editorPlugin.GetHotkeyManager().Hotkeys.Add(new Hotkey("ToggleKeepOnTop", "Shift, Control + T", ToggleKeepOnTop, false));
+            editorPlugin.GetHotkeyManager().Hotkeys.Add("ToggleObjectBrowserKeepOnTop", new Hotkey("ToggleObjectBrowserKeepOnTop", "Shift, Control + T", ToggleKeepOnTop, false));
         }
 
         private void CreateSettings()

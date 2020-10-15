@@ -8,7 +8,6 @@ using UtinniCoreDotNet.Callbacks;
 using UtinniCoreDotNet.Commands;
 using UtinniCoreDotNet.Hotkeys;
 using UtinniCoreDotNet.PluginFramework;
-using UtinniCoreDotNet.Utility;
 
 namespace TJT.SWG
 {
@@ -33,12 +32,12 @@ namespace TJT.SWG
             ImGuiCallbacks.AddOnPositionChangedCallback(OnPositionChanged);
             ImGuiCallbacks.AddOnRotationChangedCallback(OnRotationChanged);
 
-            hotkeyManager.Hotkeys.Add(new Hotkey("ToggleSnapshotNodeEditingMode", "Oemtilde", ToggleNodeEditing, true));
-            hotkeyManager.Hotkeys.Add(new Hotkey("Save Snapshot", "Control + S", Save, true));
-            hotkeyManager.Hotkeys.Add(new Hotkey("Copy Node", "Control + C", CopyNode, true));
-            hotkeyManager.Hotkeys.Add(new Hotkey("Paste Node", "Control + V", PasteNode, true));
-            hotkeyManager.Hotkeys.Add(new Hotkey("Duplicate Node", "Control + D", DuplicateNode, true));
-            hotkeyManager.Hotkeys.Add(new Hotkey("Delete Node", "Delete", RemoveNode, true));
+            hotkeyManager.Hotkeys.Add("ToggleSnapshotNodeEditingMode", new Hotkey("ToggleSnapshotNodeEditingMode", "Oemtilde", ToggleNodeEditing, true));
+            hotkeyManager.Hotkeys.Add("SaveSnapshot", new Hotkey("SaveSnapshot", "Control + S", Save, true));
+            hotkeyManager.Hotkeys.Add("CopySnapshotNode", new Hotkey("CopySnapshotNode", "Control + C", CopyNode, true));
+            hotkeyManager.Hotkeys.Add("PasteSnapshotNode", new Hotkey("PasteSnapshotNode", "Control + V", PasteNode, true));
+            hotkeyManager.Hotkeys.Add("DuplicateSnapshotNode", new Hotkey("DuplicateSnapshotNode", "Control + D", DuplicateNode, true));
+            hotkeyManager.Hotkeys.Add("DeleteSnapshotNode", new Hotkey("DeleteSnapshotNode", "Delete", RemoveNode, true));
         }
 
         private void OnInstallCallback()
