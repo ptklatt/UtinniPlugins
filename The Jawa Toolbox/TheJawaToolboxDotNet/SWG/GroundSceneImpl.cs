@@ -113,5 +113,10 @@ namespace TJT.SWG
                 }
             }
         }
+
+        public void ForceModalChat()
+        {
+            UtinniCore.Swg.Config.config.EnableModalChat(true); // ToDo move this elsewhere
+        }
     }
 }

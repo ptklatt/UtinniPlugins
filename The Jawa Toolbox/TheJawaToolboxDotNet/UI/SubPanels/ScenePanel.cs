@@ -40,6 +40,7 @@ namespace TJT.UI.SubPanels
             ini.AddSetting("Scene", "defaultAvatarFilename", "object/creature/player/shared_human_male.iff", UtINI.Value.Types.VtString);
             ini.AddSetting("Scene", "defaultTerrainFilename", "terrain/naboo.trn", UtINI.Value.Types.VtString);
             ini.AddSetting("Scene", "autoAllowTargetEverything", "false", UtINI.Value.Types.VtBool);
+            ini.AddSetting("Scene", "forceModalChat", "true", UtINI.Value.Types.VtBool);
         }
 
         private void btnLoadScene_Click(object sender, EventArgs e)
@@ -104,6 +105,11 @@ namespace TJT.UI.SubPanels
             sldTimeOfDay.Enabled = isSceneActive;
 
             previousIsSceneActive = isSceneActive;
+
+            if (ini.GetBool("Scene", "forceModalChat"))
+            {
+                groundScene.ForceModalChat(); // ToDo move this elsewhere
+            }
         }
 
         public void UpdateTimeOfDay(int timeOfDay)
