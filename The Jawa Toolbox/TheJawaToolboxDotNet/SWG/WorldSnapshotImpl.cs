@@ -299,11 +299,16 @@ namespace TJT.SWG
 
                 if (obj != null)
                 {
-                    var newNode = WorldSnapshot.CreateNodeCopy(copiedNode, obj.Transform);
+                    WorldSnapshotReaderWriter.Node node = WorldSnapshotReaderWriter.Get().GetNodeByNetworkId(obj.NetworkId);
 
-                    if (newNode != null)
+                    if (node != null)
                     {
-                        editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new AddWorldSnapshotNodeCommand(newNode)));
+                        var newNode = WorldSnapshot.CreateNodeCopy(node, obj.Transform);
+
+                        if (newNode != null)
+                        {
+                            editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new AddWorldSnapshotNodeCommand(newNode)));
+                        }
                     }
                 }
             });

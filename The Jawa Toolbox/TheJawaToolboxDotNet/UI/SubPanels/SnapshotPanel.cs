@@ -130,20 +130,25 @@ namespace TJT.UI.SubPanels
             previousIsSceneActive = isSceneActive;
         }
 
+        public void EnableSelectedNodeControls(bool value)
+        {
+            nudNodePosX.Enabled = value;
+            nudNodePosY.Enabled = value;
+            nudNodePosZ.Enabled = value;
+
+            nudNodeRotX.Enabled = value;
+            nudNodeRotY.Enabled = value;
+            nudNodeRotZ.Enabled = value;
+
+            nudNodeRadius.Enabled = value;
+            btnRemoveSelectedNode.Enabled = value;
+        }
+
         public void UpdateSelectedNodeControls(WorldSnapshotReaderWriter.Node node, string cellName, string typeText)
         {
             if (node == null)
             {
-                nudNodePosX.Enabled = false;
-                nudNodePosY.Enabled = false;
-                nudNodePosZ.Enabled = false;
-
-                nudNodeRotX.Enabled = false;
-                nudNodeRotY.Enabled = false;
-                nudNodeRotZ.Enabled = false;
-
-                nudNodeRadius.Enabled = false;
-                btnRemoveSelectedNode.Enabled = false;
+                EnableSelectedNodeControls(false);
 
                 UpdateSelectedNodeControlsPosition(new Vector(0, 0, 0));
 
@@ -153,16 +158,7 @@ namespace TJT.UI.SubPanels
                 return;
             }
 
-            nudNodePosX.Enabled = true;
-            nudNodePosY.Enabled = true;
-            nudNodePosZ.Enabled = true;
-
-            nudNodeRotX.Enabled = true;
-            nudNodeRotY.Enabled = true;
-            nudNodeRotZ.Enabled = true;
-
-            nudNodeRadius.Enabled = true;
-            btnRemoveSelectedNode.Enabled = true;
+            EnableSelectedNodeControls(chkEnableNodeEditing.Checked);
 
             nudNodeRadius.Value = (decimal) node.Radius;
 
@@ -174,7 +170,6 @@ namespace TJT.UI.SubPanels
             txtNodeType.Text = typeText;
 
             UpdateSelectedNodeControlsPosition(node.Transform.Position);
-
         }
 
         public void UpdateSelectedNodeControlsPosition(Vector position)
