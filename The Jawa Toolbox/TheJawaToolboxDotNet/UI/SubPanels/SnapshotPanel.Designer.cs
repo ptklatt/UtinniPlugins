@@ -64,6 +64,7 @@
             this.lblNodeAxisZ = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
             this.lblNodeAxis = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
             this.nudNodeRotX = new UtinniCoreDotNet.UI.Controls.UtinniNumericUpDown();
+            this.lblId = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
             ((System.ComponentModel.ISupportInitialize)(this.nudNodePosY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNodePosZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNodePosX)).BeginInit();
@@ -174,7 +175,7 @@
             this.btnRemoveSelectedNode.Enabled = false;
             this.btnRemoveSelectedNode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRemoveSelectedNode.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRemoveSelectedNode.Location = new System.Drawing.Point(336, 365);
+            this.btnRemoveSelectedNode.Location = new System.Drawing.Point(339, 292);
             this.btnRemoveSelectedNode.Name = "btnRemoveSelectedNode";
             this.btnRemoveSelectedNode.Size = new System.Drawing.Size(75, 20);
             this.btnRemoveSelectedNode.TabIndex = 335;
@@ -200,11 +201,11 @@
             // chkEnableNodeEditing
             // 
             this.chkEnableNodeEditing.DrawOutline = false;
-            this.chkEnableNodeEditing.Location = new System.Drawing.Point(3, 137);
+            this.chkEnableNodeEditing.Location = new System.Drawing.Point(249, 100);
             this.chkEnableNodeEditing.Name = "chkEnableNodeEditing";
-            this.chkEnableNodeEditing.Size = new System.Drawing.Size(163, 17);
+            this.chkEnableNodeEditing.Size = new System.Drawing.Size(161, 17);
             this.chkEnableNodeEditing.TabIndex = 344;
-            this.chkEnableNodeEditing.Text = "Enable Node editing";
+            this.chkEnableNodeEditing.Text = "Enable node editing";
             this.chkEnableNodeEditing.UseVisualStyleBackColor = true;
             this.chkEnableNodeEditing.CheckedChanged += new System.EventHandler(this.chkEnableNodeEditing_CheckedChanged);
             // 
@@ -212,7 +213,7 @@
             // 
             this.lblSelectedNode.AutoSize = true;
             this.lblSelectedNode.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblSelectedNode.Location = new System.Drawing.Point(0, 163);
+            this.lblSelectedNode.Location = new System.Drawing.Point(0, 133);
             this.lblSelectedNode.Name = "lblSelectedNode";
             this.lblSelectedNode.Size = new System.Drawing.Size(78, 13);
             this.lblSelectedNode.TabIndex = 349;
@@ -222,7 +223,7 @@
             // 
             this.lblNodePosY.AutoSize = true;
             this.lblNodePosY.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNodePosY.Location = new System.Drawing.Point(146, 300);
+            this.lblNodePosY.Location = new System.Drawing.Point(146, 270);
             this.lblNodePosY.Name = "lblNodePosY";
             this.lblNodePosY.Size = new System.Drawing.Size(14, 13);
             this.lblNodePosY.TabIndex = 354;
@@ -241,7 +242,7 @@
             0,
             0,
             131072});
-            this.nudNodePosY.Location = new System.Drawing.Point(160, 298);
+            this.nudNodePosY.Location = new System.Drawing.Point(160, 268);
             this.nudNodePosY.Margin = new System.Windows.Forms.Padding(0);
             this.nudNodePosY.Maximum = new decimal(new int[] {
             100000,
@@ -263,7 +264,7 @@
             // 
             this.lblNodePosX.AutoSize = true;
             this.lblNodePosX.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNodePosX.Location = new System.Drawing.Point(56, 300);
+            this.lblNodePosX.Location = new System.Drawing.Point(56, 270);
             this.lblNodePosX.Name = "lblNodePosX";
             this.lblNodePosX.Size = new System.Drawing.Size(14, 13);
             this.lblNodePosX.TabIndex = 352;
@@ -282,7 +283,7 @@
             0,
             0,
             131072});
-            this.nudNodePosZ.Location = new System.Drawing.Point(250, 298);
+            this.nudNodePosZ.Location = new System.Drawing.Point(250, 268);
             this.nudNodePosZ.Margin = new System.Windows.Forms.Padding(0);
             this.nudNodePosZ.Maximum = new decimal(new int[] {
             100000,
@@ -304,7 +305,7 @@
             // 
             this.lblNodePos.AutoSize = true;
             this.lblNodePos.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNodePos.Location = new System.Drawing.Point(4, 300);
+            this.lblNodePos.Location = new System.Drawing.Point(4, 270);
             this.lblNodePos.Name = "lblNodePos";
             this.lblNodePos.Size = new System.Drawing.Size(44, 13);
             this.lblNodePos.TabIndex = 351;
@@ -314,7 +315,7 @@
             // 
             this.lblNodePosZ.AutoSize = true;
             this.lblNodePosZ.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNodePosZ.Location = new System.Drawing.Point(236, 300);
+            this.lblNodePosZ.Location = new System.Drawing.Point(236, 270);
             this.lblNodePosZ.Name = "lblNodePosZ";
             this.lblNodePosZ.Size = new System.Drawing.Size(14, 13);
             this.lblNodePosZ.TabIndex = 356;
@@ -333,7 +334,7 @@
             0,
             0,
             131072});
-            this.nudNodePosX.Location = new System.Drawing.Point(70, 298);
+            this.nudNodePosX.Location = new System.Drawing.Point(70, 268);
             this.nudNodePosX.Margin = new System.Windows.Forms.Padding(0);
             this.nudNodePosX.Maximum = new decimal(new int[] {
             100000,
@@ -358,7 +359,7 @@
             this.txtNodeFilename.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtNodeFilename.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNodeFilename.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txtNodeFilename.Location = new System.Drawing.Point(5, 231);
+            this.txtNodeFilename.Location = new System.Drawing.Point(5, 201);
             this.txtNodeFilename.Name = "txtNodeFilename";
             this.txtNodeFilename.ReadOnly = true;
             this.txtNodeFilename.Size = new System.Drawing.Size(406, 20);
@@ -368,7 +369,7 @@
             // 
             this.lblObjectType.AutoSize = true;
             this.lblObjectType.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblObjectType.Location = new System.Drawing.Point(4, 254);
+            this.lblObjectType.Location = new System.Drawing.Point(4, 224);
             this.lblObjectType.Name = "lblObjectType";
             this.lblObjectType.Size = new System.Drawing.Size(65, 13);
             this.lblObjectType.TabIndex = 360;
@@ -381,7 +382,7 @@
             this.txtNodeType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtNodeType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNodeType.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txtNodeType.Location = new System.Drawing.Point(5, 272);
+            this.txtNodeType.Location = new System.Drawing.Point(5, 242);
             this.txtNodeType.Name = "txtNodeType";
             this.txtNodeType.ReadOnly = true;
             this.txtNodeType.Size = new System.Drawing.Size(406, 20);
@@ -392,7 +393,7 @@
             this.lblNodeCellName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNodeCellName.AutoSize = true;
             this.lblNodeCellName.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNodeCellName.Location = new System.Drawing.Point(184, 207);
+            this.lblNodeCellName.Location = new System.Drawing.Point(184, 177);
             this.lblNodeCellName.Name = "lblNodeCellName";
             this.lblNodeCellName.Size = new System.Drawing.Size(55, 13);
             this.lblNodeCellName.TabIndex = 391;
@@ -404,7 +405,7 @@
             this.txtNodeCellName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtNodeCellName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNodeCellName.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txtNodeCellName.Location = new System.Drawing.Point(242, 205);
+            this.txtNodeCellName.Location = new System.Drawing.Point(242, 175);
             this.txtNodeCellName.Name = "txtNodeCellName";
             this.txtNodeCellName.ReadOnly = true;
             this.txtNodeCellName.Size = new System.Drawing.Size(170, 20);
@@ -414,7 +415,7 @@
             // 
             this.lblNodeParentId.AutoSize = true;
             this.lblNodeParentId.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNodeParentId.Location = new System.Drawing.Point(84, 182);
+            this.lblNodeParentId.Location = new System.Drawing.Point(84, 152);
             this.lblNodeParentId.Name = "lblNodeParentId";
             this.lblNodeParentId.Size = new System.Drawing.Size(52, 13);
             this.lblNodeParentId.TabIndex = 389;
@@ -425,7 +426,7 @@
             this.txtNodeParentId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtNodeParentId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNodeParentId.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txtNodeParentId.Location = new System.Drawing.Point(136, 179);
+            this.txtNodeParentId.Location = new System.Drawing.Point(136, 149);
             this.txtNodeParentId.Name = "txtNodeParentId";
             this.txtNodeParentId.ReadOnly = true;
             this.txtNodeParentId.Size = new System.Drawing.Size(60, 20);
@@ -437,7 +438,7 @@
             this.lblNodeRadius.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNodeRadius.AutoSize = true;
             this.lblNodeRadius.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNodeRadius.Location = new System.Drawing.Point(304, 182);
+            this.lblNodeRadius.Location = new System.Drawing.Point(304, 152);
             this.lblNodeRadius.Name = "lblNodeRadius";
             this.lblNodeRadius.Size = new System.Drawing.Size(40, 13);
             this.lblNodeRadius.TabIndex = 387;
@@ -448,7 +449,7 @@
             this.txtNodeId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtNodeId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNodeId.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txtNodeId.Location = new System.Drawing.Point(21, 179);
+            this.txtNodeId.Location = new System.Drawing.Point(21, 149);
             this.txtNodeId.Name = "txtNodeId";
             this.txtNodeId.ReadOnly = true;
             this.txtNodeId.Size = new System.Drawing.Size(60, 20);
@@ -463,7 +464,7 @@
             this.nudNodeRadius.DrawOutline = false;
             this.nudNodeRadius.Enabled = false;
             this.nudNodeRadius.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.nudNodeRadius.Location = new System.Drawing.Point(349, 179);
+            this.nudNodeRadius.Location = new System.Drawing.Point(349, 149);
             this.nudNodeRadius.Margin = new System.Windows.Forms.Padding(0);
             this.nudNodeRadius.Maximum = new decimal(new int[] {
             512000,
@@ -480,7 +481,7 @@
             // 
             this.lblObjFile.AutoSize = true;
             this.lblObjFile.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblObjFile.Location = new System.Drawing.Point(4, 213);
+            this.lblObjFile.Location = new System.Drawing.Point(4, 183);
             this.lblObjFile.Name = "lblObjFile";
             this.lblObjFile.Size = new System.Drawing.Size(83, 13);
             this.lblObjFile.TabIndex = 381;
@@ -500,7 +501,7 @@
             // 
             this.lblNodeAxisY.AutoSize = true;
             this.lblNodeAxisY.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNodeAxisY.Location = new System.Drawing.Point(146, 326);
+            this.lblNodeAxisY.Location = new System.Drawing.Point(146, 296);
             this.lblNodeAxisY.Name = "lblNodeAxisY";
             this.lblNodeAxisY.Size = new System.Drawing.Size(14, 13);
             this.lblNodeAxisY.TabIndex = 396;
@@ -518,7 +519,7 @@
             0,
             0,
             65536});
-            this.nudNodeRotY.Location = new System.Drawing.Point(160, 324);
+            this.nudNodeRotY.Location = new System.Drawing.Point(160, 294);
             this.nudNodeRotY.Margin = new System.Windows.Forms.Padding(0);
             this.nudNodeRotY.Maximum = new decimal(new int[] {
             180,
@@ -547,7 +548,7 @@
             0,
             0,
             65536});
-            this.nudNodeRotZ.Location = new System.Drawing.Point(250, 324);
+            this.nudNodeRotZ.Location = new System.Drawing.Point(250, 294);
             this.nudNodeRotZ.Margin = new System.Windows.Forms.Padding(0);
             this.nudNodeRotZ.Maximum = new decimal(new int[] {
             180,
@@ -568,7 +569,7 @@
             // 
             this.lblNodeAxisX.AutoSize = true;
             this.lblNodeAxisX.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNodeAxisX.Location = new System.Drawing.Point(56, 326);
+            this.lblNodeAxisX.Location = new System.Drawing.Point(56, 296);
             this.lblNodeAxisX.Name = "lblNodeAxisX";
             this.lblNodeAxisX.Size = new System.Drawing.Size(14, 13);
             this.lblNodeAxisX.TabIndex = 394;
@@ -578,7 +579,7 @@
             // 
             this.lblNodeAxisZ.AutoSize = true;
             this.lblNodeAxisZ.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNodeAxisZ.Location = new System.Drawing.Point(236, 326);
+            this.lblNodeAxisZ.Location = new System.Drawing.Point(236, 296);
             this.lblNodeAxisZ.Name = "lblNodeAxisZ";
             this.lblNodeAxisZ.Size = new System.Drawing.Size(14, 13);
             this.lblNodeAxisZ.TabIndex = 398;
@@ -588,7 +589,7 @@
             // 
             this.lblNodeAxis.AutoSize = true;
             this.lblNodeAxis.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNodeAxis.Location = new System.Drawing.Point(4, 326);
+            this.lblNodeAxis.Location = new System.Drawing.Point(4, 296);
             this.lblNodeAxis.Name = "lblNodeAxis";
             this.lblNodeAxis.Size = new System.Drawing.Size(47, 13);
             this.lblNodeAxis.TabIndex = 393;
@@ -606,7 +607,7 @@
             0,
             0,
             65536});
-            this.nudNodeRotX.Location = new System.Drawing.Point(70, 324);
+            this.nudNodeRotX.Location = new System.Drawing.Point(70, 294);
             this.nudNodeRotX.Margin = new System.Windows.Forms.Padding(0);
             this.nudNodeRotX.Maximum = new decimal(new int[] {
             180,
@@ -623,10 +624,21 @@
             this.nudNodeRotX.TabIndex = 392;
             this.nudNodeRotX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // lblId
+            // 
+            this.lblId.AutoSize = true;
+            this.lblId.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblId.Location = new System.Drawing.Point(3, 152);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(18, 13);
+            this.lblId.TabIndex = 399;
+            this.lblId.Text = "ID";
+            // 
             // SnapshotPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblId);
             this.Controls.Add(this.lblNodeAxisY);
             this.Controls.Add(this.nudNodeRotY);
             this.Controls.Add(this.nudNodeRotZ);
@@ -664,7 +676,7 @@
             this.Controls.Add(this.btnLoadSnapshot);
             this.Controls.Add(this.cmbSnapshots);
             this.Name = "SnapshotPanel";
-            this.Size = new System.Drawing.Size(417, 391);
+            this.Size = new System.Drawing.Size(417, 323);
             ((System.ComponentModel.ISupportInitialize)(this.nudNodePosY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNodePosZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNodePosX)).EndInit();
@@ -714,5 +726,6 @@
         private UtinniCoreDotNet.UI.Controls.UtinniLabel lblNodeAxisZ;
         private UtinniCoreDotNet.UI.Controls.UtinniLabel lblNodeAxis;
         private UtinniCoreDotNet.UI.Controls.UtinniNumericUpDown nudNodeRotX;
+        private UtinniCoreDotNet.UI.Controls.UtinniLabel lblId;
     }
 }

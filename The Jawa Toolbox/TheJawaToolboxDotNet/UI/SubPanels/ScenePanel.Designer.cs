@@ -65,7 +65,7 @@
             this.btnUnloadScene.Name = "btnUnloadScene";
             this.btnUnloadScene.Size = new System.Drawing.Size(75, 20);
             this.btnUnloadScene.TabIndex = 343;
-            this.btnUnloadScene.Text = "Unlaod";
+            this.btnUnloadScene.Text = "Unload";
             this.btnUnloadScene.UseDisableColor = true;
             this.btnUnloadScene.UseVisualStyleBackColor = false;
             this.btnUnloadScene.Click += new System.EventHandler(this.btnUnloadScene_Click);

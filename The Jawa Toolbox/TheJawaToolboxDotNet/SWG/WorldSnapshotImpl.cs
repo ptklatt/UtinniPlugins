@@ -8,7 +8,6 @@ using UtinniCoreDotNet.Callbacks;
 using UtinniCoreDotNet.Commands;
 using UtinniCoreDotNet.Hotkeys;
 using UtinniCoreDotNet.PluginFramework;
-using UtinniCoreDotNet.Utility;
 
 namespace TJT.SWG
 {

@@ -113,7 +113,9 @@ namespace TJT.UI.SubPanels
             {
                 BeginInvoke((Action)(() =>
                 {
-                    sldTimeOfDay.Value = timeOfDay; 
+                    sldTimeOfDay.ValueChanged -= sldTimeOfDay_ValueChanged;
+                    sldTimeOfDay.Value = timeOfDay;
+                    sldTimeOfDay.ValueChanged += sldTimeOfDay_ValueChanged;
                 }));
             }
         }
