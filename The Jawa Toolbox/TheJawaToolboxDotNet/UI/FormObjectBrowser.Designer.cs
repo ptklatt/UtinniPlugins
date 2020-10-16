@@ -38,7 +38,6 @@
             this.btnCreateSnapshotNodesAtPlayer = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             this.cmsObjectFile = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmiCreateSnapshotNodeAtPlayer = new System.Windows.Forms.ToolStripMenuItem();
-            this.chkUsePlayerRotation = new UtinniCoreDotNet.UI.Controls.UtinniToggle();
             this.chkKeepOnTop = new UtinniCoreDotNet.UI.Controls.UtinniToggle();
             this.txtDirectoryPath = new UtinniCoreDotNet.UI.Controls.UtinniTextbox();
             this.utinniComboBox1 = new UtinniCoreDotNet.UI.Controls.UtinniComboBox();
@@ -163,17 +162,6 @@
             this.tsmiCreateSnapshotNodeAtPlayer.Text = "Create Snapshot node at player";
             this.tsmiCreateSnapshotNodeAtPlayer.Click += new System.EventHandler(this.tsmiCreateSnapshotNodeAtPlayer_Click);
             // 
-            // chkUsePlayerRotation
-            // 
-            this.chkUsePlayerRotation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.chkUsePlayerRotation.DrawOutline = false;
-            this.chkUsePlayerRotation.Location = new System.Drawing.Point(14, 452);
-            this.chkUsePlayerRotation.Name = "chkUsePlayerRotation";
-            this.chkUsePlayerRotation.Size = new System.Drawing.Size(155, 20);
-            this.chkUsePlayerRotation.TabIndex = 341;
-            this.chkUsePlayerRotation.Text = "Use player rotation";
-            this.chkUsePlayerRotation.UseVisualStyleBackColor = true;
-            // 
             // chkKeepOnTop
             // 
             this.chkKeepOnTop.DrawOutline = false;
@@ -221,7 +209,6 @@
             this.Controls.Add(this.utinniComboBox1);
             this.Controls.Add(this.txtDirectoryPath);
             this.Controls.Add(this.chkKeepOnTop);
-            this.Controls.Add(this.chkUsePlayerRotation);
             this.Controls.Add(this.nudSnapshotNodeCount);
             this.Controls.Add(this.lblCreateSnapshotNodesAtPlayer);
             this.Controls.Add(this.btnCreateSnapshotNodesAtPlayer);
@@ -250,7 +237,6 @@
         internal UtinniCoreDotNet.UI.Controls.UtinniNumericUpDown nudSnapshotNodeCount;
         private System.Windows.Forms.ContextMenuStrip cmsObjectFile;
         private System.Windows.Forms.ToolStripMenuItem tsmiCreateSnapshotNodeAtPlayer;
-        private UtinniCoreDotNet.UI.Controls.UtinniToggle chkUsePlayerRotation;
         private UtinniCoreDotNet.UI.Controls.UtinniToggle chkKeepOnTop;
         private UtinniCoreDotNet.UI.Controls.UtinniTextbox txtDirectoryPath;
         private UtinniCoreDotNet.UI.Controls.UtinniComboBox utinniComboBox1;

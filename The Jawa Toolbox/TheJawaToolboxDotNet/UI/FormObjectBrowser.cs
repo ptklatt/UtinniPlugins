@@ -13,7 +13,6 @@ using UtinniCoreDotNet.PluginFramework;
 using UtinniCoreDotNet.UI;
 using UtinniCoreDotNet.UI.Forms;
 using UtinniCoreDotNet.UI.Theme;
-using UtinniCoreDotNet.Utility;
 using Appearance = UtinniCore.Utinni.Appearance;
 
 namespace TJT.UI
@@ -260,19 +259,6 @@ namespace TJT.UI
                 return;
             }
 
-            Transform newTransform;
-            if (chkUsePlayerRotation.Checked)
-            {
-                newTransform = new Transform(player.Transform)
-                {
-                    Position = cui_hud.GetCursorWorldPosition()
-                };
-            }
-            else
-            {
-                newTransform = new Transform();
-            }
-
             var objTemplate = ObjectTemplateList.GetObjectTemplateByFilename(filename);
             if (objTemplate == null)
             {
@@ -283,6 +269,8 @@ namespace TJT.UI
             {
                 return;
             }
+
+            Transform newTransform = new Transform { Position = cui_hud.GetCursorWorldPosition() };
 
             if (objTemplate.PortalLayoutFilename == "")
             {
@@ -323,11 +311,7 @@ namespace TJT.UI
                 return;
             }
 
-            Transform newTransform = new Transform()
-            {
-                Position = position
-            };
-
+            Transform newTransform = new Transform { Position = position };
             dragDropObject.TransformO2w = newTransform;
         }
 
@@ -398,8 +382,6 @@ namespace TJT.UI
                 return;
             }
 
-            Panel pnl = (Panel)sender;
-            var point = pnl.PointToClient(Cursor.Position);
             GroundSceneCallbacks.AddUpdateLoopCall(() =>
             {
                 if (dragDropObject == null)
@@ -407,6 +389,8 @@ namespace TJT.UI
                     return;
                 }
 
+                Panel pnl = (Panel)sender;
+                var point = pnl.PointToClient(Cursor.Position);
                 Vector pos = new Vector();
                 if (cui_hud.CollideCursorWithWorld(point.X, point.Y, pos, dragDropObject))
                 {
