@@ -13,6 +13,7 @@ using UtinniCoreDotNet.PluginFramework;
 using UtinniCoreDotNet.UI;
 using UtinniCoreDotNet.UI.Forms;
 using UtinniCoreDotNet.UI.Theme;
+using UtinniCoreDotNet.Utility;
 using Appearance = UtinniCore.Utinni.Appearance;
 
 namespace TJT.UI
@@ -56,7 +57,7 @@ namespace TJT.UI
             GameDragDropEventHandlers.OnDragEnter += OnDragEnter;
             GameDragDropEventHandlers.OnDragOver += OnDragOver;
 
-            editorPlugin.GetHotkeyManager().Hotkeys.Add("ToggleObjectBrowserKeepOnTop", new Hotkey("ToggleObjectBrowserKeepOnTop", "Shift, Control + T", ToggleKeepOnTop, false));
+            editorPlugin.GetHotkeyManager().Hotkeys["ToggleObjectBrowserKeepOnTop"] = new Hotkey("ToggleObjectBrowserKeepOnTop", "Shift, Control + T", ToggleKeepOnTop, false);
         }
 
         private void CreateSettings()
@@ -87,7 +88,7 @@ namespace TJT.UI
                     if (posStart == posEnd)
                     {
                         // Skip root files as they're not proper Object files
-                        continue;   
+                        continue;
                     }
 
                     string dir = fn.Substring(posStart + 1, posEnd - posStart);
@@ -147,8 +148,8 @@ namespace TJT.UI
             }
 
             // If not, create a new one
-            FormObjectBrowser formLog = new FormObjectBrowser(editorPlugin);
-            formLog.Show();
+            FormObjectBrowser formObjectBrowser = new FormObjectBrowser(editorPlugin);
+            formObjectBrowser.Show();
         }
 
         private List<string> currentFilenames;
@@ -229,12 +230,14 @@ namespace TJT.UI
 
         private void lbFiles_MouseMove(object sender, MouseEventArgs e)
         {
-            var moveDelta = e.Location - (Size) mouseDownPos;
+            var moveDelta = e.Location - (Size)mouseDownPos;
             if (e.Button == MouseButtons.Left && lbFiles.SelectedItem != null && (moveDelta.X >= 5 || moveDelta.Y >= 5))
             {
-                lbFiles.DoDragDrop("object/" + txtDirectoryPath.Text +  lbFiles.SelectedItem, DragDropEffects.Copy);
+                lbFiles.DoDragDrop("object/" + txtDirectoryPath.Text + lbFiles.SelectedItem, DragDropEffects.Copy);
+
             }
         }
+
         private void lbFiles_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             // ToDo SelectChanged events for listbox are broken with manual add, implement enable/disable of the controls down the road instead of this check
@@ -259,7 +262,7 @@ namespace TJT.UI
 
             Transform newTransform;
             if (chkUsePlayerRotation.Checked)
-            { 
+            {
                 newTransform = new Transform(player.Transform)
                 {
                     Position = cui_hud.GetCursorWorldPosition()
@@ -269,9 +272,14 @@ namespace TJT.UI
             {
                 newTransform = new Transform();
             }
-           
+
             var objTemplate = ObjectTemplateList.GetObjectTemplateByFilename(filename);
             if (objTemplate == null)
+            {
+                return;
+            }
+
+            if (objTemplate.AppearanceFilename == "" && objTemplate.ClientDataFilename == "" && objTemplate.PortalLayoutFilename == "")
             {
                 return;
             }
@@ -279,24 +287,32 @@ namespace TJT.UI
             if (objTemplate.PortalLayoutFilename == "")
             {
                 dragDropObject = ObjectTemplate.CreateObject(filename);
+                dragDropObject.ClientObject.SetParentCell(camera.ParentCell);
+
+                CellProperty.SetPortalTransitions(false);
+                dragDropObject.TransformO2w = newTransform;
+                CellProperty.SetPortalTransitions(true);
+
+                UtinniCore.Utinni.RenderWorld.render_world.AddObjectNotifications(dragDropObject);
+                dragDropObject.ClientObject.EndBaselines();
             }
             else
             {
                 dragDropObject = UtinniCore.Utinni.Object.Ctor;
                 dragDropObject.AddNotification(0x019136E4, false); // ToDo Label the magic number
-
                 var pob = PortalPropertyTemplateList.GetPobByCrcString(PersistentCrcString.Ctor(objTemplate.PortalLayoutFilename));
-                dragDropObject.SetAppearance(Appearance.Create(pob.ExteriorAppearanceName));
+                var apperance = Appearance.Create(pob.ExteriorAppearanceName);
+                if (apperance == null)
+                {
+                    CleanUpDragDropObject();
+                    return;
+                }
+                dragDropObject.SetAppearance(apperance);
+                dragDropObject.ClientObject.SetParentCell(camera.ParentCell);
+                dragDropObject.TransformO2w = newTransform;
+                UtinniCore.Utinni.RenderWorld.render_world.AddObjectNotifications(dragDropObject);
             }
 
-            dragDropObject.ClientObject.SetParentCell(camera.ParentCell);
-
-            CellProperty.SetPortalTransitions(false);
-            dragDropObject.TransformO2w = newTransform;
-            CellProperty.SetPortalTransitions(true);
-
-            UtinniCore.Utinni.RenderWorld.render_world.AddObjectNotifications(dragDropObject);
-            dragDropObject.ClientObject.EndBaselines();
             dragDropObject.AddToWorld();
         }
 
@@ -307,7 +323,7 @@ namespace TJT.UI
                 return;
             }
 
-            Transform newTransform = new Transform(dragDropObject.Transform)
+            Transform newTransform = new Transform()
             {
                 Position = position
             };
@@ -322,8 +338,7 @@ namespace TJT.UI
                 if (!hasValidDragLocation)
                 {
                     // Cleanup the temporary DragDrop object
-                    dragDropObject.Remove();
-                    dragDropObject = null;
+                    CleanUpDragDropObject();
                     return;
                 }
 
@@ -335,14 +350,16 @@ namespace TJT.UI
                 }
 
                 // Cleanup the temporary DragDrop object
-                dragDropObject.Remove();
-                dragDropObject = null;
+                CleanUpDragDropObject();
             });
         }
 
         private void OnDragDrop(object sender, DragEventArgs e)
         {
-            ConvertDragDropObjectToWorldSnapshotNode((string)e.Data.GetData(DataFormats.Text));
+            if (dragDropObject != null)
+            {
+                ConvertDragDropObjectToWorldSnapshotNode((string)e.Data.GetData(DataFormats.Text));
+            }
         }
 
         private void OnDragEnter(object sender, DragEventArgs e)
@@ -351,16 +368,21 @@ namespace TJT.UI
             {
                 this.Focus();
                 this.BringToFront();
-                e.Effect = DragDropEffects.Copy;
                 if (dragDropObject == null)
                 {
+                    e.Effect = DragDropEffects.Copy;
                     string dragData = (string)e.Data.GetData(DataFormats.Text); // ToDo custom format 
 
                     hasValidDragLocation = false;
-                    GroundSceneCallbacks.AddUpdateLoopCall(() =>
+                    GameCallbacks.AddPreMainLoopCall(() =>
                     {
                         CreateDragDropObject(dragData);
                     });
+                }
+                else
+                {
+                    CleanUpDragDropObject();
+                    e.Effect = DragDropEffects.None;
                 }
             }
             else
@@ -380,12 +402,26 @@ namespace TJT.UI
             var point = pnl.PointToClient(Cursor.Position);
             GroundSceneCallbacks.AddUpdateLoopCall(() =>
             {
+                if (dragDropObject == null)
+                {
+                    return;
+                }
+
                 Vector pos = new Vector();
                 if (cui_hud.CollideCursorWithWorld(point.X, point.Y, pos, dragDropObject))
                 {
                     hasValidDragLocation = true;
                     UpdateDragDropObjectPosition(pos);
                 }
+            });
+        }
+
+        private void CleanUpDragDropObject()
+        {
+            GameCallbacks.AddMainLoopCall(() =>
+            {
+                dragDropObject.Remove();
+                dragDropObject = null;
             });
         }
 
@@ -407,7 +443,7 @@ namespace TJT.UI
             // ToDo SelectChanged events for listbox are broken with manual add, implement enable/disable of the controls down the road instead of this check
             if (lbFiles.SelectedIndex == -1 || GroundScene.Get() == null)
             {
-                return; 
+                return;
             }
 
             for (int i = 0; i < nudSnapshotNodeCount.Value; i++)

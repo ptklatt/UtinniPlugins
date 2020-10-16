@@ -41,6 +41,7 @@
             this.chkUsePlayerRotation = new UtinniCoreDotNet.UI.Controls.UtinniToggle();
             this.chkKeepOnTop = new UtinniCoreDotNet.UI.Controls.UtinniToggle();
             this.txtDirectoryPath = new UtinniCoreDotNet.UI.Controls.UtinniTextbox();
+            this.utinniComboBox1 = new UtinniCoreDotNet.UI.Controls.UtinniComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudSnapshotNodeCount)).BeginInit();
             this.cmsObjectFile.SuspendLayout();
             this.SuspendLayout();
@@ -193,14 +194,31 @@
             this.txtDirectoryPath.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.txtDirectoryPath.Location = new System.Drawing.Point(234, 37);
             this.txtDirectoryPath.Name = "txtDirectoryPath";
-            this.txtDirectoryPath.Size = new System.Drawing.Size(279, 20);
+            this.txtDirectoryPath.Size = new System.Drawing.Size(151, 20);
             this.txtDirectoryPath.TabIndex = 343;
+            // 
+            // utinniComboBox1
+            // 
+            this.utinniComboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.utinniComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.utinniComboBox1.DrawOutline = true;
+            this.utinniComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.utinniComboBox1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.utinniComboBox1.FormattingEnabled = true;
+            this.utinniComboBox1.Items.AddRange(new object[] {
+            "Directory",
+            "Recent"});
+            this.utinniComboBox1.Location = new System.Drawing.Point(388, 37);
+            this.utinniComboBox1.Name = "utinniComboBox1";
+            this.utinniComboBox1.Size = new System.Drawing.Size(125, 21);
+            this.utinniComboBox1.TabIndex = 344;
             // 
             // FormObjectBrowser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(525, 510);
+            this.Controls.Add(this.utinniComboBox1);
             this.Controls.Add(this.txtDirectoryPath);
             this.Controls.Add(this.chkKeepOnTop);
             this.Controls.Add(this.chkUsePlayerRotation);
@@ -235,5 +253,6 @@
         private UtinniCoreDotNet.UI.Controls.UtinniToggle chkUsePlayerRotation;
         private UtinniCoreDotNet.UI.Controls.UtinniToggle chkKeepOnTop;
         private UtinniCoreDotNet.UI.Controls.UtinniTextbox txtDirectoryPath;
+        private UtinniCoreDotNet.UI.Controls.UtinniComboBox utinniComboBox1;
     }
 }

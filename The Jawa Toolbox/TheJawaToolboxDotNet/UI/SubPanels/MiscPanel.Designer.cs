@@ -91,7 +91,6 @@
             this.txtCreateAppearance.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.txtCreateAppearance.Location = new System.Drawing.Point(3, 58);
             this.txtCreateAppearance.Name = "txtCreateAppearance";
-            this.txtCreateAppearance.ReadOnly = true;
             this.txtCreateAppearance.Size = new System.Drawing.Size(411, 20);
             this.txtCreateAppearance.TabIndex = 324;
             this.txtCreateAppearance.Text = "appearance/frn_all_chep_cabinet_s01.apt";
@@ -121,7 +120,6 @@
             this.txtCreateObject.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.txtCreateObject.Location = new System.Drawing.Point(3, 3);
             this.txtCreateObject.Name = "txtCreateObject";
-            this.txtCreateObject.ReadOnly = true;
             this.txtCreateObject.Size = new System.Drawing.Size(411, 20);
             this.txtCreateObject.TabIndex = 322;
             this.txtCreateObject.Text = "object/tangible/furniture/cheap/shared_armoire_s01.iff";
