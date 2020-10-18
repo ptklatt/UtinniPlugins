@@ -8,6 +8,7 @@ using UtinniCoreDotNet.Callbacks;
 using UtinniCoreDotNet.Commands;
 using UtinniCoreDotNet.Hotkeys;
 using UtinniCoreDotNet.PluginFramework;
+using UtinniCoreDotNet.Utility;
 
 namespace TJT.SWG
 {
@@ -29,6 +30,7 @@ namespace TJT.SWG
             GameCallbacks.AddSetupSceneCall(OnSetupSceneCallback);
             GameCallbacks.AddCleanupSceneCall(OnCleanupCallback);
             ObjectCallbacks.AddOnTargetCallback(OnTarget);
+
             ImGuiCallbacks.AddOnPositionChangedCallback(OnPositionChanged);
             ImGuiCallbacks.AddOnRotationChangedCallback(OnRotationChanged);
 
@@ -176,18 +178,17 @@ namespace TJT.SWG
             }
         }
 
-        public void OnPositionChanged() // ToDo Something is broken where it sometimes has 1-2 too many undo stages
+        public void OnPositionChanged()
         {
-            bool allowMerge = UtinniCore.ImguiGizmo.imgui_impl.HasRecentPositionChange();
-            GroundSceneCallbacks.AddUpdateLoopCall(() =>
+            GroundSceneCallbacks.AddPreDrawLoopCall(() =>
             {
                 var obj = Game.PlayerLookAtTargetObject;
                 WorldSnapshotReaderWriter.Node node = WorldSnapshotReaderWriter.Get().GetNodeByNetworkId(obj.NetworkId);
 
                 if (node != null)
                 {
+                    editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new WorldSnapshotNodePositionChangedCommand(node, node.Transform, obj.Transform)));
                     node.Transform.Position = obj.Transform.Position;
-                    editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new WorldSnapshotNodePositionChangedCommand(node, allowMerge)));
                     snapshotPanel.UpdateSelectedNodeControlsPosition(node.Transform.Position);
                 }
             });
@@ -195,7 +196,6 @@ namespace TJT.SWG
 
         public void OnRotationChanged() // ToDo Something is broken where it sometimes has 1-2 too many undo stages
         {
-            bool allowMerge = UtinniCore.ImguiGizmo.imgui_impl.HasRecentRotationChange();
             GroundSceneCallbacks.AddUpdateLoopCall(() =>
             {
                 var obj = Game.PlayerLookAtTargetObject;
@@ -203,8 +203,8 @@ namespace TJT.SWG
 
                 if (node != null)
                 {
+                    editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new WorldSnapshotNodeRotationChangedCommand(node, node.Transform, obj.Transform)));
                     node.Transform.CopyRotation(obj.Transform);
-                    editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new WorldSnapshotNodeRotationChangedCommand(node, allowMerge)));
                     //snapshotPanel.UpdateSelectedNodeControlsPosition(node.Transform.RotationAxis);
                 }
             });
@@ -219,7 +219,6 @@ namespace TJT.SWG
 
                 if (node != null)
                 {
-                    node.Transform.SetPosition(x, y, z);
 
                     if (node.ParentId != 0)
                     {
@@ -235,7 +234,8 @@ namespace TJT.SWG
                         obj.Transform.SetPosition(x, y, z);
                     }
 
-                    editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new WorldSnapshotNodeRotationChangedCommand(node, true)));
+                    editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new WorldSnapshotNodeRotationChangedCommand(node, node.Transform, obj.Transform)));
+                    node.Transform.SetPosition(x, y, z);
                 }
             });
         }
