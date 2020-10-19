@@ -18,3 +18,4 @@ ipch/
 *.pdb
 *.obj
 *.lastbuildstate
+*.aps
