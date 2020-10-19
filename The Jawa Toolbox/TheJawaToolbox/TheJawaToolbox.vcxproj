@@ -143,8 +143,10 @@
     <ClCompile Include="swg\ui\tjt_command_parser.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ResourceCompile Include="TheJawaToolbox.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="resource.h" />
     <ClInclude Include="swg\ui\tjt_command_parser.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
