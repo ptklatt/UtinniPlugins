@@ -20,7 +20,7 @@ namespace TJT.SWG
         {
             GameCallbacks.AddMainLoopCall(() =>
             {
-                UtinniCore.Utinni.SkeletalAppearance.appearance.SetRenderSkeleton(value);
+                UtinniCore.Utinni.SkeletalAppearance.skeleton.SetRenderSkeleton(value);
             });
         }
 

@@ -193,7 +193,6 @@
             this.txtNewNodeFilename.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.txtNewNodeFilename.Location = new System.Drawing.Point(3, 71);
             this.txtNewNodeFilename.Name = "txtNewNodeFilename";
-            this.txtNewNodeFilename.ReadOnly = true;
             this.txtNewNodeFilename.Size = new System.Drawing.Size(411, 20);
             this.txtNewNodeFilename.TabIndex = 336;
             this.txtNewNodeFilename.Text = "object/tangible/furniture/cheap/shared_armoire_s01.iff";

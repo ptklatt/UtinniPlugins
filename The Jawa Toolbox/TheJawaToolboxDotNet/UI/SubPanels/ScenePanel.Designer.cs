@@ -167,7 +167,6 @@
             this.txtAvatarObjectFilename.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.txtAvatarObjectFilename.Location = new System.Drawing.Point(3, 3);
             this.txtAvatarObjectFilename.Name = "txtAvatarObjectFilename";
-            this.txtAvatarObjectFilename.ReadOnly = true;
             this.txtAvatarObjectFilename.Size = new System.Drawing.Size(411, 20);
             this.txtAvatarObjectFilename.TabIndex = 323;
             this.txtAvatarObjectFilename.Text = "object/creature/player/shared_human_male.iff";
