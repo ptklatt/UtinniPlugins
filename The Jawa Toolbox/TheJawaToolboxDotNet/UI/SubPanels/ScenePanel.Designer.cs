@@ -44,7 +44,7 @@
             // 
             this.sldTimeOfDay.DrawOutline = false;
             this.sldTimeOfDay.Location = new System.Drawing.Point(3, 114);
-            this.sldTimeOfDay.Maximum = 100F;
+            this.sldTimeOfDay.Maximum = 1000F;
             this.sldTimeOfDay.MaximumSize = new System.Drawing.Size(100000, 20);
             this.sldTimeOfDay.Minimum = 0F;
             this.sldTimeOfDay.Name = "sldTimeOfDay";
