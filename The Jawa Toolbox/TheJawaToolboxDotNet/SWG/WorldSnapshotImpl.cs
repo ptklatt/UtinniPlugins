@@ -153,7 +153,7 @@ namespace TJT.SWG
             var target = Game.PlayerLookAtTargetObject;
             if (target == null)
             {
-                UtinniCore.ImguiGizmo.imgui_impl.Disable();
+                DisableGizmo();
                 snapshotPanel.UpdateSelectedNodeControls(null);
             }
             else
@@ -163,7 +163,7 @@ namespace TJT.SWG
                 {
                     if (EnableNodeEditing)
                     {
-                        UtinniCore.ImguiGizmo.imgui_impl.Enable(target);
+                        EnableGizmo(target);
                     }
                     else
                     {
@@ -180,9 +180,25 @@ namespace TJT.SWG
                 }
                 else
                 {
-                    UtinniCore.ImguiGizmo.imgui_impl.Disable();
+                    DisableGizmo();
                 }
             }
+        }
+
+        public void EnableGizmo(UtinniCore.Utinni.Object target)
+        {
+            GroundSceneCallbacks.AddPreDrawLoopCall(() =>
+            {
+                UtinniCore.ImguiGizmo.imgui_impl.Enable(target);
+            });
+        }
+
+        public void DisableGizmo()
+        {
+            GroundSceneCallbacks.AddPreDrawLoopCall(() =>
+            {
+                UtinniCore.ImguiGizmo.imgui_impl.Disable();
+            });
         }
 
         public void OnPositionChanged()
