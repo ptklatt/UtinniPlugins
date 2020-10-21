@@ -24,7 +24,7 @@ namespace TJT.UI
 
         private readonly Dictionary<string, List<string>> objectRepo = new Dictionary<string, List<string>>();
 
-        private UtinniCore.Utinni.Object dragDropObject;
+        private static UtinniCore.Utinni.Object dragDropObject;
         private bool hasValidDragLocation;
 
         public FormObjectBrowser(IEditorPlugin editorPlugin)
@@ -55,6 +55,8 @@ namespace TJT.UI
             GameDragDropEventHandlers.OnDragDrop += OnDragDrop;
             GameDragDropEventHandlers.OnDragEnter += OnDragEnter;
             GameDragDropEventHandlers.OnDragOver += OnDragOver;
+
+            lbFiles.QueryContinueDrag += lbFiles_QueryContinueDrag;
 
             editorPlugin.GetHotkeyManager().Hotkeys["ToggleObjectBrowserKeepOnTop"] = new Hotkey("ToggleObjectBrowserKeepOnTop", "Shift, Control + T", ToggleKeepOnTop, false);
         }
@@ -407,6 +409,15 @@ namespace TJT.UI
                     UpdateDragDropObjectPosition(pos);
                 }
             });
+        }
+
+        private void lbFiles_QueryContinueDrag(object sender, QueryContinueDragEventArgs e)
+        {
+            if (e.EscapePressed)
+            {
+                CleanUpDragDropObject();
+                e.Action = DragAction.Cancel;
+            }
         }
 
         private void CleanUpDragDropObject()
