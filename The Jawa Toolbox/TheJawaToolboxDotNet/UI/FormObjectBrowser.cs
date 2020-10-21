@@ -177,7 +177,7 @@ namespace TJT.UI
                         currentFilenames.Add(fn.Substring(fn.LastIndexOf('/') + 1));
                     }
 
-                    lbFiles.Items.AddRange(currentFilenames.ToArray());
+                    FilterFiles();
                     previousNode = tvDirectories.SelectedNode;
                 }
                 lbFiles.EndUpdate();
@@ -188,7 +188,12 @@ namespace TJT.UI
         {
             lbFiles.BeginUpdate();
             lbFiles.Items.Clear();
+            FilterFiles();
+            lbFiles.EndUpdate();
+        }
 
+        private void FilterFiles()
+        {
             if (txtFilter.Text == "")
             {
                 lbFiles.Items.AddRange(currentFilenames.ToArray());
@@ -203,7 +208,6 @@ namespace TJT.UI
                     }
                 }
             }
-            lbFiles.EndUpdate();
         }
 
         private System.Drawing.Point mouseDownPos;
@@ -344,6 +348,11 @@ namespace TJT.UI
             {
                 ConvertDragDropObjectToWorldSnapshotNode((string)e.Data.GetData(DataFormats.Text));
             }
+
+            GroundSceneCallbacks.AddUpdateLoopCall(() =>
+            {
+                UtinniCore.Utinni.Graphics.ShowMouseCursor(true);
+            });
         }
 
         private void OnDragEnter(object sender, DragEventArgs e)
