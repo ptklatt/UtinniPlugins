@@ -15,7 +15,6 @@ namespace TJT.UI.SubPanels
         void UpdateSnapshotNodeEditingMode(bool enable);
         void UpdateSelectedNodeControls(WorldSnapshotReaderWriter.Node node, string cellName = "", string typeText = "");
         void UpdateSelectedNodeControlsPosition(Vector position);
-        void UpdateSelectedNodeControlsRotation(Vector rotation);
     }
 
     public partial class SnapshotPanel : SubPanel, ISnapshotPanel
@@ -138,9 +137,26 @@ namespace TJT.UI.SubPanels
             nudNodePosY.Enabled = value;
             nudNodePosZ.Enabled = value;
 
-            nudNodeRotX.Enabled = value;
-            nudNodeRotY.Enabled = value;
-            nudNodeRotZ.Enabled = value;
+            btnRotationPitchawAdd45.Enabled = value;
+            btnRotationPitchawAdd1.Enabled = value;
+            btnRotationPitchawSub1.Enabled = value;
+            btnRotationPitchawSub45.Enabled = value;
+
+            btnRotationPitchAdd45.Enabled = value;
+            btnRotationPitchAdd1.Enabled = value;
+            btnRotationPitchSub1.Enabled = value;
+            btnRotationPitchSub45.Enabled = value;
+
+            btnRotationRollAdd45.Enabled = value;
+            btnRotationRollAdd1.Enabled = value;
+            btnRotationRollSub1.Enabled = value;
+            btnRotationRollSub45.Enabled = value;
+
+            btnRotationYawRandom.Enabled = value;
+            btnRotationPitchRandom.Enabled = value;
+            btnRotationRollRandom.Enabled = value;
+
+            btnRotationReset.Enabled = value;
 
             nudNodeRadius.Enabled = value;
             btnRemoveSelectedNode.Enabled = value;
@@ -189,10 +205,87 @@ namespace TJT.UI.SubPanels
             nudNodePosZ.ValueChanged += nudNodePos_ValueChanged;
         }
 
-        public void UpdateSelectedNodeControlsRotation(Vector rotation)
+        private void btnRotationPitchawAdd45_Click(object sender, EventArgs e)
         {
-            //throw new NotImplementedException();
+            worldSnapshot.RotateYaw(45);
         }
 
+        private void btnRotationPitchawSub45_Click(object sender, EventArgs e)
+        {
+            worldSnapshot.RotateYaw(-45);
+        }
+
+        private void btnRotationPitchawAdd1_Click(object sender, EventArgs e)
+        {
+            worldSnapshot.RotateYaw(1);
+        }
+
+        private void btnRotationPitchawSub1_Click(object sender, EventArgs e)
+        {
+            worldSnapshot.RotateYaw(-1);
+        }
+
+        private void btnRotationPitchAdd45_Click(object sender, EventArgs e)
+        {
+            worldSnapshot.RotatePitch(45);
+        }
+
+        private void btnRotationPitchSub45_Click(object sender, EventArgs e)
+        {
+            worldSnapshot.RotatePitch(-45);
+        }
+
+        private void btnRotationPitchAdd1_Click(object sender, EventArgs e)
+        {
+            worldSnapshot.RotatePitch(1);
+        }
+
+        private void btnRotationPitchSub1_Click(object sender, EventArgs e)
+        {
+            worldSnapshot.RotatePitch(-1);
+        }
+
+        private void btnRotationRollAdd45_Click(object sender, EventArgs e)
+        {
+            worldSnapshot.RotateRoll(45);
+        }
+
+        private void btnRotationRollSub45_Click(object sender, EventArgs e)
+        {
+            worldSnapshot.RotateRoll(-45);
+        }
+
+        private void btnRotationRollAdd1_Click(object sender, EventArgs e)
+        {
+            worldSnapshot.RotateRoll(1);
+        }
+
+        private void btnRotationRollSub1_Click(object sender, EventArgs e)
+        {
+            worldSnapshot.RotateRoll(-1);
+        }
+
+        private void btnRotationYawRandom_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            worldSnapshot.RotateYaw(rnd.Next(-180, 180));
+        }
+
+        private void btnRotationPitchRandom_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            worldSnapshot.RotatePitch(rnd.Next(-180, 180));
+        }
+
+        private void btnRotationRollRandom_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            worldSnapshot.RotateRoll(rnd.Next(-180, 180));
+        }
+
+        private void btnRotationReset_Click(object sender, EventArgs e)
+        {
+            worldSnapshot.ResetRotation();
+        }
     }
 }

@@ -57,21 +57,31 @@
             this.nudNodeRadius = new UtinniCoreDotNet.UI.Controls.UtinniNumericUpDown();
             this.lblObjFile = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
             this.lblNodeId = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
-            this.lblNodeAxisY = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
-            this.nudNodeRotY = new UtinniCoreDotNet.UI.Controls.UtinniNumericUpDown();
-            this.nudNodeRotZ = new UtinniCoreDotNet.UI.Controls.UtinniNumericUpDown();
-            this.lblNodeAxisX = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
-            this.lblNodeAxisZ = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
+            this.lblRotationPitch = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
+            this.lblRotationYaw = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
+            this.lblRotationRoll = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
             this.lblNodeAxis = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
-            this.nudNodeRotX = new UtinniCoreDotNet.UI.Controls.UtinniNumericUpDown();
             this.lblId = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
+            this.btnRotationPitchawAdd45 = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnRotationPitchawAdd1 = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnRotationPitchawSub1 = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnRotationPitchawSub45 = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnRotationPitchSub45 = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnRotationPitchSub1 = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnRotationPitchAdd1 = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnRotationPitchAdd45 = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnRotationRollSub45 = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnRotationRollSub1 = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnRotationRollAdd1 = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnRotationRollAdd45 = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnRotationReset = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnRotationYawRandom = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnRotationPitchRandom = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnRotationRollRandom = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             ((System.ComponentModel.ISupportInitialize)(this.nudNodePosY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNodePosZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNodePosX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNodeRadius)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudNodeRotY)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudNodeRotZ)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudNodeRotX)).BeginInit();
             this.SuspendLayout();
             // 
             // btnReloadSnapshot
@@ -175,7 +185,7 @@
             this.btnRemoveSelectedNode.Enabled = false;
             this.btnRemoveSelectedNode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRemoveSelectedNode.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRemoveSelectedNode.Location = new System.Drawing.Point(339, 292);
+            this.btnRemoveSelectedNode.Location = new System.Drawing.Point(336, 344);
             this.btnRemoveSelectedNode.Name = "btnRemoveSelectedNode";
             this.btnRemoveSelectedNode.Size = new System.Drawing.Size(75, 20);
             this.btnRemoveSelectedNode.TabIndex = 335;
@@ -193,14 +203,14 @@
             this.txtNewNodeFilename.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.txtNewNodeFilename.Location = new System.Drawing.Point(3, 71);
             this.txtNewNodeFilename.Name = "txtNewNodeFilename";
-            this.txtNewNodeFilename.Size = new System.Drawing.Size(411, 20);
+            this.txtNewNodeFilename.Size = new System.Drawing.Size(408, 20);
             this.txtNewNodeFilename.TabIndex = 336;
             this.txtNewNodeFilename.Text = "object/tangible/furniture/cheap/shared_armoire_s01.iff";
             // 
             // chkEnableNodeEditing
             // 
             this.chkEnableNodeEditing.DrawOutline = false;
-            this.chkEnableNodeEditing.Location = new System.Drawing.Point(249, 100);
+            this.chkEnableNodeEditing.Location = new System.Drawing.Point(250, 100);
             this.chkEnableNodeEditing.Name = "chkEnableNodeEditing";
             this.chkEnableNodeEditing.Size = new System.Drawing.Size(161, 17);
             this.chkEnableNodeEditing.TabIndex = 344;
@@ -222,7 +232,7 @@
             // 
             this.lblNodePosY.AutoSize = true;
             this.lblNodePosY.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNodePosY.Location = new System.Drawing.Point(146, 270);
+            this.lblNodePosY.Location = new System.Drawing.Point(141, 270);
             this.lblNodePosY.Name = "lblNodePosY";
             this.lblNodePosY.Size = new System.Drawing.Size(14, 13);
             this.lblNodePosY.TabIndex = 354;
@@ -241,7 +251,7 @@
             0,
             0,
             131072});
-            this.nudNodePosY.Location = new System.Drawing.Point(160, 268);
+            this.nudNodePosY.Location = new System.Drawing.Point(155, 268);
             this.nudNodePosY.Margin = new System.Windows.Forms.Padding(0);
             this.nudNodePosY.Maximum = new decimal(new int[] {
             100000,
@@ -263,7 +273,7 @@
             // 
             this.lblNodePosX.AutoSize = true;
             this.lblNodePosX.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNodePosX.Location = new System.Drawing.Point(56, 270);
+            this.lblNodePosX.Location = new System.Drawing.Point(51, 270);
             this.lblNodePosX.Name = "lblNodePosX";
             this.lblNodePosX.Size = new System.Drawing.Size(14, 13);
             this.lblNodePosX.TabIndex = 352;
@@ -282,7 +292,7 @@
             0,
             0,
             131072});
-            this.nudNodePosZ.Location = new System.Drawing.Point(250, 268);
+            this.nudNodePosZ.Location = new System.Drawing.Point(245, 268);
             this.nudNodePosZ.Margin = new System.Windows.Forms.Padding(0);
             this.nudNodePosZ.Maximum = new decimal(new int[] {
             100000,
@@ -314,7 +324,7 @@
             // 
             this.lblNodePosZ.AutoSize = true;
             this.lblNodePosZ.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNodePosZ.Location = new System.Drawing.Point(236, 270);
+            this.lblNodePosZ.Location = new System.Drawing.Point(231, 270);
             this.lblNodePosZ.Name = "lblNodePosZ";
             this.lblNodePosZ.Size = new System.Drawing.Size(14, 13);
             this.lblNodePosZ.TabIndex = 356;
@@ -333,7 +343,7 @@
             0,
             0,
             131072});
-            this.nudNodePosX.Location = new System.Drawing.Point(70, 268);
+            this.nudNodePosX.Location = new System.Drawing.Point(65, 268);
             this.nudNodePosX.Margin = new System.Windows.Forms.Padding(0);
             this.nudNodePosX.Maximum = new decimal(new int[] {
             100000,
@@ -404,7 +414,7 @@
             this.txtNodeCellName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtNodeCellName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNodeCellName.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txtNodeCellName.Location = new System.Drawing.Point(242, 175);
+            this.txtNodeCellName.Location = new System.Drawing.Point(241, 175);
             this.txtNodeCellName.Name = "txtNodeCellName";
             this.txtNodeCellName.ReadOnly = true;
             this.txtNodeCellName.Size = new System.Drawing.Size(170, 20);
@@ -463,7 +473,7 @@
             this.nudNodeRadius.DrawOutline = false;
             this.nudNodeRadius.Enabled = false;
             this.nudNodeRadius.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.nudNodeRadius.Location = new System.Drawing.Point(349, 149);
+            this.nudNodeRadius.Location = new System.Drawing.Point(348, 149);
             this.nudNodeRadius.Margin = new System.Windows.Forms.Padding(0);
             this.nudNodeRadius.Maximum = new decimal(new int[] {
             512000,
@@ -496,93 +506,35 @@
             this.lblNodeId.TabIndex = 384;
             this.lblNodeId.Text = "ID";
             // 
-            // lblNodeAxisY
+            // lblRotationPitch
             // 
-            this.lblNodeAxisY.AutoSize = true;
-            this.lblNodeAxisY.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNodeAxisY.Location = new System.Drawing.Point(146, 296);
-            this.lblNodeAxisY.Name = "lblNodeAxisY";
-            this.lblNodeAxisY.Size = new System.Drawing.Size(14, 13);
-            this.lblNodeAxisY.TabIndex = 396;
-            this.lblNodeAxisY.Text = "Y";
+            this.lblRotationPitch.AutoSize = true;
+            this.lblRotationPitch.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblRotationPitch.Location = new System.Drawing.Point(51, 322);
+            this.lblRotationPitch.Name = "lblRotationPitch";
+            this.lblRotationPitch.Size = new System.Drawing.Size(31, 13);
+            this.lblRotationPitch.TabIndex = 396;
+            this.lblRotationPitch.Text = "Pitch";
             // 
-            // nudNodeRotY
+            // lblRotationYaw
             // 
-            this.nudNodeRotY.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.nudNodeRotY.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nudNodeRotY.DecimalPlaces = 5;
-            this.nudNodeRotY.DrawOutline = false;
-            this.nudNodeRotY.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.nudNodeRotY.Increment = new decimal(new int[] {
-            2,
-            0,
-            0,
-            65536});
-            this.nudNodeRotY.Location = new System.Drawing.Point(160, 294);
-            this.nudNodeRotY.Margin = new System.Windows.Forms.Padding(0);
-            this.nudNodeRotY.Maximum = new decimal(new int[] {
-            180,
-            0,
-            0,
-            0});
-            this.nudNodeRotY.Minimum = new decimal(new int[] {
-            180,
-            0,
-            0,
-            -2147483648});
-            this.nudNodeRotY.Name = "nudNodeRotY";
-            this.nudNodeRotY.Size = new System.Drawing.Size(70, 20);
-            this.nudNodeRotY.TabIndex = 395;
-            this.nudNodeRotY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.lblRotationYaw.AutoSize = true;
+            this.lblRotationYaw.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblRotationYaw.Location = new System.Drawing.Point(51, 296);
+            this.lblRotationYaw.Name = "lblRotationYaw";
+            this.lblRotationYaw.Size = new System.Drawing.Size(28, 13);
+            this.lblRotationYaw.TabIndex = 394;
+            this.lblRotationYaw.Text = "Yaw";
             // 
-            // nudNodeRotZ
+            // lblRotationRoll
             // 
-            this.nudNodeRotZ.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.nudNodeRotZ.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nudNodeRotZ.DecimalPlaces = 5;
-            this.nudNodeRotZ.DrawOutline = false;
-            this.nudNodeRotZ.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.nudNodeRotZ.Increment = new decimal(new int[] {
-            2,
-            0,
-            0,
-            65536});
-            this.nudNodeRotZ.Location = new System.Drawing.Point(250, 294);
-            this.nudNodeRotZ.Margin = new System.Windows.Forms.Padding(0);
-            this.nudNodeRotZ.Maximum = new decimal(new int[] {
-            180,
-            0,
-            0,
-            0});
-            this.nudNodeRotZ.Minimum = new decimal(new int[] {
-            180,
-            0,
-            0,
-            -2147483648});
-            this.nudNodeRotZ.Name = "nudNodeRotZ";
-            this.nudNodeRotZ.Size = new System.Drawing.Size(70, 20);
-            this.nudNodeRotZ.TabIndex = 397;
-            this.nudNodeRotZ.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // lblNodeAxisX
-            // 
-            this.lblNodeAxisX.AutoSize = true;
-            this.lblNodeAxisX.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNodeAxisX.Location = new System.Drawing.Point(56, 296);
-            this.lblNodeAxisX.Name = "lblNodeAxisX";
-            this.lblNodeAxisX.Size = new System.Drawing.Size(14, 13);
-            this.lblNodeAxisX.TabIndex = 394;
-            this.lblNodeAxisX.Text = "X";
-            // 
-            // lblNodeAxisZ
-            // 
-            this.lblNodeAxisZ.AutoSize = true;
-            this.lblNodeAxisZ.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNodeAxisZ.Location = new System.Drawing.Point(236, 296);
-            this.lblNodeAxisZ.Name = "lblNodeAxisZ";
-            this.lblNodeAxisZ.Size = new System.Drawing.Size(14, 13);
-            this.lblNodeAxisZ.TabIndex = 398;
-            this.lblNodeAxisZ.Text = "Z";
+            this.lblRotationRoll.AutoSize = true;
+            this.lblRotationRoll.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblRotationRoll.Location = new System.Drawing.Point(51, 348);
+            this.lblRotationRoll.Name = "lblRotationRoll";
+            this.lblRotationRoll.Size = new System.Drawing.Size(25, 13);
+            this.lblRotationRoll.TabIndex = 398;
+            this.lblRotationRoll.Text = "Roll";
             // 
             // lblNodeAxis
             // 
@@ -594,35 +546,6 @@
             this.lblNodeAxis.TabIndex = 393;
             this.lblNodeAxis.Text = "Rotation";
             // 
-            // nudNodeRotX
-            // 
-            this.nudNodeRotX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.nudNodeRotX.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nudNodeRotX.DecimalPlaces = 5;
-            this.nudNodeRotX.DrawOutline = false;
-            this.nudNodeRotX.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.nudNodeRotX.Increment = new decimal(new int[] {
-            2,
-            0,
-            0,
-            65536});
-            this.nudNodeRotX.Location = new System.Drawing.Point(70, 294);
-            this.nudNodeRotX.Margin = new System.Windows.Forms.Padding(0);
-            this.nudNodeRotX.Maximum = new decimal(new int[] {
-            180,
-            0,
-            0,
-            0});
-            this.nudNodeRotX.Minimum = new decimal(new int[] {
-            180,
-            0,
-            0,
-            -2147483648});
-            this.nudNodeRotX.Name = "nudNodeRotX";
-            this.nudNodeRotX.Size = new System.Drawing.Size(70, 20);
-            this.nudNodeRotX.TabIndex = 392;
-            this.nudNodeRotX.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // lblId
             // 
             this.lblId.AutoSize = true;
@@ -633,18 +556,287 @@
             this.lblId.TabIndex = 399;
             this.lblId.Text = "ID";
             // 
+            // btnRotationPitchawAdd45
+            // 
+            this.btnRotationPitchawAdd45.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnRotationPitchawAdd45.DrawOutline = false;
+            this.btnRotationPitchawAdd45.Enabled = false;
+            this.btnRotationPitchawAdd45.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRotationPitchawAdd45.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRotationPitchawAdd45.Location = new System.Drawing.Point(84, 292);
+            this.btnRotationPitchawAdd45.Name = "btnRotationPitchawAdd45";
+            this.btnRotationPitchawAdd45.Size = new System.Drawing.Size(25, 20);
+            this.btnRotationPitchawAdd45.TabIndex = 400;
+            this.btnRotationPitchawAdd45.Text = "+45";
+            this.btnRotationPitchawAdd45.UseDisableColor = true;
+            this.btnRotationPitchawAdd45.UseVisualStyleBackColor = false;
+            this.btnRotationPitchawAdd45.Click += new System.EventHandler(this.btnRotationPitchawAdd45_Click);
+            // 
+            // btnRotationPitchawAdd1
+            // 
+            this.btnRotationPitchawAdd1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnRotationPitchawAdd1.DrawOutline = false;
+            this.btnRotationPitchawAdd1.Enabled = false;
+            this.btnRotationPitchawAdd1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRotationPitchawAdd1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRotationPitchawAdd1.Location = new System.Drawing.Point(115, 292);
+            this.btnRotationPitchawAdd1.Name = "btnRotationPitchawAdd1";
+            this.btnRotationPitchawAdd1.Size = new System.Drawing.Size(25, 20);
+            this.btnRotationPitchawAdd1.TabIndex = 401;
+            this.btnRotationPitchawAdd1.Text = "+1";
+            this.btnRotationPitchawAdd1.UseDisableColor = true;
+            this.btnRotationPitchawAdd1.UseVisualStyleBackColor = false;
+            this.btnRotationPitchawAdd1.Click += new System.EventHandler(this.btnRotationPitchawAdd1_Click);
+            // 
+            // btnRotationPitchawSub1
+            // 
+            this.btnRotationPitchawSub1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnRotationPitchawSub1.DrawOutline = false;
+            this.btnRotationPitchawSub1.Enabled = false;
+            this.btnRotationPitchawSub1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRotationPitchawSub1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRotationPitchawSub1.Location = new System.Drawing.Point(146, 292);
+            this.btnRotationPitchawSub1.Name = "btnRotationPitchawSub1";
+            this.btnRotationPitchawSub1.Size = new System.Drawing.Size(25, 20);
+            this.btnRotationPitchawSub1.TabIndex = 402;
+            this.btnRotationPitchawSub1.Text = "-1";
+            this.btnRotationPitchawSub1.UseDisableColor = true;
+            this.btnRotationPitchawSub1.UseVisualStyleBackColor = false;
+            this.btnRotationPitchawSub1.Click += new System.EventHandler(this.btnRotationPitchawSub1_Click);
+            // 
+            // btnRotationPitchawSub45
+            // 
+            this.btnRotationPitchawSub45.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnRotationPitchawSub45.DrawOutline = false;
+            this.btnRotationPitchawSub45.Enabled = false;
+            this.btnRotationPitchawSub45.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRotationPitchawSub45.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRotationPitchawSub45.Location = new System.Drawing.Point(177, 292);
+            this.btnRotationPitchawSub45.Name = "btnRotationPitchawSub45";
+            this.btnRotationPitchawSub45.Size = new System.Drawing.Size(25, 20);
+            this.btnRotationPitchawSub45.TabIndex = 403;
+            this.btnRotationPitchawSub45.Text = "-45";
+            this.btnRotationPitchawSub45.UseDisableColor = true;
+            this.btnRotationPitchawSub45.UseVisualStyleBackColor = false;
+            this.btnRotationPitchawSub45.Click += new System.EventHandler(this.btnRotationPitchawSub45_Click);
+            // 
+            // btnRotationPitchSub45
+            // 
+            this.btnRotationPitchSub45.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnRotationPitchSub45.DrawOutline = false;
+            this.btnRotationPitchSub45.Enabled = false;
+            this.btnRotationPitchSub45.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRotationPitchSub45.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRotationPitchSub45.Location = new System.Drawing.Point(177, 318);
+            this.btnRotationPitchSub45.Name = "btnRotationPitchSub45";
+            this.btnRotationPitchSub45.Size = new System.Drawing.Size(25, 20);
+            this.btnRotationPitchSub45.TabIndex = 408;
+            this.btnRotationPitchSub45.Text = "-45";
+            this.btnRotationPitchSub45.UseDisableColor = true;
+            this.btnRotationPitchSub45.UseVisualStyleBackColor = false;
+            this.btnRotationPitchSub45.Click += new System.EventHandler(this.btnRotationPitchSub45_Click);
+            // 
+            // btnRotationPitchSub1
+            // 
+            this.btnRotationPitchSub1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnRotationPitchSub1.DrawOutline = false;
+            this.btnRotationPitchSub1.Enabled = false;
+            this.btnRotationPitchSub1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRotationPitchSub1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRotationPitchSub1.Location = new System.Drawing.Point(146, 318);
+            this.btnRotationPitchSub1.Name = "btnRotationPitchSub1";
+            this.btnRotationPitchSub1.Size = new System.Drawing.Size(25, 20);
+            this.btnRotationPitchSub1.TabIndex = 407;
+            this.btnRotationPitchSub1.Text = "-1";
+            this.btnRotationPitchSub1.UseDisableColor = true;
+            this.btnRotationPitchSub1.UseVisualStyleBackColor = false;
+            this.btnRotationPitchSub1.Click += new System.EventHandler(this.btnRotationPitchSub1_Click);
+            // 
+            // btnRotationPitchAdd1
+            // 
+            this.btnRotationPitchAdd1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnRotationPitchAdd1.DrawOutline = false;
+            this.btnRotationPitchAdd1.Enabled = false;
+            this.btnRotationPitchAdd1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRotationPitchAdd1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRotationPitchAdd1.Location = new System.Drawing.Point(115, 318);
+            this.btnRotationPitchAdd1.Name = "btnRotationPitchAdd1";
+            this.btnRotationPitchAdd1.Size = new System.Drawing.Size(25, 20);
+            this.btnRotationPitchAdd1.TabIndex = 406;
+            this.btnRotationPitchAdd1.Text = "+1";
+            this.btnRotationPitchAdd1.UseDisableColor = true;
+            this.btnRotationPitchAdd1.UseVisualStyleBackColor = false;
+            this.btnRotationPitchAdd1.Click += new System.EventHandler(this.btnRotationPitchAdd1_Click);
+            // 
+            // btnRotationPitchAdd45
+            // 
+            this.btnRotationPitchAdd45.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnRotationPitchAdd45.DrawOutline = false;
+            this.btnRotationPitchAdd45.Enabled = false;
+            this.btnRotationPitchAdd45.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRotationPitchAdd45.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRotationPitchAdd45.Location = new System.Drawing.Point(84, 318);
+            this.btnRotationPitchAdd45.Name = "btnRotationPitchAdd45";
+            this.btnRotationPitchAdd45.Size = new System.Drawing.Size(25, 20);
+            this.btnRotationPitchAdd45.TabIndex = 405;
+            this.btnRotationPitchAdd45.Text = "+45";
+            this.btnRotationPitchAdd45.UseDisableColor = true;
+            this.btnRotationPitchAdd45.UseVisualStyleBackColor = false;
+            this.btnRotationPitchAdd45.Click += new System.EventHandler(this.btnRotationPitchAdd45_Click);
+            // 
+            // btnRotationRollSub45
+            // 
+            this.btnRotationRollSub45.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnRotationRollSub45.DrawOutline = false;
+            this.btnRotationRollSub45.Enabled = false;
+            this.btnRotationRollSub45.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRotationRollSub45.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRotationRollSub45.Location = new System.Drawing.Point(177, 344);
+            this.btnRotationRollSub45.Name = "btnRotationRollSub45";
+            this.btnRotationRollSub45.Size = new System.Drawing.Size(25, 20);
+            this.btnRotationRollSub45.TabIndex = 413;
+            this.btnRotationRollSub45.Text = "-45";
+            this.btnRotationRollSub45.UseDisableColor = true;
+            this.btnRotationRollSub45.UseVisualStyleBackColor = false;
+            this.btnRotationRollSub45.Click += new System.EventHandler(this.btnRotationRollSub45_Click);
+            // 
+            // btnRotationRollSub1
+            // 
+            this.btnRotationRollSub1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnRotationRollSub1.DrawOutline = false;
+            this.btnRotationRollSub1.Enabled = false;
+            this.btnRotationRollSub1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRotationRollSub1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRotationRollSub1.Location = new System.Drawing.Point(146, 344);
+            this.btnRotationRollSub1.Name = "btnRotationRollSub1";
+            this.btnRotationRollSub1.Size = new System.Drawing.Size(25, 20);
+            this.btnRotationRollSub1.TabIndex = 412;
+            this.btnRotationRollSub1.Text = "-1";
+            this.btnRotationRollSub1.UseDisableColor = true;
+            this.btnRotationRollSub1.UseVisualStyleBackColor = false;
+            this.btnRotationRollSub1.Click += new System.EventHandler(this.btnRotationRollSub1_Click);
+            // 
+            // btnRotationRollAdd1
+            // 
+            this.btnRotationRollAdd1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnRotationRollAdd1.DrawOutline = false;
+            this.btnRotationRollAdd1.Enabled = false;
+            this.btnRotationRollAdd1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRotationRollAdd1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRotationRollAdd1.Location = new System.Drawing.Point(115, 344);
+            this.btnRotationRollAdd1.Name = "btnRotationRollAdd1";
+            this.btnRotationRollAdd1.Size = new System.Drawing.Size(25, 20);
+            this.btnRotationRollAdd1.TabIndex = 411;
+            this.btnRotationRollAdd1.Text = "+1";
+            this.btnRotationRollAdd1.UseDisableColor = true;
+            this.btnRotationRollAdd1.UseVisualStyleBackColor = false;
+            this.btnRotationRollAdd1.Click += new System.EventHandler(this.btnRotationRollAdd1_Click);
+            // 
+            // btnRotationRollAdd45
+            // 
+            this.btnRotationRollAdd45.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnRotationRollAdd45.DrawOutline = false;
+            this.btnRotationRollAdd45.Enabled = false;
+            this.btnRotationRollAdd45.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRotationRollAdd45.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRotationRollAdd45.Location = new System.Drawing.Point(84, 344);
+            this.btnRotationRollAdd45.Name = "btnRotationRollAdd45";
+            this.btnRotationRollAdd45.Size = new System.Drawing.Size(25, 20);
+            this.btnRotationRollAdd45.TabIndex = 410;
+            this.btnRotationRollAdd45.Text = "+45";
+            this.btnRotationRollAdd45.UseDisableColor = true;
+            this.btnRotationRollAdd45.UseVisualStyleBackColor = false;
+            this.btnRotationRollAdd45.Click += new System.EventHandler(this.btnRotationRollAdd45_Click);
+            // 
+            // btnRotationReset
+            // 
+            this.btnRotationReset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnRotationReset.DrawOutline = false;
+            this.btnRotationReset.Enabled = false;
+            this.btnRotationReset.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRotationReset.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRotationReset.Location = new System.Drawing.Point(336, 292);
+            this.btnRotationReset.Name = "btnRotationReset";
+            this.btnRotationReset.Size = new System.Drawing.Size(75, 20);
+            this.btnRotationReset.TabIndex = 414;
+            this.btnRotationReset.Text = "Reset";
+            this.btnRotationReset.UseDisableColor = true;
+            this.btnRotationReset.UseVisualStyleBackColor = false;
+            this.btnRotationReset.Click += new System.EventHandler(this.btnRotationReset_Click);
+            // 
+            // btnRotationYawRandom
+            // 
+            this.btnRotationYawRandom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnRotationYawRandom.DrawOutline = false;
+            this.btnRotationYawRandom.Enabled = false;
+            this.btnRotationYawRandom.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRotationYawRandom.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRotationYawRandom.Location = new System.Drawing.Point(240, 292);
+            this.btnRotationYawRandom.Name = "btnRotationYawRandom";
+            this.btnRotationYawRandom.Size = new System.Drawing.Size(75, 20);
+            this.btnRotationYawRandom.TabIndex = 415;
+            this.btnRotationYawRandom.Text = "Random";
+            this.btnRotationYawRandom.UseDisableColor = true;
+            this.btnRotationYawRandom.UseVisualStyleBackColor = false;
+            this.btnRotationYawRandom.Click += new System.EventHandler(this.btnRotationYawRandom_Click);
+            // 
+            // btnRotationPitchRandom
+            // 
+            this.btnRotationPitchRandom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnRotationPitchRandom.DrawOutline = false;
+            this.btnRotationPitchRandom.Enabled = false;
+            this.btnRotationPitchRandom.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRotationPitchRandom.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRotationPitchRandom.Location = new System.Drawing.Point(240, 318);
+            this.btnRotationPitchRandom.Name = "btnRotationPitchRandom";
+            this.btnRotationPitchRandom.Size = new System.Drawing.Size(75, 20);
+            this.btnRotationPitchRandom.TabIndex = 416;
+            this.btnRotationPitchRandom.Text = "Random";
+            this.btnRotationPitchRandom.UseDisableColor = true;
+            this.btnRotationPitchRandom.UseVisualStyleBackColor = false;
+            this.btnRotationPitchRandom.Click += new System.EventHandler(this.btnRotationPitchRandom_Click);
+            // 
+            // btnRotationRollRandom
+            // 
+            this.btnRotationRollRandom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnRotationRollRandom.DrawOutline = false;
+            this.btnRotationRollRandom.Enabled = false;
+            this.btnRotationRollRandom.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRotationRollRandom.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnRotationRollRandom.Location = new System.Drawing.Point(240, 344);
+            this.btnRotationRollRandom.Name = "btnRotationRollRandom";
+            this.btnRotationRollRandom.Size = new System.Drawing.Size(75, 20);
+            this.btnRotationRollRandom.TabIndex = 417;
+            this.btnRotationRollRandom.Text = "Random";
+            this.btnRotationRollRandom.UseDisableColor = true;
+            this.btnRotationRollRandom.UseVisualStyleBackColor = false;
+            this.btnRotationRollRandom.Click += new System.EventHandler(this.btnRotationRollRandom_Click);
+            // 
             // SnapshotPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnRotationRollRandom);
+            this.Controls.Add(this.btnRotationPitchRandom);
+            this.Controls.Add(this.btnRotationYawRandom);
+            this.Controls.Add(this.btnRotationReset);
+            this.Controls.Add(this.btnRotationRollSub45);
+            this.Controls.Add(this.btnRotationRollSub1);
+            this.Controls.Add(this.btnRotationRollAdd1);
+            this.Controls.Add(this.btnRotationRollAdd45);
+            this.Controls.Add(this.btnRotationPitchSub45);
+            this.Controls.Add(this.btnRotationPitchSub1);
+            this.Controls.Add(this.btnRotationPitchAdd1);
+            this.Controls.Add(this.btnRotationPitchAdd45);
+            this.Controls.Add(this.btnRotationPitchawSub45);
+            this.Controls.Add(this.btnRotationPitchawSub1);
+            this.Controls.Add(this.btnRotationPitchawAdd1);
+            this.Controls.Add(this.btnRotationPitchawAdd45);
             this.Controls.Add(this.lblId);
-            this.Controls.Add(this.lblNodeAxisY);
-            this.Controls.Add(this.nudNodeRotY);
-            this.Controls.Add(this.nudNodeRotZ);
-            this.Controls.Add(this.lblNodeAxisX);
-            this.Controls.Add(this.lblNodeAxisZ);
+            this.Controls.Add(this.lblRotationPitch);
+            this.Controls.Add(this.lblRotationYaw);
+            this.Controls.Add(this.lblRotationRoll);
             this.Controls.Add(this.lblNodeAxis);
-            this.Controls.Add(this.nudNodeRotX);
             this.Controls.Add(this.lblNodeCellName);
             this.Controls.Add(this.txtNodeCellName);
             this.Controls.Add(this.lblNodeParentId);
@@ -675,14 +867,11 @@
             this.Controls.Add(this.btnLoadSnapshot);
             this.Controls.Add(this.cmbSnapshots);
             this.Name = "SnapshotPanel";
-            this.Size = new System.Drawing.Size(417, 323);
+            this.Size = new System.Drawing.Size(417, 375);
             ((System.ComponentModel.ISupportInitialize)(this.nudNodePosY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNodePosZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNodePosX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNodeRadius)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudNodeRotY)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudNodeRotZ)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudNodeRotX)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -718,13 +907,26 @@
         private UtinniCoreDotNet.UI.Controls.UtinniNumericUpDown nudNodeRadius;
         private UtinniCoreDotNet.UI.Controls.UtinniLabel lblObjFile;
         private UtinniCoreDotNet.UI.Controls.UtinniLabel lblNodeId;
-        private UtinniCoreDotNet.UI.Controls.UtinniLabel lblNodeAxisY;
-        private UtinniCoreDotNet.UI.Controls.UtinniNumericUpDown nudNodeRotY;
-        private UtinniCoreDotNet.UI.Controls.UtinniNumericUpDown nudNodeRotZ;
-        private UtinniCoreDotNet.UI.Controls.UtinniLabel lblNodeAxisX;
-        private UtinniCoreDotNet.UI.Controls.UtinniLabel lblNodeAxisZ;
+        private UtinniCoreDotNet.UI.Controls.UtinniLabel lblRotationPitch;
+        private UtinniCoreDotNet.UI.Controls.UtinniLabel lblRotationYaw;
+        private UtinniCoreDotNet.UI.Controls.UtinniLabel lblRotationRoll;
         private UtinniCoreDotNet.UI.Controls.UtinniLabel lblNodeAxis;
-        private UtinniCoreDotNet.UI.Controls.UtinniNumericUpDown nudNodeRotX;
         private UtinniCoreDotNet.UI.Controls.UtinniLabel lblId;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnRotationPitchawAdd45;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnRotationPitchawAdd1;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnRotationPitchawSub1;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnRotationPitchawSub45;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnRotationPitchSub45;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnRotationPitchSub1;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnRotationPitchAdd1;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnRotationPitchAdd45;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnRotationRollSub45;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnRotationRollSub1;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnRotationRollAdd1;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnRotationRollAdd45;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnRotationReset;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnRotationYawRandom;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnRotationPitchRandom;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnRotationRollRandom;
     }
 }

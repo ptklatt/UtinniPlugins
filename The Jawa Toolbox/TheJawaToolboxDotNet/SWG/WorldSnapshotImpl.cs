@@ -231,7 +231,6 @@ namespace TJT.SWG
                     {
                         editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new WorldSnapshotNodeRotationChangedCommand(node, node.Transform, obj.Transform)));
                         node.Transform.CopyRotation(obj.Transform);
-                        //snapshotPanel.UpdateSelectedNodeControlsPosition(node.Transform.RotationAxis);
                     }
                 }
             });
@@ -337,6 +336,82 @@ namespace TJT.SWG
                         {
                             editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new AddWorldSnapshotNodeCommand(newNode)));
                         }
+                    }
+                }
+            });
+        }
+
+        public void RotateYaw(float value)
+        {
+            GroundSceneCallbacks.AddUpdateLoopCall(() =>
+            {
+                var obj = Game.PlayerLookAtTargetObject;
+                if (obj != null)
+                {
+                    obj.Transform.Yaw(value);
+
+                    var node = WorldSnapshotReaderWriter.Get().GetNodeByNetworkId(obj.NetworkId);
+                    if (node != null)
+                    {
+                        editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new WorldSnapshotNodeRotationChangedCommand(node, node.Transform, obj.Transform)));
+                        node.Transform.CopyRotation(obj.Transform);
+                    }
+                }
+            });
+        }
+
+        public void RotatePitch(float value)
+        {
+            GroundSceneCallbacks.AddUpdateLoopCall(() =>
+            {
+                var obj = Game.PlayerLookAtTargetObject;
+                if (obj != null)
+                {
+                    obj.Transform.Pitch(value);
+
+                    var node = WorldSnapshotReaderWriter.Get().GetNodeByNetworkId(obj.NetworkId);
+                    if (node != null)
+                    {
+                        editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new WorldSnapshotNodeRotationChangedCommand(node, node.Transform, obj.Transform)));
+                        node.Transform.CopyRotation(obj.Transform);
+                    }
+                }
+            });
+        }
+
+        public void RotateRoll(float value)
+        {
+            GroundSceneCallbacks.AddUpdateLoopCall(() =>
+            {
+                var obj = Game.PlayerLookAtTargetObject;
+                if (obj != null)
+                {
+                    obj.Transform.Roll(value);
+
+                    var node = WorldSnapshotReaderWriter.Get().GetNodeByNetworkId(obj.NetworkId);
+                    if (node != null)
+                    {
+                        editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new WorldSnapshotNodeRotationChangedCommand(node, node.Transform, obj.Transform)));
+                        node.Transform.CopyRotation(obj.Transform);
+                    }
+                }
+            });
+        }
+
+        public void ResetRotation()
+        {
+            GroundSceneCallbacks.AddUpdateLoopCall(() =>
+            {
+                var obj = Game.PlayerLookAtTargetObject;
+                if (obj != null)
+                {
+                    obj.Transform.SetRotationAxis(0, 0, 0);
+
+                    var node = WorldSnapshotReaderWriter.Get().GetNodeByNetworkId(obj.NetworkId);
+                    if (node != null)
+                    {
+                        editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new WorldSnapshotNodeRotationChangedCommand(node, node.Transform, obj.Transform)));
+                        node.Transform.CopyRotation(obj.Transform);
                     }
                 }
             });
