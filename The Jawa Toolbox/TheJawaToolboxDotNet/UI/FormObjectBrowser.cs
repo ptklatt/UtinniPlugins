@@ -136,10 +136,10 @@ namespace TJT.UI
             return this.Text;
         }
 
-        public void Create(IEditorPlugin editorPlugin)
+        public void Create(IEditorPlugin editorPlugin, List<Form> parentChildren)
         {
             // Check if the form is already open
-            foreach (Form form in Application.OpenForms)
+            foreach (Form form in parentChildren)
             {
                 if (form.GetType() == typeof(FormObjectBrowser))
                 {
@@ -151,6 +151,7 @@ namespace TJT.UI
             // If not, create a new one
             FormObjectBrowser formObjectBrowser = new FormObjectBrowser(editorPlugin);
             formObjectBrowser.Show();
+            parentChildren.Add(formObjectBrowser);
         }
 
         private List<string> currentFilenames;
