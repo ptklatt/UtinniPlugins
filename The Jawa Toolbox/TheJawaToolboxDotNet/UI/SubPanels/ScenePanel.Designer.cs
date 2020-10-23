@@ -37,6 +37,7 @@
             this.btnLoadScene = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             this.cmbScenes = new UtinniCoreDotNet.UI.Controls.UtinniComboBox();
             this.txtAvatarObjectFilename = new UtinniCoreDotNet.UI.Controls.UtinniTextbox();
+            this.lblHoursAndMinute = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
             ((System.ComponentModel.ISupportInitialize)(this.nudWeatherIndex)).BeginInit();
             this.SuspendLayout();
             // 
@@ -171,10 +172,21 @@
             this.txtAvatarObjectFilename.TabIndex = 323;
             this.txtAvatarObjectFilename.Text = "object/creature/player/shared_human_male.iff";
             // 
+            // lblHoursAndMinute
+            // 
+            this.lblHoursAndMinute.AutoSize = true;
+            this.lblHoursAndMinute.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblHoursAndMinute.Location = new System.Drawing.Point(180, 117);
+            this.lblHoursAndMinute.Name = "lblHoursAndMinute";
+            this.lblHoursAndMinute.Size = new System.Drawing.Size(34, 13);
+            this.lblHoursAndMinute.TabIndex = 345;
+            this.lblHoursAndMinute.Text = "00:00";
+            // 
             // ScenePanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblHoursAndMinute);
             this.Controls.Add(this.sldTimeOfDay);
             this.Controls.Add(this.btnUnloadScene);
             this.Controls.Add(this.lblWeatherIndex);
@@ -203,5 +215,6 @@
         private UtinniCoreDotNet.UI.Controls.UtinniLabel lblWeatherIndex;
         private UtinniCoreDotNet.UI.Controls.UtinniButton btnUnloadScene;
         private UtinniCoreDotNet.UI.Controls.UtinniSlider sldTimeOfDay;
+        private UtinniCoreDotNet.UI.Controls.UtinniLabel lblHoursAndMinute;
     }
 }

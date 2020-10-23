@@ -104,6 +104,11 @@ namespace TJT.UI.SubPanels
             nudWeatherIndex.Enabled = isSceneActive;
             sldTimeOfDay.Enabled = isSceneActive;
 
+            if (!isSceneActive)
+            {
+                lblHoursAndMinute.Text = "00:00";
+            }
+
             previousIsSceneActive = isSceneActive;
 
             if (ini.GetBool("Scene", "forceModalChat"))
@@ -120,6 +125,9 @@ namespace TJT.UI.SubPanels
                 {
                     sldTimeOfDay.ValueChanged -= sldTimeOfDay_ValueChanged;
                     sldTimeOfDay.Value = timeOfDay;
+
+                    var terrain = Terrain.Get();
+                    lblHoursAndMinute.Text = terrain.TimeOfDayHours.ToString("00") + ":" + terrain.TimeOfDayMinutes.ToString("00");
                     sldTimeOfDay.ValueChanged += sldTimeOfDay_ValueChanged;
                 }));
             }
