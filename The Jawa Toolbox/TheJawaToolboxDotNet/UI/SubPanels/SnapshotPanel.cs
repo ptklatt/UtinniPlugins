@@ -37,6 +37,9 @@ namespace TJT.UI.SubPanels
 
             txtNewNodeFilename.Text = ini.GetString("Snapshot", "defaultNodeObjectFilename");
             chkEnableNodeEditing.Checked = ini.GetBool("Snapshot", "autoEnableSnapshotEditing");
+
+            cmbOperationMode.SelectedIndex = 0;
+            // cmbGizmoMode.SelectedIndex = 0;
         }
 
         private void CreateSettings()
@@ -64,6 +67,14 @@ namespace TJT.UI.SubPanels
         private void btnSaveSnapshot_Click(object sender, EventArgs e)
         {
             worldSnapshot.Save();
+        }
+
+        private void btnSaveAs_Click(object sender, EventArgs e)
+        {
+            // pop up form that returns a string;
+
+            string result = "";
+            worldSnapshot.SaveAs(result);
         }
 
         private void btnAddSnapshotNode_Click(object sender, EventArgs e)
@@ -127,6 +138,12 @@ namespace TJT.UI.SubPanels
             btnUnloadSnapshot.Enabled = isSceneActive;
 
             btnAddNode.Enabled = isSceneActive;
+
+            //chkSnap.Checked = IsSnap
+            chkSnap.Enabled = isSceneActive;
+            cmbOperationMode.Enabled = isSceneActive;
+            // cmbGizmoMode.Enabled = isSceneActive;
+            nudSnapScale.Enabled = isSceneActive;
 
             previousIsSceneActive = isSceneActive;
         }
@@ -286,6 +303,26 @@ namespace TJT.UI.SubPanels
         private void btnRotationReset_Click(object sender, EventArgs e)
         {
             worldSnapshot.ResetRotation();
+        }
+
+        private void cmbOperationMode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            worldSnapshot.SetOperationMode(cmbOperationMode.SelectedIndex);
+        }
+
+        private void cmbGizmoMode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            worldSnapshot.SetGizmoMode(cmbOperationMode.SelectedIndex);
+        }
+
+        private void chkSnap_CheckedChanged(object sender, EventArgs e)
+        {
+            worldSnapshot.EnableSnap(chkSnap.Checked);
+        }
+
+        private void nudSnapScale_ValueChanged(object sender, EventArgs e)
+        {
+            worldSnapshot.SetSnapScale((float) nudSnapScale.Value);
         }
     }
 }

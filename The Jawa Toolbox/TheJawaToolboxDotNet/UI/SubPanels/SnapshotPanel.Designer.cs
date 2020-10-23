@@ -78,10 +78,17 @@
             this.btnRotationYawRandom = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             this.btnRotationPitchRandom = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             this.btnRotationRollRandom = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnSaveAs = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.lblGizmo = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
+            this.nudSnapScale = new UtinniCoreDotNet.UI.Controls.UtinniNumericUpDown();
+            this.lblSnapScale = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
+            this.chkSnap = new UtinniCoreDotNet.UI.Controls.UtinniToggle();
+            this.cmbOperationMode = new UtinniCoreDotNet.UI.Controls.UtinniComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudNodePosY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNodePosZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNodePosX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNodeRadius)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSnapScale)).BeginInit();
             this.SuspendLayout();
             // 
             // btnReloadSnapshot
@@ -185,7 +192,7 @@
             this.btnRemoveSelectedNode.Enabled = false;
             this.btnRemoveSelectedNode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRemoveSelectedNode.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRemoveSelectedNode.Location = new System.Drawing.Point(336, 344);
+            this.btnRemoveSelectedNode.Location = new System.Drawing.Point(336, 414);
             this.btnRemoveSelectedNode.Name = "btnRemoveSelectedNode";
             this.btnRemoveSelectedNode.Size = new System.Drawing.Size(75, 20);
             this.btnRemoveSelectedNode.TabIndex = 335;
@@ -812,10 +819,107 @@
             this.btnRotationRollRandom.UseVisualStyleBackColor = false;
             this.btnRotationRollRandom.Click += new System.EventHandler(this.btnRotationRollRandom_Click);
             // 
+            // btnSaveAs
+            // 
+            this.btnSaveAs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnSaveAs.DrawOutline = false;
+            this.btnSaveAs.Enabled = false;
+            this.btnSaveAs.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSaveAs.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnSaveAs.Location = new System.Drawing.Point(327, 4);
+            this.btnSaveAs.Name = "btnSaveAs";
+            this.btnSaveAs.Size = new System.Drawing.Size(75, 20);
+            this.btnSaveAs.TabIndex = 418;
+            this.btnSaveAs.Text = "Save As...";
+            this.btnSaveAs.UseDisableColor = true;
+            this.btnSaveAs.UseVisualStyleBackColor = false;
+            this.btnSaveAs.Click += new System.EventHandler(this.btnSaveAs_Click);
+            // 
+            // lblGizmo
+            // 
+            this.lblGizmo.AutoSize = true;
+            this.lblGizmo.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblGizmo.Location = new System.Drawing.Point(4, 371);
+            this.lblGizmo.Name = "lblGizmo";
+            this.lblGizmo.Size = new System.Drawing.Size(36, 13);
+            this.lblGizmo.TabIndex = 419;
+            this.lblGizmo.Text = "Gizmo";
+            // 
+            // nudSnapScale
+            // 
+            this.nudSnapScale.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.nudSnapScale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.nudSnapScale.DecimalPlaces = 2;
+            this.nudSnapScale.DrawOutline = false;
+            this.nudSnapScale.Enabled = false;
+            this.nudSnapScale.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.nudSnapScale.Location = new System.Drawing.Point(144, 414);
+            this.nudSnapScale.Margin = new System.Windows.Forms.Padding(0);
+            this.nudSnapScale.Maximum = new decimal(new int[] {
+            512,
+            0,
+            0,
+            0});
+            this.nudSnapScale.Name = "nudSnapScale";
+            this.nudSnapScale.Size = new System.Drawing.Size(70, 20);
+            this.nudSnapScale.TabIndex = 421;
+            this.nudSnapScale.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nudSnapScale.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudSnapScale.ValueChanged += new System.EventHandler(this.nudSnapScale_ValueChanged);
+            // 
+            // lblSnapScale
+            // 
+            this.lblSnapScale.AutoSize = true;
+            this.lblSnapScale.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblSnapScale.Location = new System.Drawing.Point(106, 416);
+            this.lblSnapScale.Name = "lblSnapScale";
+            this.lblSnapScale.Size = new System.Drawing.Size(34, 13);
+            this.lblSnapScale.TabIndex = 422;
+            this.lblSnapScale.Text = "Scale";
+            // 
+            // chkSnap
+            // 
+            this.chkSnap.DrawOutline = false;
+            this.chkSnap.Location = new System.Drawing.Point(7, 415);
+            this.chkSnap.Name = "chkSnap";
+            this.chkSnap.Size = new System.Drawing.Size(92, 17);
+            this.chkSnap.TabIndex = 423;
+            this.chkSnap.Text = "Snap";
+            this.chkSnap.UseVisualStyleBackColor = true;
+            this.chkSnap.CheckedChanged += new System.EventHandler(this.chkSnap_CheckedChanged);
+            // 
+            // cmbOperationMode
+            // 
+            this.cmbOperationMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
+            this.cmbOperationMode.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbOperationMode.DrawOutline = true;
+            this.cmbOperationMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbOperationMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbOperationMode.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.cmbOperationMode.FormattingEnabled = true;
+            this.cmbOperationMode.Items.AddRange(new object[] {
+            "Move",
+            "Rotate"});
+            this.cmbOperationMode.Location = new System.Drawing.Point(6, 388);
+            this.cmbOperationMode.Name = "cmbOperationMode";
+            this.cmbOperationMode.Size = new System.Drawing.Size(75, 21);
+            this.cmbOperationMode.TabIndex = 424;
+            this.cmbOperationMode.SelectedIndexChanged += new System.EventHandler(this.cmbOperationMode_SelectedIndexChanged);
+            // 
             // SnapshotPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cmbOperationMode);
+            this.Controls.Add(this.chkSnap);
+            this.Controls.Add(this.lblSnapScale);
+            this.Controls.Add(this.nudSnapScale);
+            this.Controls.Add(this.lblGizmo);
+            this.Controls.Add(this.btnSaveAs);
             this.Controls.Add(this.btnRotationRollRandom);
             this.Controls.Add(this.btnRotationPitchRandom);
             this.Controls.Add(this.btnRotationYawRandom);
@@ -867,11 +971,12 @@
             this.Controls.Add(this.btnLoadSnapshot);
             this.Controls.Add(this.cmbSnapshots);
             this.Name = "SnapshotPanel";
-            this.Size = new System.Drawing.Size(417, 375);
+            this.Size = new System.Drawing.Size(417, 441);
             ((System.ComponentModel.ISupportInitialize)(this.nudNodePosY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNodePosZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNodePosX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNodeRadius)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudSnapScale)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -928,5 +1033,11 @@
         private UtinniCoreDotNet.UI.Controls.UtinniButton btnRotationYawRandom;
         private UtinniCoreDotNet.UI.Controls.UtinniButton btnRotationPitchRandom;
         private UtinniCoreDotNet.UI.Controls.UtinniButton btnRotationRollRandom;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnSaveAs;
+        private UtinniCoreDotNet.UI.Controls.UtinniLabel lblGizmo;
+        private UtinniCoreDotNet.UI.Controls.UtinniNumericUpDown nudSnapScale;
+        private UtinniCoreDotNet.UI.Controls.UtinniLabel lblSnapScale;
+        private UtinniCoreDotNet.UI.Controls.UtinniToggle chkSnap;
+        private UtinniCoreDotNet.UI.Controls.UtinniComboBox cmbOperationMode;
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using TJT.UI.SubPanels;
+using UtinniCore.ImguiGizmo;
 using UtinniCore.Swg.Math;
 using UtinniCore.Utinni;
 using UtinniCore.Utinni.CuiHud;
@@ -414,6 +415,52 @@ namespace TJT.SWG
                         node.Transform.CopyRotation(obj.Transform);
                     }
                 }
+            });
+        }
+
+        public void SetOperationMode(int index)
+        {
+            GroundSceneCallbacks.AddUpdateLoopCall(() =>
+            {
+                if (index == 0)
+                {
+                    imgui_impl.SetOperationModeToTranslate();
+                }
+                else
+                {
+                    imgui_impl.SetOperationModeToRotate();
+                }
+            });
+        }
+
+        public void SetGizmoMode(int index)
+        {
+            GroundSceneCallbacks.AddUpdateLoopCall(() =>
+            {
+                if (index == 0)
+                {
+                    imgui_impl.SetGizmoModeToWorld();
+                }
+                else
+                {
+                    imgui_impl.SetGizmoModeToLocal();
+                }
+            });
+        }
+
+        public void EnableSnap(bool value)
+        {
+            GroundSceneCallbacks.AddUpdateLoopCall(() =>
+            {
+                imgui_impl.EnableSnap(value);
+            });
+        }
+
+        public void SetSnapScale(float value)
+        {
+            GroundSceneCallbacks.AddUpdateLoopCall(() =>
+            {
+                imgui_impl.SetSnapSize(value);
             });
         }
     }
