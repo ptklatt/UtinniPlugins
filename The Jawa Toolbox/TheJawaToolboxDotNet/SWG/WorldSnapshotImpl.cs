@@ -9,7 +9,6 @@ using UtinniCoreDotNet.Callbacks;
 using UtinniCoreDotNet.Commands;
 using UtinniCoreDotNet.Hotkeys;
 using UtinniCoreDotNet.PluginFramework;
-using UtinniCoreDotNet.Utility;
 
 namespace TJT.SWG
 {
@@ -17,6 +16,7 @@ namespace TJT.SWG
     {
         private readonly ISnapshotPanel snapshotPanel;
         private readonly IEditorPlugin editorPlugin;
+        private readonly HotkeyManager hotkeyManager;
 
         public bool EnableNodeEditing;
 
@@ -26,12 +26,15 @@ namespace TJT.SWG
         {
             this.snapshotPanel = snapshotPanel;
             this.editorPlugin = editorPlugin;
+            this.hotkeyManager = hotkeyManager;
 
             GameCallbacks.AddInstallCallback(OnInstallCallback);
             GameCallbacks.AddSetupSceneCall(OnSetupSceneCallback);
             GameCallbacks.AddCleanupSceneCall(OnCleanupCallback);
             ObjectCallbacks.AddOnTargetCallback(OnTarget);
 
+            ImGuiCallbacks.AddOnEnabledCallback(OnGizmoEnabled);
+            ImGuiCallbacks.AddOnDisabledCallback(OnGizmoDisabled);
             ImGuiCallbacks.AddOnPositionChangedCallback(OnPositionChanged);
             ImGuiCallbacks.AddOnRotationChangedCallback(OnRotationChanged);
 
@@ -41,6 +44,10 @@ namespace TJT.SWG
             hotkeyManager.Hotkeys.Add("PasteSnapshotNode", new Hotkey("PasteSnapshotNode", "Control + V", PasteNode, true));
             hotkeyManager.Hotkeys.Add("DuplicateSnapshotNode", new Hotkey("DuplicateSnapshotNode", "Control + D", DuplicateNode, true));
             hotkeyManager.Hotkeys.Add("DeleteSnapshotNode", new Hotkey("DeleteSnapshotNode", "Delete", RemoveNode, true));
+
+            hotkeyManager.Hotkeys.Add("SetGizmoTransformOperationMode", new Hotkey("SetGizmoTransformOperationMode", "Control + Q", SetOperationModeToTranslateHotkey, true, false));
+            hotkeyManager.Hotkeys.Add("SetGizmoRotationOperationMode", new Hotkey("SetGizmoRotationOperationMode", "Control + E", SetOperationModeToRotationHotkey, true, false));
+            hotkeyManager.Hotkeys.Add("ToggleGizmoSnap", new Hotkey("ToggleGizmoSnap", "Control + B", ToggleGizmoSnapHotkey, true, false));
         }
 
         private void OnInstallCallback()
@@ -100,7 +107,15 @@ namespace TJT.SWG
         {
             GroundSceneCallbacks.AddUpdateLoopCall(() =>
             {
-                WorldSnapshotReaderWriter.Get().SaveFile();
+                WorldSnapshotReaderWriter.Get().SaveFile("");
+            });
+        }
+
+        public void SaveAs(string snapshotName)
+        {
+            GroundSceneCallbacks.AddUpdateLoopCall(() =>
+            {
+                WorldSnapshotReaderWriter.Get().SaveFile(snapshotName);
             });
         }
 
@@ -139,7 +154,7 @@ namespace TJT.SWG
         public void ToggleNodeEditing()
         {
             bool result = !EnableNodeEditing;
-            snapshotPanel.UpdateSnapshotNodeEditingMode(result);
+            snapshotPanel.UpdateNodeEditingMode(result);
             UpdateNodeEditingMode(result);
         }
 
@@ -168,7 +183,7 @@ namespace TJT.SWG
                     }
                     else
                     {
-                        UtinniCore.ImguiGizmo.imgui_impl.Disable();
+                        imgui_impl.Disable();
                     }
 
                     string cellName = "";
@@ -190,7 +205,7 @@ namespace TJT.SWG
         {
             GroundSceneCallbacks.AddPreDrawLoopCall(() =>
             {
-                UtinniCore.ImguiGizmo.imgui_impl.Enable(target);
+                imgui_impl.Enable(target);
             });
         }
 
@@ -198,7 +213,7 @@ namespace TJT.SWG
         {
             GroundSceneCallbacks.AddPreDrawLoopCall(() =>
             {
-                UtinniCore.ImguiGizmo.imgui_impl.Disable();
+                imgui_impl.Disable();
             });
         }
 
@@ -418,42 +433,68 @@ namespace TJT.SWG
             });
         }
 
-        public void SetOperationMode(int index)
+        public void SetOperationModeToTranslate()
         {
             GroundSceneCallbacks.AddUpdateLoopCall(() =>
             {
-                if (index == 0)
-                {
-                    imgui_impl.SetOperationModeToTranslate();
-                }
-                else
-                {
-                    imgui_impl.SetOperationModeToRotate();
-                }
+                imgui_impl.SetOperationModeToTranslate();
             });
         }
 
-        public void SetGizmoMode(int index)
+        public void SetOperationModeToRotation()
         {
             GroundSceneCallbacks.AddUpdateLoopCall(() =>
             {
-                if (index == 0)
-                {
-                    imgui_impl.SetGizmoModeToWorld();
-                }
-                else
-                {
-                    imgui_impl.SetGizmoModeToLocal();
-                }
+                imgui_impl.SetOperationModeToRotate();
             });
         }
 
-        public void EnableSnap(bool value)
+        public void SetOperationModeToTranslateHotkey()
+        {
+            SetOperationModeToTranslate();
+            snapshotPanel.UpdateGizmoOperationControls(true);
+        }
+
+        public void SetOperationModeToRotationHotkey()
+        {
+            SetOperationModeToRotation();
+            snapshotPanel.UpdateGizmoOperationControls(false);
+        }
+
+        public void SetGizmoToLocal()
+        {
+            GroundSceneCallbacks.AddUpdateLoopCall(() =>
+            {
+                imgui_impl.SetGizmoModeToLocal();
+            });
+            //snapshotPanel.UpdateGizmoModeControls(true);
+        }
+
+        public void SetGizmoToWorld()
+        {
+            GroundSceneCallbacks.AddUpdateLoopCall(() =>
+            {
+                imgui_impl.SetGizmoModeToWorld();
+            });
+            //snapshotPanel.UpdateGizmoModeControls(false);
+        }
+
+        public void SetGizmoSnap(bool value)
         {
             GroundSceneCallbacks.AddUpdateLoopCall(() =>
             {
                 imgui_impl.EnableSnap(value);
             });
+        }
+
+        public void ToggleGizmoSnapHotkey()
+        {
+            bool hasSnapOn = !imgui_impl.IsSnapOn();
+            GroundSceneCallbacks.AddUpdateLoopCall(() =>
+            {
+                imgui_impl.EnableSnap(hasSnapOn);
+            });
+            snapshotPanel.UpdateGizmoSnapControl(hasSnapOn);
         }
 
         public void SetSnapScale(float value)
@@ -462,6 +503,20 @@ namespace TJT.SWG
             {
                 imgui_impl.SetSnapSize(value);
             });
+        }
+
+        private void OnGizmoEnabled()
+        {
+            hotkeyManager.Hotkeys["SetGizmoTransformOperationMode"].Enabled = true;
+            hotkeyManager.Hotkeys["SetGizmoRotationOperationMode"].Enabled = true;
+            hotkeyManager.Hotkeys["ToggleGizmoSnap"].Enabled = true;
+        }
+
+        private void OnGizmoDisabled()
+        {
+            hotkeyManager.Hotkeys["SetGizmoTransformOperationMode"].Enabled = false;
+            hotkeyManager.Hotkeys["SetGizmoRotationOperationMode"].Enabled = false;
+            hotkeyManager.Hotkeys["ToggleGizmoSnap"].Enabled = false;
         }
     }
 }

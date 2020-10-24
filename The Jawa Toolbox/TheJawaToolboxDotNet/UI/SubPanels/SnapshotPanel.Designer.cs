@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnReloadSnapshot = new UtinniCoreDotNet.UI.Controls.UtinniButton();
-            this.btnLoadSnapshot = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnReload = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnLoad = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             this.cmbSnapshots = new UtinniCoreDotNet.UI.Controls.UtinniComboBox();
-            this.btnUnloadSnapshot = new UtinniCoreDotNet.UI.Controls.UtinniButton();
-            this.btnSaveSnapshot = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnUnload = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.btnSave = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             this.btnAddNode = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             this.btnRemoveSelectedNode = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             this.txtNewNodeFilename = new UtinniCoreDotNet.UI.Controls.UtinniTextbox();
@@ -56,7 +56,6 @@
             this.txtNodeId = new UtinniCoreDotNet.UI.Controls.UtinniTextbox();
             this.nudNodeRadius = new UtinniCoreDotNet.UI.Controls.UtinniNumericUpDown();
             this.lblObjFile = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
-            this.lblNodeId = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
             this.lblRotationPitch = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
             this.lblRotationYaw = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
             this.lblRotationRoll = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
@@ -83,7 +82,10 @@
             this.nudSnapScale = new UtinniCoreDotNet.UI.Controls.UtinniNumericUpDown();
             this.lblSnapScale = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
             this.chkSnap = new UtinniCoreDotNet.UI.Controls.UtinniToggle();
-            this.cmbOperationMode = new UtinniCoreDotNet.UI.Controls.UtinniComboBox();
+            this.chkbtnMode = new UtinniCoreDotNet.UI.Controls.UtinniToggleButton();
+            this.chkbtnOperation = new UtinniCoreDotNet.UI.Controls.UtinniToggleButton();
+            this.utinniLabel1 = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
+            this.utinniLabel2 = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
             ((System.ComponentModel.ISupportInitialize)(this.nudNodePosY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNodePosZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNodePosX)).BeginInit();
@@ -91,37 +93,37 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudSnapScale)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnReloadSnapshot
+            // btnReload
             // 
-            this.btnReloadSnapshot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnReloadSnapshot.DrawOutline = false;
-            this.btnReloadSnapshot.Enabled = false;
-            this.btnReloadSnapshot.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnReloadSnapshot.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnReloadSnapshot.Location = new System.Drawing.Point(165, 30);
-            this.btnReloadSnapshot.Name = "btnReloadSnapshot";
-            this.btnReloadSnapshot.Size = new System.Drawing.Size(75, 20);
-            this.btnReloadSnapshot.TabIndex = 331;
-            this.btnReloadSnapshot.Text = "Reload";
-            this.btnReloadSnapshot.UseDisableColor = true;
-            this.btnReloadSnapshot.UseVisualStyleBackColor = false;
-            this.btnReloadSnapshot.Click += new System.EventHandler(this.btnReloadSnapshot_Click);
+            this.btnReload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnReload.DrawOutline = false;
+            this.btnReload.Enabled = false;
+            this.btnReload.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnReload.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnReload.Location = new System.Drawing.Point(165, 30);
+            this.btnReload.Name = "btnReload";
+            this.btnReload.Size = new System.Drawing.Size(75, 20);
+            this.btnReload.TabIndex = 331;
+            this.btnReload.Text = "Reload";
+            this.btnReload.UseDisableColor = true;
+            this.btnReload.UseVisualStyleBackColor = false;
+            this.btnReload.Click += new System.EventHandler(this.btnReload_Click);
             // 
-            // btnLoadSnapshot
+            // btnLoad
             // 
-            this.btnLoadSnapshot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnLoadSnapshot.DrawOutline = false;
-            this.btnLoadSnapshot.Enabled = false;
-            this.btnLoadSnapshot.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnLoadSnapshot.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnLoadSnapshot.Location = new System.Drawing.Point(3, 30);
-            this.btnLoadSnapshot.Name = "btnLoadSnapshot";
-            this.btnLoadSnapshot.Size = new System.Drawing.Size(75, 20);
-            this.btnLoadSnapshot.TabIndex = 330;
-            this.btnLoadSnapshot.Text = "Load";
-            this.btnLoadSnapshot.UseDisableColor = true;
-            this.btnLoadSnapshot.UseVisualStyleBackColor = false;
-            this.btnLoadSnapshot.Click += new System.EventHandler(this.btnLoadSnapshot_Click);
+            this.btnLoad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnLoad.DrawOutline = false;
+            this.btnLoad.Enabled = false;
+            this.btnLoad.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnLoad.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnLoad.Location = new System.Drawing.Point(3, 30);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(75, 20);
+            this.btnLoad.TabIndex = 330;
+            this.btnLoad.Text = "Load";
+            this.btnLoad.UseDisableColor = true;
+            this.btnLoad.UseVisualStyleBackColor = false;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // cmbSnapshots
             // 
@@ -137,37 +139,37 @@
             this.cmbSnapshots.Size = new System.Drawing.Size(237, 21);
             this.cmbSnapshots.TabIndex = 328;
             // 
-            // btnUnloadSnapshot
+            // btnUnload
             // 
-            this.btnUnloadSnapshot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnUnloadSnapshot.DrawOutline = false;
-            this.btnUnloadSnapshot.Enabled = false;
-            this.btnUnloadSnapshot.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnUnloadSnapshot.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnUnloadSnapshot.Location = new System.Drawing.Point(84, 30);
-            this.btnUnloadSnapshot.Name = "btnUnloadSnapshot";
-            this.btnUnloadSnapshot.Size = new System.Drawing.Size(75, 20);
-            this.btnUnloadSnapshot.TabIndex = 332;
-            this.btnUnloadSnapshot.Text = "Unload";
-            this.btnUnloadSnapshot.UseDisableColor = true;
-            this.btnUnloadSnapshot.UseVisualStyleBackColor = false;
-            this.btnUnloadSnapshot.Click += new System.EventHandler(this.btnUnloadSnapshot_Click);
+            this.btnUnload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnUnload.DrawOutline = false;
+            this.btnUnload.Enabled = false;
+            this.btnUnload.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnUnload.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnUnload.Location = new System.Drawing.Point(84, 30);
+            this.btnUnload.Name = "btnUnload";
+            this.btnUnload.Size = new System.Drawing.Size(75, 20);
+            this.btnUnload.TabIndex = 332;
+            this.btnUnload.Text = "Unload";
+            this.btnUnload.UseDisableColor = true;
+            this.btnUnload.UseVisualStyleBackColor = false;
+            this.btnUnload.Click += new System.EventHandler(this.btnUnload_Click);
             // 
-            // btnSaveSnapshot
+            // btnSave
             // 
-            this.btnSaveSnapshot.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnSaveSnapshot.DrawOutline = false;
-            this.btnSaveSnapshot.Enabled = false;
-            this.btnSaveSnapshot.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnSaveSnapshot.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnSaveSnapshot.Location = new System.Drawing.Point(246, 3);
-            this.btnSaveSnapshot.Name = "btnSaveSnapshot";
-            this.btnSaveSnapshot.Size = new System.Drawing.Size(75, 20);
-            this.btnSaveSnapshot.TabIndex = 333;
-            this.btnSaveSnapshot.Text = "Save";
-            this.btnSaveSnapshot.UseDisableColor = true;
-            this.btnSaveSnapshot.UseVisualStyleBackColor = false;
-            this.btnSaveSnapshot.Click += new System.EventHandler(this.btnSaveSnapshot_Click);
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnSave.DrawOutline = false;
+            this.btnSave.Enabled = false;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSave.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnSave.Location = new System.Drawing.Point(246, 3);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 20);
+            this.btnSave.TabIndex = 333;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseDisableColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnAddNode
             // 
@@ -183,7 +185,7 @@
             this.btnAddNode.Text = "Add Node";
             this.btnAddNode.UseDisableColor = true;
             this.btnAddNode.UseVisualStyleBackColor = false;
-            this.btnAddNode.Click += new System.EventHandler(this.btnAddSnapshotNode_Click);
+            this.btnAddNode.Click += new System.EventHandler(this.btnAddNode_Click);
             // 
             // btnRemoveSelectedNode
             // 
@@ -192,14 +194,14 @@
             this.btnRemoveSelectedNode.Enabled = false;
             this.btnRemoveSelectedNode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRemoveSelectedNode.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRemoveSelectedNode.Location = new System.Drawing.Point(336, 414);
+            this.btnRemoveSelectedNode.Location = new System.Drawing.Point(3, 150);
             this.btnRemoveSelectedNode.Name = "btnRemoveSelectedNode";
             this.btnRemoveSelectedNode.Size = new System.Drawing.Size(75, 20);
             this.btnRemoveSelectedNode.TabIndex = 335;
             this.btnRemoveSelectedNode.Text = "Remove";
             this.btnRemoveSelectedNode.UseDisableColor = true;
             this.btnRemoveSelectedNode.UseVisualStyleBackColor = false;
-            this.btnRemoveSelectedNode.Click += new System.EventHandler(this.btnRemoveSnapshotNode_Click);
+            this.btnRemoveSelectedNode.Click += new System.EventHandler(this.btnRemoveNode_Click);
             // 
             // txtNewNodeFilename
             // 
@@ -239,7 +241,7 @@
             // 
             this.lblNodePosY.AutoSize = true;
             this.lblNodePosY.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNodePosY.Location = new System.Drawing.Point(141, 270);
+            this.lblNodePosY.Location = new System.Drawing.Point(141, 260);
             this.lblNodePosY.Name = "lblNodePosY";
             this.lblNodePosY.Size = new System.Drawing.Size(14, 13);
             this.lblNodePosY.TabIndex = 354;
@@ -258,7 +260,7 @@
             0,
             0,
             131072});
-            this.nudNodePosY.Location = new System.Drawing.Point(155, 268);
+            this.nudNodePosY.Location = new System.Drawing.Point(155, 258);
             this.nudNodePosY.Margin = new System.Windows.Forms.Padding(0);
             this.nudNodePosY.Maximum = new decimal(new int[] {
             100000,
@@ -280,7 +282,7 @@
             // 
             this.lblNodePosX.AutoSize = true;
             this.lblNodePosX.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNodePosX.Location = new System.Drawing.Point(51, 270);
+            this.lblNodePosX.Location = new System.Drawing.Point(51, 260);
             this.lblNodePosX.Name = "lblNodePosX";
             this.lblNodePosX.Size = new System.Drawing.Size(14, 13);
             this.lblNodePosX.TabIndex = 352;
@@ -299,7 +301,7 @@
             0,
             0,
             131072});
-            this.nudNodePosZ.Location = new System.Drawing.Point(245, 268);
+            this.nudNodePosZ.Location = new System.Drawing.Point(245, 258);
             this.nudNodePosZ.Margin = new System.Windows.Forms.Padding(0);
             this.nudNodePosZ.Maximum = new decimal(new int[] {
             100000,
@@ -321,7 +323,7 @@
             // 
             this.lblNodePos.AutoSize = true;
             this.lblNodePos.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNodePos.Location = new System.Drawing.Point(4, 270);
+            this.lblNodePos.Location = new System.Drawing.Point(4, 260);
             this.lblNodePos.Name = "lblNodePos";
             this.lblNodePos.Size = new System.Drawing.Size(44, 13);
             this.lblNodePos.TabIndex = 351;
@@ -331,7 +333,7 @@
             // 
             this.lblNodePosZ.AutoSize = true;
             this.lblNodePosZ.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNodePosZ.Location = new System.Drawing.Point(231, 270);
+            this.lblNodePosZ.Location = new System.Drawing.Point(231, 260);
             this.lblNodePosZ.Name = "lblNodePosZ";
             this.lblNodePosZ.Size = new System.Drawing.Size(14, 13);
             this.lblNodePosZ.TabIndex = 356;
@@ -350,7 +352,7 @@
             0,
             0,
             131072});
-            this.nudNodePosX.Location = new System.Drawing.Point(65, 268);
+            this.nudNodePosX.Location = new System.Drawing.Point(65, 258);
             this.nudNodePosX.Margin = new System.Windows.Forms.Padding(0);
             this.nudNodePosX.Maximum = new decimal(new int[] {
             100000,
@@ -375,7 +377,7 @@
             this.txtNodeFilename.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtNodeFilename.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNodeFilename.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txtNodeFilename.Location = new System.Drawing.Point(5, 201);
+            this.txtNodeFilename.Location = new System.Drawing.Point(5, 191);
             this.txtNodeFilename.Name = "txtNodeFilename";
             this.txtNodeFilename.ReadOnly = true;
             this.txtNodeFilename.Size = new System.Drawing.Size(406, 20);
@@ -385,7 +387,7 @@
             // 
             this.lblObjectType.AutoSize = true;
             this.lblObjectType.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblObjectType.Location = new System.Drawing.Point(4, 224);
+            this.lblObjectType.Location = new System.Drawing.Point(4, 214);
             this.lblObjectType.Name = "lblObjectType";
             this.lblObjectType.Size = new System.Drawing.Size(65, 13);
             this.lblObjectType.TabIndex = 360;
@@ -398,10 +400,10 @@
             this.txtNodeType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtNodeType.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNodeType.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txtNodeType.Location = new System.Drawing.Point(5, 242);
+            this.txtNodeType.Location = new System.Drawing.Point(5, 232);
             this.txtNodeType.Name = "txtNodeType";
             this.txtNodeType.ReadOnly = true;
-            this.txtNodeType.Size = new System.Drawing.Size(406, 20);
+            this.txtNodeType.Size = new System.Drawing.Size(197, 20);
             this.txtNodeType.TabIndex = 359;
             // 
             // lblNodeCellName
@@ -409,7 +411,7 @@
             this.lblNodeCellName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNodeCellName.AutoSize = true;
             this.lblNodeCellName.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNodeCellName.Location = new System.Drawing.Point(184, 177);
+            this.lblNodeCellName.Location = new System.Drawing.Point(220, 214);
             this.lblNodeCellName.Name = "lblNodeCellName";
             this.lblNodeCellName.Size = new System.Drawing.Size(55, 13);
             this.lblNodeCellName.TabIndex = 391;
@@ -421,17 +423,17 @@
             this.txtNodeCellName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtNodeCellName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNodeCellName.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txtNodeCellName.Location = new System.Drawing.Point(241, 175);
+            this.txtNodeCellName.Location = new System.Drawing.Point(218, 232);
             this.txtNodeCellName.Name = "txtNodeCellName";
             this.txtNodeCellName.ReadOnly = true;
-            this.txtNodeCellName.Size = new System.Drawing.Size(170, 20);
+            this.txtNodeCellName.Size = new System.Drawing.Size(193, 20);
             this.txtNodeCellName.TabIndex = 390;
             // 
             // lblNodeParentId
             // 
             this.lblNodeParentId.AutoSize = true;
             this.lblNodeParentId.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNodeParentId.Location = new System.Drawing.Point(84, 152);
+            this.lblNodeParentId.Location = new System.Drawing.Point(166, 154);
             this.lblNodeParentId.Name = "lblNodeParentId";
             this.lblNodeParentId.Size = new System.Drawing.Size(52, 13);
             this.lblNodeParentId.TabIndex = 389;
@@ -442,7 +444,7 @@
             this.txtNodeParentId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtNodeParentId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNodeParentId.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txtNodeParentId.Location = new System.Drawing.Point(136, 149);
+            this.txtNodeParentId.Location = new System.Drawing.Point(218, 151);
             this.txtNodeParentId.Name = "txtNodeParentId";
             this.txtNodeParentId.ReadOnly = true;
             this.txtNodeParentId.Size = new System.Drawing.Size(60, 20);
@@ -454,7 +456,7 @@
             this.lblNodeRadius.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblNodeRadius.AutoSize = true;
             this.lblNodeRadius.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNodeRadius.Location = new System.Drawing.Point(304, 152);
+            this.lblNodeRadius.Location = new System.Drawing.Point(304, 154);
             this.lblNodeRadius.Name = "lblNodeRadius";
             this.lblNodeRadius.Size = new System.Drawing.Size(40, 13);
             this.lblNodeRadius.TabIndex = 387;
@@ -465,7 +467,7 @@
             this.txtNodeId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtNodeId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNodeId.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txtNodeId.Location = new System.Drawing.Point(21, 149);
+            this.txtNodeId.Location = new System.Drawing.Point(103, 151);
             this.txtNodeId.Name = "txtNodeId";
             this.txtNodeId.ReadOnly = true;
             this.txtNodeId.Size = new System.Drawing.Size(60, 20);
@@ -480,7 +482,7 @@
             this.nudNodeRadius.DrawOutline = false;
             this.nudNodeRadius.Enabled = false;
             this.nudNodeRadius.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.nudNodeRadius.Location = new System.Drawing.Point(348, 149);
+            this.nudNodeRadius.Location = new System.Drawing.Point(348, 151);
             this.nudNodeRadius.Margin = new System.Windows.Forms.Padding(0);
             this.nudNodeRadius.Maximum = new decimal(new int[] {
             512000,
@@ -497,27 +499,17 @@
             // 
             this.lblObjFile.AutoSize = true;
             this.lblObjFile.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblObjFile.Location = new System.Drawing.Point(4, 183);
+            this.lblObjFile.Location = new System.Drawing.Point(4, 175);
             this.lblObjFile.Name = "lblObjFile";
             this.lblObjFile.Size = new System.Drawing.Size(83, 13);
             this.lblObjFile.TabIndex = 381;
             this.lblObjFile.Text = "Object Filename";
             // 
-            // lblNodeId
-            // 
-            this.lblNodeId.AutoSize = true;
-            this.lblNodeId.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNodeId.Location = new System.Drawing.Point(4, 182);
-            this.lblNodeId.Name = "lblNodeId";
-            this.lblNodeId.Size = new System.Drawing.Size(18, 13);
-            this.lblNodeId.TabIndex = 384;
-            this.lblNodeId.Text = "ID";
-            // 
             // lblRotationPitch
             // 
             this.lblRotationPitch.AutoSize = true;
             this.lblRotationPitch.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblRotationPitch.Location = new System.Drawing.Point(51, 322);
+            this.lblRotationPitch.Location = new System.Drawing.Point(51, 312);
             this.lblRotationPitch.Name = "lblRotationPitch";
             this.lblRotationPitch.Size = new System.Drawing.Size(31, 13);
             this.lblRotationPitch.TabIndex = 396;
@@ -527,7 +519,7 @@
             // 
             this.lblRotationYaw.AutoSize = true;
             this.lblRotationYaw.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblRotationYaw.Location = new System.Drawing.Point(51, 296);
+            this.lblRotationYaw.Location = new System.Drawing.Point(51, 286);
             this.lblRotationYaw.Name = "lblRotationYaw";
             this.lblRotationYaw.Size = new System.Drawing.Size(28, 13);
             this.lblRotationYaw.TabIndex = 394;
@@ -537,7 +529,7 @@
             // 
             this.lblRotationRoll.AutoSize = true;
             this.lblRotationRoll.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblRotationRoll.Location = new System.Drawing.Point(51, 348);
+            this.lblRotationRoll.Location = new System.Drawing.Point(51, 338);
             this.lblRotationRoll.Name = "lblRotationRoll";
             this.lblRotationRoll.Size = new System.Drawing.Size(25, 13);
             this.lblRotationRoll.TabIndex = 398;
@@ -547,7 +539,7 @@
             // 
             this.lblNodeAxis.AutoSize = true;
             this.lblNodeAxis.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblNodeAxis.Location = new System.Drawing.Point(4, 296);
+            this.lblNodeAxis.Location = new System.Drawing.Point(4, 286);
             this.lblNodeAxis.Name = "lblNodeAxis";
             this.lblNodeAxis.Size = new System.Drawing.Size(47, 13);
             this.lblNodeAxis.TabIndex = 393;
@@ -557,7 +549,7 @@
             // 
             this.lblId.AutoSize = true;
             this.lblId.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblId.Location = new System.Drawing.Point(3, 152);
+            this.lblId.Location = new System.Drawing.Point(85, 154);
             this.lblId.Name = "lblId";
             this.lblId.Size = new System.Drawing.Size(18, 13);
             this.lblId.TabIndex = 399;
@@ -570,7 +562,7 @@
             this.btnRotationPitchawAdd45.Enabled = false;
             this.btnRotationPitchawAdd45.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRotationPitchawAdd45.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRotationPitchawAdd45.Location = new System.Drawing.Point(84, 292);
+            this.btnRotationPitchawAdd45.Location = new System.Drawing.Point(84, 282);
             this.btnRotationPitchawAdd45.Name = "btnRotationPitchawAdd45";
             this.btnRotationPitchawAdd45.Size = new System.Drawing.Size(25, 20);
             this.btnRotationPitchawAdd45.TabIndex = 400;
@@ -586,7 +578,7 @@
             this.btnRotationPitchawAdd1.Enabled = false;
             this.btnRotationPitchawAdd1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRotationPitchawAdd1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRotationPitchawAdd1.Location = new System.Drawing.Point(115, 292);
+            this.btnRotationPitchawAdd1.Location = new System.Drawing.Point(115, 282);
             this.btnRotationPitchawAdd1.Name = "btnRotationPitchawAdd1";
             this.btnRotationPitchawAdd1.Size = new System.Drawing.Size(25, 20);
             this.btnRotationPitchawAdd1.TabIndex = 401;
@@ -602,7 +594,7 @@
             this.btnRotationPitchawSub1.Enabled = false;
             this.btnRotationPitchawSub1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRotationPitchawSub1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRotationPitchawSub1.Location = new System.Drawing.Point(146, 292);
+            this.btnRotationPitchawSub1.Location = new System.Drawing.Point(146, 282);
             this.btnRotationPitchawSub1.Name = "btnRotationPitchawSub1";
             this.btnRotationPitchawSub1.Size = new System.Drawing.Size(25, 20);
             this.btnRotationPitchawSub1.TabIndex = 402;
@@ -618,7 +610,7 @@
             this.btnRotationPitchawSub45.Enabled = false;
             this.btnRotationPitchawSub45.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRotationPitchawSub45.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRotationPitchawSub45.Location = new System.Drawing.Point(177, 292);
+            this.btnRotationPitchawSub45.Location = new System.Drawing.Point(177, 282);
             this.btnRotationPitchawSub45.Name = "btnRotationPitchawSub45";
             this.btnRotationPitchawSub45.Size = new System.Drawing.Size(25, 20);
             this.btnRotationPitchawSub45.TabIndex = 403;
@@ -634,7 +626,7 @@
             this.btnRotationPitchSub45.Enabled = false;
             this.btnRotationPitchSub45.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRotationPitchSub45.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRotationPitchSub45.Location = new System.Drawing.Point(177, 318);
+            this.btnRotationPitchSub45.Location = new System.Drawing.Point(177, 308);
             this.btnRotationPitchSub45.Name = "btnRotationPitchSub45";
             this.btnRotationPitchSub45.Size = new System.Drawing.Size(25, 20);
             this.btnRotationPitchSub45.TabIndex = 408;
@@ -650,7 +642,7 @@
             this.btnRotationPitchSub1.Enabled = false;
             this.btnRotationPitchSub1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRotationPitchSub1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRotationPitchSub1.Location = new System.Drawing.Point(146, 318);
+            this.btnRotationPitchSub1.Location = new System.Drawing.Point(146, 308);
             this.btnRotationPitchSub1.Name = "btnRotationPitchSub1";
             this.btnRotationPitchSub1.Size = new System.Drawing.Size(25, 20);
             this.btnRotationPitchSub1.TabIndex = 407;
@@ -666,7 +658,7 @@
             this.btnRotationPitchAdd1.Enabled = false;
             this.btnRotationPitchAdd1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRotationPitchAdd1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRotationPitchAdd1.Location = new System.Drawing.Point(115, 318);
+            this.btnRotationPitchAdd1.Location = new System.Drawing.Point(115, 308);
             this.btnRotationPitchAdd1.Name = "btnRotationPitchAdd1";
             this.btnRotationPitchAdd1.Size = new System.Drawing.Size(25, 20);
             this.btnRotationPitchAdd1.TabIndex = 406;
@@ -682,7 +674,7 @@
             this.btnRotationPitchAdd45.Enabled = false;
             this.btnRotationPitchAdd45.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRotationPitchAdd45.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRotationPitchAdd45.Location = new System.Drawing.Point(84, 318);
+            this.btnRotationPitchAdd45.Location = new System.Drawing.Point(84, 308);
             this.btnRotationPitchAdd45.Name = "btnRotationPitchAdd45";
             this.btnRotationPitchAdd45.Size = new System.Drawing.Size(25, 20);
             this.btnRotationPitchAdd45.TabIndex = 405;
@@ -698,7 +690,7 @@
             this.btnRotationRollSub45.Enabled = false;
             this.btnRotationRollSub45.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRotationRollSub45.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRotationRollSub45.Location = new System.Drawing.Point(177, 344);
+            this.btnRotationRollSub45.Location = new System.Drawing.Point(177, 334);
             this.btnRotationRollSub45.Name = "btnRotationRollSub45";
             this.btnRotationRollSub45.Size = new System.Drawing.Size(25, 20);
             this.btnRotationRollSub45.TabIndex = 413;
@@ -714,7 +706,7 @@
             this.btnRotationRollSub1.Enabled = false;
             this.btnRotationRollSub1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRotationRollSub1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRotationRollSub1.Location = new System.Drawing.Point(146, 344);
+            this.btnRotationRollSub1.Location = new System.Drawing.Point(146, 334);
             this.btnRotationRollSub1.Name = "btnRotationRollSub1";
             this.btnRotationRollSub1.Size = new System.Drawing.Size(25, 20);
             this.btnRotationRollSub1.TabIndex = 412;
@@ -730,7 +722,7 @@
             this.btnRotationRollAdd1.Enabled = false;
             this.btnRotationRollAdd1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRotationRollAdd1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRotationRollAdd1.Location = new System.Drawing.Point(115, 344);
+            this.btnRotationRollAdd1.Location = new System.Drawing.Point(115, 334);
             this.btnRotationRollAdd1.Name = "btnRotationRollAdd1";
             this.btnRotationRollAdd1.Size = new System.Drawing.Size(25, 20);
             this.btnRotationRollAdd1.TabIndex = 411;
@@ -746,7 +738,7 @@
             this.btnRotationRollAdd45.Enabled = false;
             this.btnRotationRollAdd45.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRotationRollAdd45.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRotationRollAdd45.Location = new System.Drawing.Point(84, 344);
+            this.btnRotationRollAdd45.Location = new System.Drawing.Point(84, 334);
             this.btnRotationRollAdd45.Name = "btnRotationRollAdd45";
             this.btnRotationRollAdd45.Size = new System.Drawing.Size(25, 20);
             this.btnRotationRollAdd45.TabIndex = 410;
@@ -762,7 +754,7 @@
             this.btnRotationReset.Enabled = false;
             this.btnRotationReset.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRotationReset.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRotationReset.Location = new System.Drawing.Point(336, 292);
+            this.btnRotationReset.Location = new System.Drawing.Point(336, 282);
             this.btnRotationReset.Name = "btnRotationReset";
             this.btnRotationReset.Size = new System.Drawing.Size(75, 20);
             this.btnRotationReset.TabIndex = 414;
@@ -778,7 +770,7 @@
             this.btnRotationYawRandom.Enabled = false;
             this.btnRotationYawRandom.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRotationYawRandom.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRotationYawRandom.Location = new System.Drawing.Point(240, 292);
+            this.btnRotationYawRandom.Location = new System.Drawing.Point(240, 282);
             this.btnRotationYawRandom.Name = "btnRotationYawRandom";
             this.btnRotationYawRandom.Size = new System.Drawing.Size(75, 20);
             this.btnRotationYawRandom.TabIndex = 415;
@@ -794,7 +786,7 @@
             this.btnRotationPitchRandom.Enabled = false;
             this.btnRotationPitchRandom.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRotationPitchRandom.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRotationPitchRandom.Location = new System.Drawing.Point(240, 318);
+            this.btnRotationPitchRandom.Location = new System.Drawing.Point(240, 308);
             this.btnRotationPitchRandom.Name = "btnRotationPitchRandom";
             this.btnRotationPitchRandom.Size = new System.Drawing.Size(75, 20);
             this.btnRotationPitchRandom.TabIndex = 416;
@@ -810,7 +802,7 @@
             this.btnRotationRollRandom.Enabled = false;
             this.btnRotationRollRandom.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRotationRollRandom.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRotationRollRandom.Location = new System.Drawing.Point(240, 344);
+            this.btnRotationRollRandom.Location = new System.Drawing.Point(240, 334);
             this.btnRotationRollRandom.Name = "btnRotationRollRandom";
             this.btnRotationRollRandom.Size = new System.Drawing.Size(75, 20);
             this.btnRotationRollRandom.TabIndex = 417;
@@ -839,7 +831,7 @@
             // 
             this.lblGizmo.AutoSize = true;
             this.lblGizmo.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblGizmo.Location = new System.Drawing.Point(4, 371);
+            this.lblGizmo.Location = new System.Drawing.Point(0, 365);
             this.lblGizmo.Name = "lblGizmo";
             this.lblGizmo.Size = new System.Drawing.Size(36, 13);
             this.lblGizmo.TabIndex = 419;
@@ -853,7 +845,7 @@
             this.nudSnapScale.DrawOutline = false;
             this.nudSnapScale.Enabled = false;
             this.nudSnapScale.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.nudSnapScale.Location = new System.Drawing.Point(144, 414);
+            this.nudSnapScale.Location = new System.Drawing.Point(283, 381);
             this.nudSnapScale.Margin = new System.Windows.Forms.Padding(0);
             this.nudSnapScale.Maximum = new decimal(new int[] {
             512,
@@ -875,7 +867,7 @@
             // 
             this.lblSnapScale.AutoSize = true;
             this.lblSnapScale.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblSnapScale.Location = new System.Drawing.Point(106, 416);
+            this.lblSnapScale.Location = new System.Drawing.Point(245, 383);
             this.lblSnapScale.Name = "lblSnapScale";
             this.lblSnapScale.Size = new System.Drawing.Size(34, 13);
             this.lblSnapScale.TabIndex = 422;
@@ -884,7 +876,7 @@
             // chkSnap
             // 
             this.chkSnap.DrawOutline = false;
-            this.chkSnap.Location = new System.Drawing.Point(7, 415);
+            this.chkSnap.Location = new System.Drawing.Point(146, 382);
             this.chkSnap.Name = "chkSnap";
             this.chkSnap.Size = new System.Drawing.Size(92, 17);
             this.chkSnap.TabIndex = 423;
@@ -892,29 +884,68 @@
             this.chkSnap.UseVisualStyleBackColor = true;
             this.chkSnap.CheckedChanged += new System.EventHandler(this.chkSnap_CheckedChanged);
             // 
-            // cmbOperationMode
+            // chkbtnMode
             // 
-            this.cmbOperationMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.cmbOperationMode.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbOperationMode.DrawOutline = true;
-            this.cmbOperationMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbOperationMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmbOperationMode.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.cmbOperationMode.FormattingEnabled = true;
-            this.cmbOperationMode.Items.AddRange(new object[] {
-            "Move",
-            "Rotate"});
-            this.cmbOperationMode.Location = new System.Drawing.Point(6, 388);
-            this.cmbOperationMode.Name = "cmbOperationMode";
-            this.cmbOperationMode.Size = new System.Drawing.Size(75, 21);
-            this.cmbOperationMode.TabIndex = 424;
-            this.cmbOperationMode.SelectedIndexChanged += new System.EventHandler(this.cmbOperationMode_SelectedIndexChanged);
+            this.chkbtnMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.chkbtnMode.Checked = true;
+            this.chkbtnMode.DrawOutline = false;
+            this.chkbtnMode.Enabled = false;
+            this.chkbtnMode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.chkbtnMode.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.chkbtnMode.Location = new System.Drawing.Point(63, 379);
+            this.chkbtnMode.Name = "chkbtnMode";
+            this.chkbtnMode.Size = new System.Drawing.Size(75, 20);
+            this.chkbtnMode.TabIndex = 428;
+            this.chkbtnMode.Text = "Local";
+            this.chkbtnMode.UseDisableColor = true;
+            this.chkbtnMode.UseVisualStyleBackColor = false;
+            this.chkbtnMode.CheckedChanged += new System.EventHandler(this.chkbtnMode_CheckedChanged);
+            // 
+            // chkbtnOperation
+            // 
+            this.chkbtnOperation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.chkbtnOperation.Checked = true;
+            this.chkbtnOperation.DrawOutline = false;
+            this.chkbtnOperation.Enabled = false;
+            this.chkbtnOperation.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.chkbtnOperation.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.chkbtnOperation.Location = new System.Drawing.Point(63, 403);
+            this.chkbtnOperation.Name = "chkbtnOperation";
+            this.chkbtnOperation.Size = new System.Drawing.Size(75, 20);
+            this.chkbtnOperation.TabIndex = 427;
+            this.chkbtnOperation.Text = "Translate";
+            this.chkbtnOperation.UseDisableColor = true;
+            this.chkbtnOperation.UseVisualStyleBackColor = false;
+            this.chkbtnOperation.CheckedChanged += new System.EventHandler(this.chkbtnOperation_CheckedChanged);
+            // 
+            // utinniLabel1
+            // 
+            this.utinniLabel1.AutoSize = true;
+            this.utinniLabel1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.utinniLabel1.Location = new System.Drawing.Point(4, 383);
+            this.utinniLabel1.Name = "utinniLabel1";
+            this.utinniLabel1.Size = new System.Drawing.Size(34, 13);
+            this.utinniLabel1.TabIndex = 429;
+            this.utinniLabel1.Text = "Mode";
+            // 
+            // utinniLabel2
+            // 
+            this.utinniLabel2.AutoSize = true;
+            this.utinniLabel2.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.utinniLabel2.Location = new System.Drawing.Point(4, 407);
+            this.utinniLabel2.Name = "utinniLabel2";
+            this.utinniLabel2.Size = new System.Drawing.Size(53, 13);
+            this.utinniLabel2.TabIndex = 430;
+            this.utinniLabel2.Text = "Operation";
             // 
             // SnapshotPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.cmbOperationMode);
+            this.Controls.Add(this.utinniLabel2);
+            this.Controls.Add(this.utinniLabel1);
+            this.Controls.Add(this.chkbtnMode);
+            this.Controls.Add(this.chkbtnOperation);
             this.Controls.Add(this.chkSnap);
             this.Controls.Add(this.lblSnapScale);
             this.Controls.Add(this.nudSnapScale);
@@ -949,7 +980,6 @@
             this.Controls.Add(this.txtNodeId);
             this.Controls.Add(this.nudNodeRadius);
             this.Controls.Add(this.lblObjFile);
-            this.Controls.Add(this.lblNodeId);
             this.Controls.Add(this.lblObjectType);
             this.Controls.Add(this.txtNodeType);
             this.Controls.Add(this.txtNodeFilename);
@@ -965,13 +995,13 @@
             this.Controls.Add(this.txtNewNodeFilename);
             this.Controls.Add(this.btnRemoveSelectedNode);
             this.Controls.Add(this.btnAddNode);
-            this.Controls.Add(this.btnSaveSnapshot);
-            this.Controls.Add(this.btnUnloadSnapshot);
-            this.Controls.Add(this.btnReloadSnapshot);
-            this.Controls.Add(this.btnLoadSnapshot);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnUnload);
+            this.Controls.Add(this.btnReload);
+            this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.cmbSnapshots);
             this.Name = "SnapshotPanel";
-            this.Size = new System.Drawing.Size(417, 441);
+            this.Size = new System.Drawing.Size(417, 429);
             ((System.ComponentModel.ISupportInitialize)(this.nudNodePosY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNodePosZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNodePosX)).EndInit();
@@ -983,11 +1013,11 @@
         }
 
         #endregion
-        private UtinniCoreDotNet.UI.Controls.UtinniButton btnReloadSnapshot;
-        private UtinniCoreDotNet.UI.Controls.UtinniButton btnLoadSnapshot;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnReload;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnLoad;
         private UtinniCoreDotNet.UI.Controls.UtinniComboBox cmbSnapshots;
-        private UtinniCoreDotNet.UI.Controls.UtinniButton btnUnloadSnapshot;
-        private UtinniCoreDotNet.UI.Controls.UtinniButton btnSaveSnapshot;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnUnload;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnSave;
         private UtinniCoreDotNet.UI.Controls.UtinniButton btnAddNode;
         private UtinniCoreDotNet.UI.Controls.UtinniButton btnRemoveSelectedNode;
         private UtinniCoreDotNet.UI.Controls.UtinniTextbox txtNewNodeFilename;
@@ -1011,7 +1041,6 @@
         private UtinniCoreDotNet.UI.Controls.UtinniTextbox txtNodeId;
         private UtinniCoreDotNet.UI.Controls.UtinniNumericUpDown nudNodeRadius;
         private UtinniCoreDotNet.UI.Controls.UtinniLabel lblObjFile;
-        private UtinniCoreDotNet.UI.Controls.UtinniLabel lblNodeId;
         private UtinniCoreDotNet.UI.Controls.UtinniLabel lblRotationPitch;
         private UtinniCoreDotNet.UI.Controls.UtinniLabel lblRotationYaw;
         private UtinniCoreDotNet.UI.Controls.UtinniLabel lblRotationRoll;
@@ -1038,6 +1067,9 @@
         private UtinniCoreDotNet.UI.Controls.UtinniNumericUpDown nudSnapScale;
         private UtinniCoreDotNet.UI.Controls.UtinniLabel lblSnapScale;
         private UtinniCoreDotNet.UI.Controls.UtinniToggle chkSnap;
-        private UtinniCoreDotNet.UI.Controls.UtinniComboBox cmbOperationMode;
+        private UtinniCoreDotNet.UI.Controls.UtinniToggleButton chkbtnMode;
+        private UtinniCoreDotNet.UI.Controls.UtinniToggleButton chkbtnOperation;
+        private UtinniCoreDotNet.UI.Controls.UtinniLabel utinniLabel1;
+        private UtinniCoreDotNet.UI.Controls.UtinniLabel utinniLabel2;
     }
 }

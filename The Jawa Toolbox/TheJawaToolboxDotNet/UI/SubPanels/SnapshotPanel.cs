@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using TJT.SWG;
+using TJT.UI.Forms;
 using UtinniCore.Swg.Math;
 using UtinniCore.Utinni;
 using UtinniCoreDotNet.Hotkeys;
@@ -12,14 +14,16 @@ namespace TJT.UI.SubPanels
     public interface ISnapshotPanel : ISceneAvailability
     {
         void SetCmbSnapshots(List<string> snapshots);
-        void UpdateSnapshotNodeEditingMode(bool enable);
+        void UpdateNodeEditingMode(bool enable);
         void UpdateSelectedNodeControls(WorldSnapshotReaderWriter.Node node, string cellName = "", string typeText = "");
         void UpdateSelectedNodeControlsPosition(Vector position);
+        void UpdateGizmoModeControls(bool value);
+        void UpdateGizmoOperationControls(bool value);
+        void UpdateGizmoSnapControl(bool value);
     }
 
     public partial class SnapshotPanel : SubPanel, ISnapshotPanel
     {
-        private readonly GroundSceneImpl groundScene;
         private readonly WorldSnapshotImpl worldSnapshot;
 
         private readonly UtINI ini;
@@ -37,9 +41,6 @@ namespace TJT.UI.SubPanels
 
             txtNewNodeFilename.Text = ini.GetString("Snapshot", "defaultNodeObjectFilename");
             chkEnableNodeEditing.Checked = ini.GetBool("Snapshot", "autoEnableSnapshotEditing");
-
-            cmbOperationMode.SelectedIndex = 0;
-            // cmbGizmoMode.SelectedIndex = 0;
         }
 
         private void CreateSettings()
@@ -49,40 +50,42 @@ namespace TJT.UI.SubPanels
             ini.AddSetting("Snapshot", "autoEnableSnapshotEditing", "false", UtINI.Value.Types.VtBool);
         }
 
-        private void btnLoadSnapshot_Click(object sender, EventArgs e)
+        private void btnLoad_Click(object sender, EventArgs e)
         {
             worldSnapshot.Load(cmbSnapshots.Items[cmbSnapshots.SelectedIndex].ToString());
         }
 
-        private void btnUnloadSnapshot_Click(object sender, EventArgs e)
+        private void btnUnload_Click(object sender, EventArgs e)
         {
             worldSnapshot.Unload();
         }
 
-        private void btnReloadSnapshot_Click(object sender, EventArgs e)
+        private void btnReload_Click(object sender, EventArgs e)
         {
             worldSnapshot.Reload();
         }
 
-        private void btnSaveSnapshot_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
             worldSnapshot.Save();
         }
 
         private void btnSaveAs_Click(object sender, EventArgs e)
         {
-            // pop up form that returns a string;
-
-            string result = "";
-            worldSnapshot.SaveAs(result);
+            FormSnapshotSaveAsDialog form = new FormSnapshotSaveAsDialog(GroundScene.Get().Name);
+            DialogResult dialogResult = form.ShowDialog();
+            if (dialogResult == DialogResult.OK)
+            {
+                worldSnapshot.SaveAs(form.SaveAsName);
+            }
         }
 
-        private void btnAddSnapshotNode_Click(object sender, EventArgs e)
+        private void btnAddNode_Click(object sender, EventArgs e)
         {
             worldSnapshot.AddNode(txtNewNodeFilename.Text);
         }
 
-        private void btnRemoveSnapshotNode_Click(object sender, EventArgs e)
+        private void btnRemoveNode_Click(object sender, EventArgs e)
         {
             worldSnapshot.RemoveNode();
         }
@@ -102,7 +105,7 @@ namespace TJT.UI.SubPanels
             worldSnapshot.SetRadius((float)nudNodeRadius.Value);
         }
 
-        public void UpdateSnapshotNodeEditingMode(bool enable)
+        public void UpdateNodeEditingMode(bool enable)
         {
             chkEnableNodeEditing.CheckedChanged -= chkEnableNodeEditing_CheckedChanged;
             chkEnableNodeEditing.Checked = enable;
@@ -132,18 +135,13 @@ namespace TJT.UI.SubPanels
             }
 
             cmbSnapshots.Enabled = isSceneActive;
-            btnLoadSnapshot.Enabled = isSceneActive;
-            btnSaveSnapshot.Enabled = isSceneActive;
-            btnReloadSnapshot.Enabled = isSceneActive;
-            btnUnloadSnapshot.Enabled = isSceneActive;
+            btnLoad.Enabled = isSceneActive;
+            btnSave.Enabled = isSceneActive;
+            btnSaveAs.Enabled = isSceneActive;
+            btnReload.Enabled = isSceneActive;
+            btnUnload.Enabled = isSceneActive;
 
             btnAddNode.Enabled = isSceneActive;
-
-            //chkSnap.Checked = IsSnap
-            chkSnap.Enabled = isSceneActive;
-            cmbOperationMode.Enabled = isSceneActive;
-            // cmbGizmoMode.Enabled = isSceneActive;
-            nudSnapScale.Enabled = isSceneActive;
 
             previousIsSceneActive = isSceneActive;
         }
@@ -177,6 +175,13 @@ namespace TJT.UI.SubPanels
 
             nudNodeRadius.Enabled = value;
             btnRemoveSelectedNode.Enabled = value;
+
+            //chkSnap.Checked = IsSnap
+            chkSnap.Enabled = value;
+            nudSnapScale.Enabled = value;
+
+            chkbtnOperation.Enabled = value;
+            chkbtnMode.Enabled = value;
         }
 
         public void UpdateSelectedNodeControls(WorldSnapshotReaderWriter.Node node, string cellName, string typeText)
@@ -305,24 +310,87 @@ namespace TJT.UI.SubPanels
             worldSnapshot.ResetRotation();
         }
 
-        private void cmbOperationMode_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            worldSnapshot.SetOperationMode(cmbOperationMode.SelectedIndex);
-        }
-
-        private void cmbGizmoMode_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            worldSnapshot.SetGizmoMode(cmbOperationMode.SelectedIndex);
-        }
-
         private void chkSnap_CheckedChanged(object sender, EventArgs e)
         {
-            worldSnapshot.EnableSnap(chkSnap.Checked);
+            worldSnapshot.SetGizmoSnap(chkSnap.Checked);
         }
 
         private void nudSnapScale_ValueChanged(object sender, EventArgs e)
         {
             worldSnapshot.SetSnapScale((float) nudSnapScale.Value);
         }
+
+        private void chkbtnMode_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkbtnMode.Checked)
+            {
+                chkbtnMode.Text = "Local";
+                worldSnapshot.SetGizmoToLocal();
+            }
+            else
+            {
+                chkbtnMode.Text = "World";
+                worldSnapshot.SetGizmoToWorld();
+            }
+        }
+
+        private void chkbtnOperation_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkbtnOperation.Checked)
+            {
+                chkbtnOperation.Text = "Translate";
+                worldSnapshot.SetOperationModeToTranslate();
+            }
+            else
+            {
+
+                chkbtnOperation.Text = "Rotation";
+                worldSnapshot.SetOperationModeToRotation();
+            }
+        }
+
+        public void UpdateGizmoModeControls(bool value)
+        {
+            chkbtnMode.CheckedChanged -= chkbtnMode_CheckedChanged;
+            chkbtnMode.Checked = value;
+            chkbtnMode.CheckedChanged += chkbtnMode_CheckedChanged;
+
+            if (value)
+            {
+                chkbtnMode.Text = "Local";
+            }
+            else
+            {
+
+                chkbtnMode.Text = "World";
+            }
+        }
+
+        public void UpdateGizmoOperationControls(bool value)
+        {
+
+            chkbtnOperation.CheckedChanged -= chkbtnOperation_CheckedChanged;
+            chkbtnOperation.Checked = value;
+            chkbtnOperation.CheckedChanged += chkbtnOperation_CheckedChanged;
+
+            if (value)
+            {
+                chkbtnOperation.Text = "Translate";
+            }
+            else
+            {
+
+                chkbtnOperation.Text = "Rotation";
+            }
+        } 
+
+        public void UpdateGizmoSnapControl(bool value)
+        {
+            chkSnap.CheckedChanged -= chkSnap_CheckedChanged;
+            chkSnap.Checked = value;
+            chkSnap.CheckedChanged += chkSnap_CheckedChanged;
+        }
+
     }
+
 }
