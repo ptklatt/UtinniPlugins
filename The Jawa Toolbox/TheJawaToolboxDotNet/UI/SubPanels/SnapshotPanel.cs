@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
 using TJT.SWG;
 using TJT.UI.Forms;
@@ -72,8 +73,12 @@ namespace TJT.UI.SubPanels
 
         private void btnSaveAs_Click(object sender, EventArgs e)
         {
-            FormSnapshotSaveAsDialog form = new FormSnapshotSaveAsDialog(GroundScene.Get().Name);
-            DialogResult dialogResult = form.ShowDialog();
+            FormSnapshotSaveAsDialog form = new FormSnapshotSaveAsDialog(GroundScene.Get().Name)
+            {
+                Location = new System.Drawing.Point(MousePosition.X - 200, MousePosition.Y - 40)
+            };
+
+            DialogResult dialogResult = form.ShowDialog(this);
             if (dialogResult == DialogResult.OK)
             {
                 worldSnapshot.SaveAs(form.SaveAsName);

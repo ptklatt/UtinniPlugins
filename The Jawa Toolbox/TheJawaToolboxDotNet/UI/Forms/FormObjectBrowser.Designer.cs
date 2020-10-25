@@ -1,4 +1,4 @@
-﻿namespace TJT.UI
+﻿namespace TJT.UI.Forms
 {
     partial class FormObjectBrowser
     {

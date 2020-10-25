@@ -60,11 +60,17 @@
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SWG\MiscImpl.cs" />
-    <Compile Include="UI\FormObjectBrowser.cs">
+    <Compile Include="UI\Forms\FormObjectBrowser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\FormObjectBrowser.designer.cs">
+    <Compile Include="UI\Forms\FormObjectBrowser.designer.cs">
       <DependentUpon>FormObjectBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\FormSnapshotSaveAsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FormSnapshotSaveAsDialog.Designer.cs">
+      <DependentUpon>FormSnapshotSaveAsDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\SubPanels\GraphicsPanel.cs">
       <SubType>UserControl</SubType>
@@ -104,8 +110,11 @@
     <Compile Include="SWG\WorldSnapshotImpl.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="UI\FormObjectBrowser.resx">
+    <EmbeddedResource Include="UI\Forms\FormObjectBrowser.resx">
       <DependentUpon>FormObjectBrowser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\FormSnapshotSaveAsDialog.resx">
+      <DependentUpon>FormSnapshotSaveAsDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\SubPanels\GraphicsPanel.resx">
       <DependentUpon>GraphicsPanel.cs</DependentUpon>

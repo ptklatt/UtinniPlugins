@@ -138,6 +138,7 @@
             this.cmbSnapshots.Name = "cmbSnapshots";
             this.cmbSnapshots.Size = new System.Drawing.Size(237, 21);
             this.cmbSnapshots.TabIndex = 328;
+            this.cmbSnapshots.TabStop = false;
             // 
             // btnUnload
             // 
@@ -818,7 +819,7 @@
             this.btnSaveAs.Enabled = false;
             this.btnSaveAs.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSaveAs.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnSaveAs.Location = new System.Drawing.Point(327, 4);
+            this.btnSaveAs.Location = new System.Drawing.Point(327, 3);
             this.btnSaveAs.Name = "btnSaveAs";
             this.btnSaveAs.Size = new System.Drawing.Size(75, 20);
             this.btnSaveAs.TabIndex = 418;

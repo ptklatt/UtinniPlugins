@@ -15,7 +15,7 @@ using UtinniCoreDotNet.UI.Forms;
 using UtinniCoreDotNet.UI.Theme;
 using Appearance = UtinniCore.Utinni.Appearance;
 
-namespace TJT.UI
+namespace TJT.UI.Forms
 {
     public partial class FormObjectBrowser : UtinniForm, IEditorForm
     {

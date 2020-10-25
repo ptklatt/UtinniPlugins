@@ -158,6 +158,7 @@
             this.cmbScenes.Name = "cmbScenes";
             this.cmbScenes.Size = new System.Drawing.Size(237, 21);
             this.cmbScenes.TabIndex = 324;
+            this.cmbScenes.TabStop = false;
             // 
             // txtAvatarObjectFilename
             // 
@@ -170,6 +171,7 @@
             this.txtAvatarObjectFilename.Name = "txtAvatarObjectFilename";
             this.txtAvatarObjectFilename.Size = new System.Drawing.Size(411, 20);
             this.txtAvatarObjectFilename.TabIndex = 323;
+            this.txtAvatarObjectFilename.TabStop = false;
             this.txtAvatarObjectFilename.Text = "object/creature/player/shared_human_male.iff";
             // 
             // lblHoursAndMinute
@@ -197,7 +199,7 @@
             this.Controls.Add(this.cmbScenes);
             this.Controls.Add(this.txtAvatarObjectFilename);
             this.Name = "ScenePanel";
-            this.Size = new System.Drawing.Size(417, 189);
+            this.Size = new System.Drawing.Size(417, 162);
             ((System.ComponentModel.ISupportInitialize)(this.nudWeatherIndex)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
