@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using TJT.UI;
+using TJT.UI.Forms;
 using TJT.UI.SubPanels;
 using UtinniCore.Utinni;
 using UtinniCoreDotNet.Hotkeys;
@@ -37,6 +37,7 @@ namespace TJT
                 new ScenePanel(this, hotkeyManager, ini),
                 new SnapshotPanel(this, hotkeyManager, ini),
                 new PlayerPanel(hotkeyManager),
+                new FreeCamPanel(hotkeyManager), 
                 new GraphicsPanel(ini),
                 new MiscPanel(ini)
             }));

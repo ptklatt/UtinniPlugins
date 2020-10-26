@@ -6,7 +6,7 @@ using UtinniCoreDotNet.Hotkeys;
 
 namespace TJT.SWG
 {
-    public class PlayerObjectImpl
+    public class PlayerObjectImpl // ToDo have a check on cam and add it to funcs, enable/disable, esp for hotkeys
     {
         private float defaultSpeed;
         //private float modifiedSpeed;
@@ -16,30 +16,51 @@ namespace TJT.SWG
             this.playerPanel = sceneAvailability;
             GameCallbacks.AddSetupSceneCall(OnSetupSceneCallback);
             GameCallbacks.AddCleanupSceneCall(OnCleanupCallback);
+            GroundSceneCallbacks.AddCameraChangeCallback(OnCameraChangeCallback);
 
-            hotkeyManager.Hotkeys.Add("ToggleFreeCam", new Hotkey("Toggle FreeCam", "Shift + Tab", ToggleFreeCam, true));
-            hotkeyManager.Hotkeys.Add("CameraHalfSpeed", new Hotkey("CameraHalfSpeed", "F4", HalfSpeed, true));
-            hotkeyManager.Hotkeys.Add("CameraDoubleSpeed", new Hotkey("CameraDoubleSpeed", "F5", DoubleSpeed, true));
+            hotkeyManager.Hotkeys.Add("PlayerHalfSpeed", new Hotkey("PlayerHalfSpeed", "F4", HalfSpeed, true));
+            hotkeyManager.Hotkeys.Add("PlayerDoubleSpeed", new Hotkey("PlayerDoubleSpeed", "F5", DoubleSpeed, true));
             // hotkeyManager.Hotkeys.Add(new Hotkey("ToggleDefaultSpeed", "Shift, Control + F6", ToggleFreeCam, false)); ToDo
         }
 
         private void OnSetupSceneCallback()
         {
             playerPanel.UpdateSceneAvailability(true);
-            Task updateView = UpdateView();
+            Task updateSpeed = UpdateSpeed();
+            Task updateCellNames = UpdateCellName();
         }
 
         private void OnCleanupCallback()
         {
             playerPanel.UpdateSceneAvailability(false);
             playerPanel.UpdateSpeed(0);
+            playerPanel.UpdateCellName("");
+        }
+
+        private void OnCameraChangeCallback()
+        {
+            playerPanel.UpdateTeleportToCamera(GroundScene.Get().IsFreeCameraActive);
         }
 
         public void Teleport(float x, float y, float z)
         {
             GroundSceneCallbacks.AddUpdateLoopCall(() =>
             {
+                if (GroundScene.Get().IsFreeCameraActive)
+                {
+                    GroundScene.Get().ToggleFreeCamera();
+                }
+
                 UtinniCore.Utinni.PlayerObject.player_object.Teleport(x, y, z);
+            });
+        }
+
+        public void TeleportToCamera()
+        {
+            GroundSceneCallbacks.AddUpdateLoopCall(() =>
+            {
+                var pos = Game.Camera.Transform.Position;
+                UtinniCore.Utinni.PlayerObject.player_object.Teleport(pos.X, 0, pos.Y);
             });
         }
 
@@ -86,23 +107,7 @@ namespace TJT.SWG
             // ToDo
         }
 
-        public void ToggleFreeCam()
-        {
-            GroundSceneCallbacks.AddUpdateLoopCall(() =>
-            {
-                GroundScene.Get().ToggleFreeCamera();
-            });
-        }
-
-        public void ToggleModel()
-        {
-            GroundSceneCallbacks.AddUpdateLoopCall(() =>
-            {
-                UtinniCore.Utinni.PlayerObject.player_object.TogglePlayerAppearance();
-            });
-        }
-
-        private async Task UpdateView()
+        private async Task UpdateSpeed()
         {
             while (true)
             {
@@ -113,6 +118,20 @@ namespace TJT.SWG
                     playerPanel.UpdateSpeed(defaultSpeed);
                     break;
                 }
+            }
+        }
+
+        private async Task UpdateCellName()
+        {
+            while (GroundScene.Get() != null)
+            {
+                var player = Game.Player;
+                if (player != null && player.ParentCell != null)
+                {
+                    playerPanel.UpdateCellName(player.ParentCell.Name + ": " + player.ParentCell.Index + " (" + 0 + ")"); // ToDo get network id
+                }
+
+                await Task.Delay(5);
             }
         }
     }

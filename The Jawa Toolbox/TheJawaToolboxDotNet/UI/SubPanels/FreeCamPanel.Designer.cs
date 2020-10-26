@@ -1,6 +1,6 @@
 ﻿namespace TJT.UI.SubPanels
 {
-    partial class PlayerPanel
+    partial class FreeCamPanel
     {
         /// <summary> 
         /// Required designer variable.
@@ -34,10 +34,12 @@
             this.btnTeleport = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             this.nudSpeed = new UtinniCoreDotNet.UI.Controls.UtinniNumericUpDown();
             this.btnResetSpeed = new UtinniCoreDotNet.UI.Controls.UtinniButton();
-            this.txtCell = new UtinniCoreDotNet.UI.Controls.UtinniTextbox();
+            this.txtCellName = new UtinniCoreDotNet.UI.Controls.UtinniTextbox();
             this.lblCell = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
             this.sldSpeed = new UtinniCoreDotNet.UI.Controls.UtinniSlider();
-            this.btnToCamera = new UtinniCoreDotNet.UI.Controls.UtinniButton();
+            this.chkPlayerModel = new UtinniCoreDotNet.UI.Controls.UtinniToggle();
+            this.chkFreeCam = new UtinniCoreDotNet.UI.Controls.UtinniToggle();
+            this.chkDragPlayer = new UtinniCoreDotNet.UI.Controls.UtinniToggle();
             ((System.ComponentModel.ISupportInitialize)(this.nudZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudX)).BeginInit();
@@ -93,6 +95,11 @@
             this.nudY.TabIndex = 33;
             this.nudY.TabStop = false;
             this.nudY.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.nudY.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
             // 
             // nudX
             // 
@@ -173,24 +180,24 @@
             this.btnResetSpeed.UseVisualStyleBackColor = false;
             this.btnResetSpeed.Click += new System.EventHandler(this.btnResetSpeed_Click);
             // 
-            // txtCell
+            // txtCellName
             // 
-            this.txtCell.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCell.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCell.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCell.Enabled = false;
-            this.txtCell.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.txtCell.Location = new System.Drawing.Point(302, 3);
-            this.txtCell.Name = "txtCell";
-            this.txtCell.ReadOnly = true;
-            this.txtCell.Size = new System.Drawing.Size(112, 20);
-            this.txtCell.TabIndex = 392;
+            this.txtCellName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCellName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCellName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCellName.Enabled = false;
+            this.txtCellName.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.txtCellName.Location = new System.Drawing.Point(302, 3);
+            this.txtCellName.Name = "txtCellName";
+            this.txtCellName.ReadOnly = true;
+            this.txtCellName.Size = new System.Drawing.Size(112, 20);
+            this.txtCellName.TabIndex = 392;
             // 
             // lblCell
             // 
             this.lblCell.AutoSize = true;
             this.lblCell.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblCell.Location = new System.Drawing.Point(272, 5);
+            this.lblCell.Location = new System.Drawing.Point(272, 7);
             this.lblCell.Name = "lblCell";
             this.lblCell.Size = new System.Drawing.Size(24, 13);
             this.lblCell.TabIndex = 394;
@@ -211,38 +218,62 @@
             this.sldSpeed.Value = 0F;
             this.sldSpeed.ValueChanged += new System.EventHandler(this.sldSpeed_ValueChanged);
             // 
-            // btnToCamera
+            // chkPlayerModel
             // 
-            this.btnToCamera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.btnToCamera.DrawOutline = false;
-            this.btnToCamera.Enabled = false;
-            this.btnToCamera.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnToCamera.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnToCamera.Location = new System.Drawing.Point(336, 63);
-            this.btnToCamera.Name = "btnToCamera";
-            this.btnToCamera.Size = new System.Drawing.Size(75, 20);
-            this.btnToCamera.TabIndex = 407;
-            this.btnToCamera.Text = "To Camera";
-            this.btnToCamera.UseDisableColor = true;
-            this.btnToCamera.UseVisualStyleBackColor = false;
-            this.btnToCamera.Click += new System.EventHandler(this.btnToCamera_Click);
+            this.chkPlayerModel.Checked = true;
+            this.chkPlayerModel.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPlayerModel.DrawOutline = false;
+            this.chkPlayerModel.Enabled = false;
+            this.chkPlayerModel.Location = new System.Drawing.Point(121, 3);
+            this.chkPlayerModel.Name = "chkPlayerModel";
+            this.chkPlayerModel.Size = new System.Drawing.Size(128, 20);
+            this.chkPlayerModel.TabIndex = 405;
+            this.chkPlayerModel.Text = "Player Model";
+            this.chkPlayerModel.UseVisualStyleBackColor = true;
+            this.chkPlayerModel.CheckedChanged += new System.EventHandler(this.chkPlayerModel_CheckedChanged);
             // 
-            // PlayerPanel
+            // chkFreeCam
+            // 
+            this.chkFreeCam.DrawOutline = false;
+            this.chkFreeCam.Enabled = false;
+            this.chkFreeCam.Location = new System.Drawing.Point(6, 3);
+            this.chkFreeCam.Name = "chkFreeCam";
+            this.chkFreeCam.Size = new System.Drawing.Size(109, 20);
+            this.chkFreeCam.TabIndex = 406;
+            this.chkFreeCam.Text = "FreeCam";
+            this.chkFreeCam.UseVisualStyleBackColor = true;
+            this.chkFreeCam.CheckedChanged += new System.EventHandler(this.chkFreeCam_CheckedChanged);
+            // 
+            // chkDragPlayer
+            // 
+            this.chkDragPlayer.DrawOutline = false;
+            this.chkDragPlayer.Enabled = false;
+            this.chkDragPlayer.Location = new System.Drawing.Point(6, 93);
+            this.chkDragPlayer.Name = "chkDragPlayer";
+            this.chkDragPlayer.Size = new System.Drawing.Size(122, 20);
+            this.chkDragPlayer.TabIndex = 407;
+            this.chkDragPlayer.Text = "Drag Player";
+            this.chkDragPlayer.UseVisualStyleBackColor = true;
+            this.chkDragPlayer.CheckedChanged += new System.EventHandler(this.chkDragPlayer_CheckedChanged);
+            // 
+            // FreeCamPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnToCamera);
+            this.Controls.Add(this.chkDragPlayer);
+            this.Controls.Add(this.chkFreeCam);
+            this.Controls.Add(this.chkPlayerModel);
             this.Controls.Add(this.sldSpeed);
             this.Controls.Add(this.lblCell);
-            this.Controls.Add(this.txtCell);
+            this.Controls.Add(this.txtCellName);
             this.Controls.Add(this.btnResetSpeed);
             this.Controls.Add(this.nudSpeed);
             this.Controls.Add(this.btnTeleport);
             this.Controls.Add(this.nudZ);
             this.Controls.Add(this.nudY);
             this.Controls.Add(this.nudX);
-            this.Name = "PlayerPanel";
-            this.Size = new System.Drawing.Size(417, 92);
+            this.Name = "FreeCamPanel";
+            this.Size = new System.Drawing.Size(417, 119);
             ((System.ComponentModel.ISupportInitialize)(this.nudZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudX)).EndInit();
@@ -260,9 +291,11 @@
         private UtinniCoreDotNet.UI.Controls.UtinniButton btnTeleport;
         internal UtinniCoreDotNet.UI.Controls.UtinniNumericUpDown nudSpeed;
         private UtinniCoreDotNet.UI.Controls.UtinniButton btnResetSpeed;
-        private UtinniCoreDotNet.UI.Controls.UtinniTextbox txtCell;
+        private UtinniCoreDotNet.UI.Controls.UtinniTextbox txtCellName;
         private UtinniCoreDotNet.UI.Controls.UtinniLabel lblCell;
         private UtinniCoreDotNet.UI.Controls.UtinniSlider sldSpeed;
-        private UtinniCoreDotNet.UI.Controls.UtinniButton btnToCamera;
+        private UtinniCoreDotNet.UI.Controls.UtinniToggle chkPlayerModel;
+        private UtinniCoreDotNet.UI.Controls.UtinniToggle chkFreeCam;
+        private UtinniCoreDotNet.UI.Controls.UtinniToggle chkDragPlayer;
     }
 }

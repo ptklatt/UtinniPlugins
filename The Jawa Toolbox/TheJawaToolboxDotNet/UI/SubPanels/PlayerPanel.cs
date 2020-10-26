@@ -1,15 +1,15 @@
 ﻿using System;
 using TJT.SWG;
-using UtinniCore.Utinni;
 using UtinniCoreDotNet.Hotkeys;
 using UtinniCoreDotNet.UI.Controls;
-using UtinniCoreDotNet.Utility;
 
 namespace TJT.UI.SubPanels
 {
     public interface IPlayerPanel : ISceneAvailability
     {
         void UpdateSpeed(float value);
+        void UpdateCellName(string name);
+        void UpdateTeleportToCamera(bool value);
     }
 
     public partial class PlayerPanel : SubPanel, IPlayerPanel
@@ -44,16 +44,6 @@ namespace TJT.UI.SubPanels
             playerObject.ResetSpeed();
         }
 
-        private void btnToggleFreeCam_Click(object sender, EventArgs e)
-        {
-            playerObject.ToggleFreeCam();
-        }
-
-        private void btnToggleModel_Click(object sender, EventArgs e)
-        {
-            playerObject.ToggleModel();
-        }
-
         private bool previousIsSceneActive;
         public void UpdateSceneAvailability(bool isSceneActive)
         {
@@ -63,19 +53,22 @@ namespace TJT.UI.SubPanels
             }
 
             btnTeleport.Enabled = isSceneActive;
-            btnToggleFreeCam.Enabled = isSceneActive;
-            btnToggleModel.Enabled = isSceneActive;
 
             nudX.Enabled = isSceneActive;
             nudY.Enabled = isSceneActive;
             nudZ.Enabled = isSceneActive;
-
             nudSpeed.Enabled = isSceneActive;
             sldSpeed.Enabled = isSceneActive;
-
             btnResetSpeed.Enabled = isSceneActive;
+            btnToCamera.Enabled = isSceneActive;
+            txtCell.Enabled = isSceneActive;
 
             previousIsSceneActive = isSceneActive;
+        }
+
+        private void btnToCamera_Click(object sender, EventArgs e)
+        {
+            playerObject.TeleportToCamera();
         }
 
         public void UpdateSpeed(float value)
@@ -90,23 +83,15 @@ namespace TJT.UI.SubPanels
             sldSpeed.ValueChanged += sldSpeed_ValueChanged;
         }
 
-        private bool hideCell;
-
-        private void utinniButton1_Click(object sender, EventArgs e)
+        public void UpdateCellName(string name)
         {
-            //var cell = Game.Player.ParentCell.AppearanceObject;
-
-            //RenderWorldCamera.ClearExcludedObjects();
-
-            //hideCell = !hideCell;
-            //if (hideCell)
-            //{
-            //    RenderWorldCamera.AddExcludedObject(cell);
-            //}
-
-            string result = Game.Camera.ParentCell.Name + ": " + Game.Camera.ParentCell.Index;
-            Log.InfoSimple(result);
-
+            txtCell.Text = name;
         }
+
+        public void UpdateTeleportToCamera(bool value)
+        {
+            btnToCamera.Enabled = value;
+        }
+
     }
 }
