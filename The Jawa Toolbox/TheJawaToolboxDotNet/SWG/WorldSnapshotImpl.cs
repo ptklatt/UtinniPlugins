@@ -276,8 +276,9 @@ namespace TJT.SWG
                         {
                             obj.Transform.SetPosition(x, y, z);
                         }
+                        obj.PositionAndRotationChanged(false, node.Transform.Position);
 
-                        editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new WorldSnapshotNodeRotationChangedCommand(node, node.Transform, obj.Transform)));
+                        editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new WorldSnapshotNodePositionChangedCommand(node, node.Transform, obj.Transform)));
                         node.Transform.SetPosition(x, y, z);
                     }
                 }
@@ -365,6 +366,7 @@ namespace TJT.SWG
                 if (obj != null)
                 {
                     obj.Transform.Yaw(value);
+                    obj.PositionAndRotationChanged(false, obj.Transform.Position);
 
                     var node = WorldSnapshotReaderWriter.Get().GetNodeByNetworkId(obj.NetworkId);
                     if (node != null)
@@ -384,6 +386,7 @@ namespace TJT.SWG
                 if (obj != null)
                 {
                     obj.Transform.Pitch(value);
+                    obj.PositionAndRotationChanged(false, obj.Transform.Position);
 
                     var node = WorldSnapshotReaderWriter.Get().GetNodeByNetworkId(obj.NetworkId);
                     if (node != null)
@@ -403,6 +406,7 @@ namespace TJT.SWG
                 if (obj != null)
                 {
                     obj.Transform.Roll(value);
+                    obj.PositionAndRotationChanged(false, obj.Transform.Position);
 
                     var node = WorldSnapshotReaderWriter.Get().GetNodeByNetworkId(obj.NetworkId);
                     if (node != null)

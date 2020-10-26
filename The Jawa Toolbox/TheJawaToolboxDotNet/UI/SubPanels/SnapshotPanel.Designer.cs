@@ -195,7 +195,7 @@
             this.btnRemoveSelectedNode.Enabled = false;
             this.btnRemoveSelectedNode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRemoveSelectedNode.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.btnRemoveSelectedNode.Location = new System.Drawing.Point(3, 150);
+            this.btnRemoveSelectedNode.Location = new System.Drawing.Point(3, 151);
             this.btnRemoveSelectedNode.Name = "btnRemoveSelectedNode";
             this.btnRemoveSelectedNode.Size = new System.Drawing.Size(75, 20);
             this.btnRemoveSelectedNode.TabIndex = 335;
@@ -500,7 +500,7 @@
             // 
             this.lblObjFile.AutoSize = true;
             this.lblObjFile.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblObjFile.Location = new System.Drawing.Point(4, 175);
+            this.lblObjFile.Location = new System.Drawing.Point(4, 173);
             this.lblObjFile.Name = "lblObjFile";
             this.lblObjFile.Size = new System.Drawing.Size(83, 13);
             this.lblObjFile.TabIndex = 381;
