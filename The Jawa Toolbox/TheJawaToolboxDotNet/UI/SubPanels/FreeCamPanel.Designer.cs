@@ -40,6 +40,7 @@
             this.chkPlayerModel = new UtinniCoreDotNet.UI.Controls.UtinniToggle();
             this.chkFreeCam = new UtinniCoreDotNet.UI.Controls.UtinniToggle();
             this.chkDragPlayer = new UtinniCoreDotNet.UI.Controls.UtinniToggle();
+            this.btnToPlayer = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             ((System.ComponentModel.ISupportInitialize)(this.nudZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudX)).BeginInit();
@@ -256,10 +257,27 @@
             this.chkDragPlayer.UseVisualStyleBackColor = true;
             this.chkDragPlayer.CheckedChanged += new System.EventHandler(this.chkDragPlayer_CheckedChanged);
             // 
+            // btnToPlayer
+            // 
+            this.btnToPlayer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btnToPlayer.DrawOutline = false;
+            this.btnToPlayer.Enabled = false;
+            this.btnToPlayer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnToPlayer.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnToPlayer.Location = new System.Drawing.Point(336, 63);
+            this.btnToPlayer.Name = "btnToPlayer";
+            this.btnToPlayer.Size = new System.Drawing.Size(75, 20);
+            this.btnToPlayer.TabIndex = 408;
+            this.btnToPlayer.Text = "To Player";
+            this.btnToPlayer.UseDisableColor = true;
+            this.btnToPlayer.UseVisualStyleBackColor = false;
+            this.btnToPlayer.Click += new System.EventHandler(this.btnToPlayer_Click);
+            // 
             // FreeCamPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnToPlayer);
             this.Controls.Add(this.chkDragPlayer);
             this.Controls.Add(this.chkFreeCam);
             this.Controls.Add(this.chkPlayerModel);
@@ -297,5 +315,6 @@
         private UtinniCoreDotNet.UI.Controls.UtinniToggle chkPlayerModel;
         private UtinniCoreDotNet.UI.Controls.UtinniToggle chkFreeCam;
         private UtinniCoreDotNet.UI.Controls.UtinniToggle chkDragPlayer;
+        private UtinniCoreDotNet.UI.Controls.UtinniButton btnToPlayer;
     }
 }

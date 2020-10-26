@@ -53,6 +53,16 @@ namespace TJT.SWG
             });
         }
 
+        public void TeleportToPlayer()
+        {
+            GroundSceneCallbacks.AddUpdateLoopCall(() =>
+            {
+                var pos = Game.Player.Transform.Position;
+
+                Game.Camera.Transform.SetPosition(pos.X, pos.Y + 10, pos.Z);
+            });
+        }
+
         public void SetSpeed(float value)
         {
             GroundSceneCallbacks.AddUpdateLoopCall(() =>

@@ -88,6 +88,15 @@ namespace TJT.UI.SubPanels
             chkPlayerModel.Enabled = isFreeCamActive;
             chkDragPlayer.Enabled = isFreeCamActive;
 
+            if (isFreeCamActive && !chkDragPlayer.Checked)
+            {
+                btnToPlayer.Enabled = true;
+            }
+            else
+            {
+                btnToPlayer.Enabled = false;
+            }
+
             if (!isFreeCamActive)
             {
                 chkFreeCam.CheckedChanged -= chkFreeCam_CheckedChanged;
@@ -114,6 +123,12 @@ namespace TJT.UI.SubPanels
         private void chkDragPlayer_CheckedChanged(object sender, EventArgs e)
         {
             freeCamImpl.EnableDragPlayer(chkDragPlayer.Checked);
+            btnToPlayer.Enabled = !chkDragPlayer.Checked;
+        }
+
+        private void btnToPlayer_Click(object sender, EventArgs e)
+        {
+            freeCamImpl.TeleportToPlayer();
         }
     }
 }
