@@ -89,16 +89,22 @@ namespace TJT.SWG
 
         public void HalfSpeed()
         {
-            float value = GetSpeed() / 2;
-            SetSpeed(value);
-            freeCamPanel.UpdateSpeed(value);
+            if (GroundScene.Get().IsFreeCameraActive)
+            {
+                float value = GetSpeed() / 2;
+                SetSpeed(value);
+                freeCamPanel.UpdateSpeed(value);
+            }
         }
 
         public void DoubleSpeed()
         {
-            float value = GetSpeed() * 2;
-            SetSpeed(value);
-            freeCamPanel.UpdateSpeed(value);
+            if (GroundScene.Get().IsFreeCameraActive)
+            {
+                float value = GetSpeed() * 2;
+                SetSpeed(value);
+                freeCamPanel.UpdateSpeed(value);
+            }
         }
 
         public void ToggleDefaultSpeed()
