@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using UtinniCore.Swg.Math;
@@ -23,6 +24,26 @@ namespace TJT.UI.Forms
         private readonly UtINI ini;
 
         private readonly Dictionary<string, List<string>> objectRepo = new Dictionary<string, List<string>>();
+
+        private readonly string[] excludeDirectories = 
+        {
+            "cell",
+            "construction_contract",
+            "counting",
+            "draft_schematic",
+            "factory",
+            "group",
+            "guild",
+            "jedi_manager",
+            "manufacture_schematic",
+            "mission",
+            "object",
+            "player",
+            "path_waypoint",
+            "token",
+            "universe",
+            "waypoint"
+        };
 
         private static UtinniCore.Utinni.Object dragDropObject;
         private bool hasValidDragLocation;
@@ -66,6 +87,7 @@ namespace TJT.UI.Forms
             ini.AddSetting("ObjectBrowser", "width", "525", UtINI.Value.Types.VtInt);
             ini.AddSetting("ObjectBrowser", "height", "510", UtINI.Value.Types.VtInt);
             ini.AddSetting("ObjectBrowser", "keepOnTop", "true", UtINI.Value.Types.VtBool);
+            ini.AddSetting("ObjectBrowser", "excludeJunkDirectories", "true", UtINI.Value.Types.VtBool);
         }
 
         private async Task LoadRepo()
@@ -106,9 +128,30 @@ namespace TJT.UI.Forms
                 }
             }
 
+            bool excludeJunkDirs = ini.GetBool("ObjectBrowser", "excludeJunkDirectories");
+
             TreeNode tmpRootNode = new TreeNode();
             foreach (KeyValuePair<string, List<string>> dir in objectRepo)
             {
+                if (excludeJunkDirs)
+                {
+                    // ToDo do better
+                    bool skip = false;
+                    foreach (string excludeDir in excludeDirectories)
+                    {
+                        if (dir.Key.StartsWith(excludeDir))
+                        {
+                            skip = true;
+                            break;
+                        }
+                    }
+
+                    if (skip)
+                    {
+                        continue;
+                    }
+                }
+
                 // Split and loop through the directory's subdirectories and created nested nodes
                 TreeNode curNode = tmpRootNode;
                 string dirPath = dir.Key;
@@ -136,7 +179,7 @@ namespace TJT.UI.Forms
             return this.Text;
         }
 
-        public void Create(IEditorPlugin editorPlugin, List<Form> parentChildren)
+        public Form Create(IEditorPlugin editorPlugin, List<Form> parentChildren)
         {
             // Check if the form is already open
             foreach (Form form in parentChildren)
@@ -144,7 +187,7 @@ namespace TJT.UI.Forms
                 if (form.GetType() == typeof(FormObjectBrowser))
                 {
                     form.Activate();
-                    return;
+                    return null;
                 }
             }
 
@@ -152,6 +195,7 @@ namespace TJT.UI.Forms
             FormObjectBrowser formObjectBrowser = new FormObjectBrowser(editorPlugin);
             formObjectBrowser.Show();
             parentChildren.Add(formObjectBrowser);
+            return formObjectBrowser;
         }
 
         private List<string> currentFilenames;
