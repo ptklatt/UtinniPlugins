@@ -32,7 +32,6 @@
             this.btnUnloadScene = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             this.lblWeatherIndex = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
             this.nudWeatherIndex = new UtinniCoreDotNet.UI.Controls.UtinniNumericUpDown();
-            this.chkAllowTargetEverything = new UtinniCoreDotNet.UI.Controls.UtinniToggle();
             this.btnReloadScene = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             this.btnLoadScene = new UtinniCoreDotNet.UI.Controls.UtinniButton();
             this.cmbScenes = new UtinniCoreDotNet.UI.Controls.UtinniComboBox();
@@ -102,17 +101,6 @@
             this.nudWeatherIndex.TabStop = false;
             this.nudWeatherIndex.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.nudWeatherIndex.ValueChanged += new System.EventHandler(this.nudWeatherIndex_ValueChanged);
-            // 
-            // chkAllowTargetEverything
-            // 
-            this.chkAllowTargetEverything.DrawOutline = false;
-            this.chkAllowTargetEverything.Location = new System.Drawing.Point(3, 140);
-            this.chkAllowTargetEverything.Name = "chkAllowTargetEverything";
-            this.chkAllowTargetEverything.Size = new System.Drawing.Size(174, 17);
-            this.chkAllowTargetEverything.TabIndex = 337;
-            this.chkAllowTargetEverything.Text = "Allow target everything";
-            this.chkAllowTargetEverything.UseVisualStyleBackColor = true;
-            this.chkAllowTargetEverything.CheckedChanged += new System.EventHandler(this.chkAllowTargetEverything_CheckedChanged);
             // 
             // btnReloadScene
             // 
@@ -194,13 +182,12 @@
             this.Controls.Add(this.btnUnloadScene);
             this.Controls.Add(this.lblWeatherIndex);
             this.Controls.Add(this.nudWeatherIndex);
-            this.Controls.Add(this.chkAllowTargetEverything);
             this.Controls.Add(this.btnReloadScene);
             this.Controls.Add(this.btnLoadScene);
             this.Controls.Add(this.cmbScenes);
             this.Controls.Add(this.txtAvatarObjectFilename);
             this.Name = "ScenePanel";
-            this.Size = new System.Drawing.Size(417, 162);
+            this.Size = new System.Drawing.Size(417, 139);
             ((System.ComponentModel.ISupportInitialize)(this.nudWeatherIndex)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -213,7 +200,6 @@
         private UtinniCoreDotNet.UI.Controls.UtinniComboBox cmbScenes;
         private UtinniCoreDotNet.UI.Controls.UtinniButton btnLoadScene;
         private UtinniCoreDotNet.UI.Controls.UtinniButton btnReloadScene;
-        private UtinniCoreDotNet.UI.Controls.UtinniToggle chkAllowTargetEverything;
         internal UtinniCoreDotNet.UI.Controls.UtinniNumericUpDown nudWeatherIndex;
         private UtinniCoreDotNet.UI.Controls.UtinniLabel lblWeatherIndex;
         private UtinniCoreDotNet.UI.Controls.UtinniButton btnUnloadScene;

@@ -32,14 +32,12 @@ namespace TJT.UI.SubPanels
             ini.Load();
 
             txtAvatarObjectFilename.Text = ini.GetString("Scene", "defaultAvatarFilename");
-            chkAllowTargetEverything.Checked = ini.GetBool("Scene", "autoAllowTargetEverything");
         }
 
         private void CreateSettings()
         {
             ini.AddSetting("Scene", "defaultAvatarFilename", "object/creature/player/shared_human_male.iff", UtINI.Value.Types.VtString);
             ini.AddSetting("Scene", "defaultTerrainFilename", "terrain/naboo.trn", UtINI.Value.Types.VtString);
-            ini.AddSetting("Scene", "autoAllowTargetEverything", "false", UtINI.Value.Types.VtBool);
             ini.AddSetting("Scene", "forceModalChat", "true", UtINI.Value.Types.VtBool);
         }
 
@@ -67,11 +65,6 @@ namespace TJT.UI.SubPanels
         {
             groundScene.SetTimeOfDay(sldTimeOfDay.Value);
 
-        }
-
-        private void chkAllowTargetEverything_CheckedChanged(object sender, EventArgs e)
-        {
-            groundScene.AllowTargetEverything(chkAllowTargetEverything.Checked);
         }
 
         public void SetCmbScenes(List<string> scenes)

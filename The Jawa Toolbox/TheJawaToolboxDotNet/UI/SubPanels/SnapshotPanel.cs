@@ -42,6 +42,7 @@ namespace TJT.UI.SubPanels
 
             txtNewNodeFilename.Text = ini.GetString("Snapshot", "defaultNodeObjectFilename");
             chkEnableNodeEditing.Checked = ini.GetBool("Snapshot", "autoEnableSnapshotEditing");
+            chkAllowTargetEverything.Checked = ini.GetBool("Snapshot", "autoAllowTargetEverything");
         }
 
         private void CreateSettings()
@@ -49,6 +50,7 @@ namespace TJT.UI.SubPanels
             ini.AddSetting("Snapshot", "defaultSnapshotName", "naboo", UtINI.Value.Types.VtString);
             ini.AddSetting("Snapshot", "defaultNodeObjectFilename", "object/tangible/furniture/cheap/shared_armoire_s01.iff", UtINI.Value.Types.VtString);
             ini.AddSetting("Snapshot", "autoEnableSnapshotEditing", "false", UtINI.Value.Types.VtBool);
+            ini.AddSetting("Snapshot", "autoAllowTargetEverything", "false", UtINI.Value.Types.VtBool);
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
@@ -396,6 +398,10 @@ namespace TJT.UI.SubPanels
             chkSnap.CheckedChanged += chkSnap_CheckedChanged;
         }
 
+        private void chkAllowTargetEverything_CheckedChanged(object sender, EventArgs e)
+        {
+            worldSnapshot.AllowTargetEverything(chkAllowTargetEverything.Checked);
+        }
     }
 
 }

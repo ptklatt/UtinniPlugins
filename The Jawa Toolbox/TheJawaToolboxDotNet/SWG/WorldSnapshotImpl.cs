@@ -522,5 +522,14 @@ namespace TJT.SWG
             hotkeyManager.Hotkeys["SetGizmoRotationOperationMode"].Enabled = false;
             hotkeyManager.Hotkeys["ToggleGizmoSnap"].Enabled = false;
         }
+
+        public void AllowTargetEverything(bool value)
+        {
+            GroundSceneCallbacks.AddUpdateLoopCall(() =>
+            {
+                cui_hud.PatchAllowTargetEverything(value);
+            });
+        }
+
     }
 }

@@ -91,14 +91,6 @@ namespace TJT.SWG
             });
         }
 
-        public void AllowTargetEverything(bool value)
-        {
-            GroundSceneCallbacks.AddUpdateLoopCall(() =>
-            {
-                UtinniCore.Utinni.CuiHud.cui_hud.PatchAllowTargetEverything(value);
-            });
-        }
-
         private async Task UpdateView()
         {
             while (true)

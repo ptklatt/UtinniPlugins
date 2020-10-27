@@ -86,6 +86,7 @@
             this.chkbtnOperation = new UtinniCoreDotNet.UI.Controls.UtinniToggleButton();
             this.utinniLabel1 = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
             this.utinniLabel2 = new UtinniCoreDotNet.UI.Controls.UtinniLabel();
+            this.chkAllowTargetEverything = new UtinniCoreDotNet.UI.Controls.UtinniToggle();
             ((System.ComponentModel.ISupportInitialize)(this.nudNodePosY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNodePosZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudNodePosX)).BeginInit();
@@ -939,10 +940,22 @@
             this.utinniLabel2.TabIndex = 430;
             this.utinniLabel2.Text = "Operation";
             // 
+            // chkAllowTargetEverything
+            // 
+            this.chkAllowTargetEverything.DrawOutline = false;
+            this.chkAllowTargetEverything.Location = new System.Drawing.Point(237, 123);
+            this.chkAllowTargetEverything.Name = "chkAllowTargetEverything";
+            this.chkAllowTargetEverything.Size = new System.Drawing.Size(174, 17);
+            this.chkAllowTargetEverything.TabIndex = 431;
+            this.chkAllowTargetEverything.Text = "Allow target everything";
+            this.chkAllowTargetEverything.UseVisualStyleBackColor = true;
+            this.chkAllowTargetEverything.CheckedChanged += new System.EventHandler(this.chkAllowTargetEverything_CheckedChanged);
+            // 
             // SnapshotPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.chkAllowTargetEverything);
             this.Controls.Add(this.utinniLabel2);
             this.Controls.Add(this.utinniLabel1);
             this.Controls.Add(this.chkbtnMode);
@@ -1072,5 +1085,6 @@
         private UtinniCoreDotNet.UI.Controls.UtinniToggleButton chkbtnOperation;
         private UtinniCoreDotNet.UI.Controls.UtinniLabel utinniLabel1;
         private UtinniCoreDotNet.UI.Controls.UtinniLabel utinniLabel2;
+        private UtinniCoreDotNet.UI.Controls.UtinniToggle chkAllowTargetEverything;
     }
 }
