@@ -79,7 +79,7 @@ namespace TJT.UI.Forms
 
             lbFiles.QueryContinueDrag += lbFiles_QueryContinueDrag;
 
-            editorPlugin.GetHotkeyManager().Hotkeys["ToggleObjectBrowserKeepOnTop"] = new Hotkey("ToggleObjectBrowserKeepOnTop", "Shift, Control + T", ToggleKeepOnTop, false);
+            editorPlugin.GetHotkeyManager().Add(new Hotkey("ToggleObjectBrowserKeepOnTop", "Toggle Object Browser KeepOnTop", "Shift, Control + T", ToggleKeepOnTop, false));
         }
 
         private void CreateSettings()

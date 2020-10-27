@@ -18,9 +18,9 @@ namespace TJT.SWG
             GameCallbacks.AddCleanupSceneCall(OnCleanupCallback);
             GroundSceneCallbacks.AddCameraChangeCallback(OnCameraChangeCallback);
 
-            hotkeyManager.Hotkeys.Add("PlayerHalfSpeed", new Hotkey("PlayerHalfSpeed", "F4", HalfSpeed, true));
-            hotkeyManager.Hotkeys.Add("PlayerDoubleSpeed", new Hotkey("PlayerDoubleSpeed", "F5", DoubleSpeed, true));
-            // hotkeyManager.Hotkeys.Add(new Hotkey("ToggleDefaultSpeed", "Shift, Control + F6", ToggleFreeCam, false)); ToDo
+            hotkeyManager.Add(new Hotkey("PlayerHalfSpeed", "Half the Player speed", "F4", HalfSpeed, true));
+            hotkeyManager.Add(new Hotkey("PlayerDoubleSpeed", "Double the Player speed", "F5", DoubleSpeed, true));
+            // hotkeyManager.Add(new Hotkey("ToggleDefaultSpeed", "Shift, Control + F6", ToggleFreeCam, false)); ToDo
         }
 
         private void OnSetupSceneCallback()
