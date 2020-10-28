@@ -14,6 +14,7 @@ using UtinniCoreDotNet.PluginFramework;
 using UtinniCoreDotNet.UI;
 using UtinniCoreDotNet.UI.Forms;
 using UtinniCoreDotNet.UI.Theme;
+using UtinniCoreDotNet.Utility;
 using Appearance = UtinniCore.Utinni.Appearance;
 
 namespace TJT.UI.Forms
@@ -281,7 +282,7 @@ namespace TJT.UI.Forms
         private void lbFiles_MouseMove(object sender, MouseEventArgs e)
         {
             var moveDelta = e.Location - (Size)mouseDownPos;
-            if (e.Button == MouseButtons.Left && lbFiles.SelectedItem != null && (moveDelta.X >= 5 || moveDelta.Y >= 5))
+            if (e.Button == MouseButtons.Left && lbFiles.SelectedItem != null) //  && (moveDelta.X >= 1 || moveDelta.Y >= 1)
             {
                 lbFiles.DoDragDrop("object/" + txtDirectoryPath.Text + lbFiles.SelectedItem, DragDropEffects.Copy);
 
@@ -305,7 +306,7 @@ namespace TJT.UI.Forms
         {
             var player = Game.Player;
             var camera = GroundScene.Get().CurrentCamera;
-            if (player == null || camera == null)
+            if (player == null || camera == null || dragDropObject != null) // ToDo Sometimes this function ets called twice, why
             {
                 return;
             }
@@ -321,36 +322,29 @@ namespace TJT.UI.Forms
                 return;
             }
 
-            Transform newTransform = new Transform { Position = cui_hud.GetCursorWorldPosition() };
+            dragDropObject = UtinniCore.Utinni.Object.Ctor;
+            dragDropObject.AddNotification(0x019136E4, false); // ToDo Label the magic number
 
+            string appearanceFilename;
             if (objTemplate.PortalLayoutFilename == "")
             {
-                dragDropObject = ObjectTemplate.CreateObject(filename);
-                dragDropObject.ClientObject.SetParentCell(camera.ParentCell);
-
-                CellProperty.SetPortalTransitions(false);
-                dragDropObject.TransformO2w = newTransform;
-                CellProperty.SetPortalTransitions(true);
-
-                UtinniCore.Utinni.RenderWorld.render_world.AddObjectNotifications(dragDropObject);
-                dragDropObject.ClientObject.EndBaselines();
+                appearanceFilename = objTemplate.AppearanceFilename;
             }
             else
             {
-                dragDropObject = UtinniCore.Utinni.Object.Ctor;
-                dragDropObject.AddNotification(0x019136E4, false); // ToDo Label the magic number
                 var pob = PortalPropertyTemplateList.GetPobByCrcString(PersistentCrcString.Ctor(objTemplate.PortalLayoutFilename));
-                var apperance = Appearance.Create(pob.ExteriorAppearanceName);
-                if (apperance == null)
-                {
-                    CleanUpDragDropObject();
-                    return;
-                }
-                dragDropObject.SetAppearance(apperance);
-                dragDropObject.ClientObject.SetParentCell(camera.ParentCell);
-                dragDropObject.TransformO2w = newTransform;
-                UtinniCore.Utinni.RenderWorld.render_world.AddObjectNotifications(dragDropObject);
+                appearanceFilename = pob.ExteriorAppearanceName;
             }
+
+            var apperance = Appearance.Create(appearanceFilename);
+            if (apperance == null)
+            {
+                CleanUpDragDropObject();
+                return;
+            }
+            dragDropObject.SetAppearance(apperance);
+            dragDropObject.ClientObject.SetParentCell(camera.ParentCell);
+            UtinniCore.Utinni.RenderWorld.render_world.AddObjectNotifications(dragDropObject);
 
             dragDropObject.AddToWorld();
         }
@@ -362,8 +356,10 @@ namespace TJT.UI.Forms
                 return;
             }
 
+            Vector oldPos = dragDropObject.TransformO2w.Position;
             Transform newTransform = new Transform { Position = position };
             dragDropObject.TransformO2w = newTransform;
+            dragDropObject.PositionAndRotationChanged(false, oldPos);
         }
 
         private void ConvertDragDropObjectToWorldSnapshotNode(string objectFilename)
