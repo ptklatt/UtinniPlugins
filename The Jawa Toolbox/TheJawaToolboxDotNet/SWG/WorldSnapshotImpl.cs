@@ -140,7 +140,7 @@ namespace TJT.SWG
                     var obj = Game.PlayerLookAtTargetObject;
                     if (obj != null)
                     {
-                        var node = WorldSnapshotReaderWriter.Get().GetNodeById((int)obj.NetworkId);
+                        var node = WorldSnapshotReaderWriter.Get().GetNodeById((int)obj.NetworkId, obj.ParentObject);
                         if (node != null)
                         {
                             editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new RemoveWorldSnapshotNodeCommand(node)));
@@ -174,7 +174,7 @@ namespace TJT.SWG
             }
             else
             {
-                var node = WorldSnapshotReaderWriter.Get().GetNodeById((int)target.NetworkId);
+                var node = WorldSnapshotReaderWriter.Get().GetNodeById((int)target.NetworkId, target.ParentObject);
                 if (node != null)
                 {
                     if (EnableNodeEditing)
@@ -224,7 +224,7 @@ namespace TJT.SWG
                 var obj = Game.PlayerLookAtTargetObject;
                 if (obj != null)
                 {
-                    var node = WorldSnapshotReaderWriter.Get().GetNodeById((int)obj.NetworkId);
+                    var node = WorldSnapshotReaderWriter.Get().GetNodeById((int)obj.NetworkId, obj.ParentObject);
                     if (node != null)
                     {
                         editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new WorldSnapshotNodePositionChangedCommand(node, node.Transform, obj.Transform)));
@@ -242,7 +242,7 @@ namespace TJT.SWG
                 var obj = Game.PlayerLookAtTargetObject;
                 if (obj != null)
                 {
-                    var node = WorldSnapshotReaderWriter.Get().GetNodeById((int)obj.NetworkId);
+                    var node = WorldSnapshotReaderWriter.Get().GetNodeById((int)obj.NetworkId, obj.ParentObject);
                     if (node != null)
                     {
                         editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new WorldSnapshotNodeRotationChangedCommand(node, node.Transform, obj.Transform)));
@@ -259,7 +259,7 @@ namespace TJT.SWG
                 var obj = Game.PlayerLookAtTargetObject;
                 if (obj != null)
                 {
-                    var node = WorldSnapshotReaderWriter.Get().GetNodeById((int)obj.NetworkId);
+                    var node = WorldSnapshotReaderWriter.Get().GetNodeById((int)obj.NetworkId, obj.ParentObject);
                     if (node != null)
                     {
 
@@ -292,7 +292,7 @@ namespace TJT.SWG
                 var obj = Game.PlayerLookAtTargetObject;
                 if (obj != null)
                 {
-                    var node = WorldSnapshotReaderWriter.Get().GetNodeById((int)obj.NetworkId);
+                    var node = WorldSnapshotReaderWriter.Get().GetNodeById((int)obj.NetworkId, obj.ParentObject);
                     if (node != null)
                     {
                         node.Radius = radius;
@@ -309,7 +309,7 @@ namespace TJT.SWG
                 var obj = Game.PlayerLookAtTargetObject;
                 if (obj != null)
                 {
-                    var node = WorldSnapshotReaderWriter.Get().GetNodeById((int)obj.NetworkId);
+                    var node = WorldSnapshotReaderWriter.Get().GetNodeById((int)obj.NetworkId, obj.ParentObject);
                     if (node != null)
                     {
                         copiedNode = node;
@@ -345,7 +345,7 @@ namespace TJT.SWG
                 var obj = Game.PlayerLookAtTargetObject;
                 if (obj != null)
                 {
-                    var node = WorldSnapshotReaderWriter.Get().GetNodeById((int)obj.NetworkId);
+                    var node = WorldSnapshotReaderWriter.Get().GetNodeById((int)obj.NetworkId, obj.ParentObject);
                     if (node != null)
                     {
                         var newNode = WorldSnapshot.CreateNodeCopy(node, obj.Transform);
@@ -368,7 +368,7 @@ namespace TJT.SWG
                     obj.Transform.Yaw(value);
                     obj.PositionAndRotationChanged(false, obj.Transform.Position);
 
-                    var node = WorldSnapshotReaderWriter.Get().GetNodeById((int)obj.NetworkId);
+                    var node = WorldSnapshotReaderWriter.Get().GetNodeById((int)obj.NetworkId, obj.ParentObject);
                     if (node != null)
                     {
                         editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new WorldSnapshotNodeRotationChangedCommand(node, node.Transform, obj.Transform)));
@@ -388,7 +388,7 @@ namespace TJT.SWG
                     obj.Transform.Pitch(value);
                     obj.PositionAndRotationChanged(false, obj.Transform.Position);
 
-                    var node = WorldSnapshotReaderWriter.Get().GetNodeById((int)obj.NetworkId);
+                    var node = WorldSnapshotReaderWriter.Get().GetNodeById((int)obj.NetworkId, obj.ParentObject);
                     if (node != null)
                     {
                         editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new WorldSnapshotNodeRotationChangedCommand(node, node.Transform, obj.Transform)));
@@ -408,7 +408,7 @@ namespace TJT.SWG
                     obj.Transform.Roll(value);
                     obj.PositionAndRotationChanged(false, obj.Transform.Position);
 
-                    var node = WorldSnapshotReaderWriter.Get().GetNodeById((int)obj.NetworkId);
+                    var node = WorldSnapshotReaderWriter.Get().GetNodeById((int)obj.NetworkId, obj.ParentObject);
                     if (node != null)
                     {
                         editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new WorldSnapshotNodeRotationChangedCommand(node, node.Transform, obj.Transform)));
@@ -427,7 +427,7 @@ namespace TJT.SWG
                 {
                     obj.Transform.SetRotationAxis(0, 0, 0);
 
-                    var node = WorldSnapshotReaderWriter.Get().GetNodeById((int)obj.NetworkId);
+                    var node = WorldSnapshotReaderWriter.Get().GetNodeById((int)obj.NetworkId, obj.ParentObject);
                     if (node != null)
                     {
                         editorPlugin.AddUndoCommand(this, new AddUndoCommandEventArgs(new WorldSnapshotNodeRotationChangedCommand(node, node.Transform, obj.Transform)));
@@ -511,14 +511,14 @@ namespace TJT.SWG
 
         private void OnGizmoEnabled()
         {
-            hotkeyManager.Hotkeys["SetGizmoTransformOperationMode"].Enabled = true;
+            hotkeyManager.Hotkeys["SetGizmoTranslateOperationMode"].Enabled = true;
             hotkeyManager.Hotkeys["SetGizmoRotationOperationMode"].Enabled = true;
             hotkeyManager.Hotkeys["ToggleGizmoSnap"].Enabled = true;
         }
 
         private void OnGizmoDisabled()
         {
-            hotkeyManager.Hotkeys["SetGizmoTransformOperationMode"].Enabled = false;
+            hotkeyManager.Hotkeys["SetGizmoTranslateOperationMode"].Enabled = false;
             hotkeyManager.Hotkeys["SetGizmoRotationOperationMode"].Enabled = false;
             hotkeyManager.Hotkeys["ToggleGizmoSnap"].Enabled = false;
         }
