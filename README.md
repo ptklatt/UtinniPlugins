@@ -10,3 +10,16 @@ This is the offical [ModTheGalaxy.com](https://modthegalaxy.com/) plugin reposit
 * Scene controls, such as time of day modification
 * Reload ability for multiple things, such as scene, snapshot and ui, to avoid the need to restart the client
 * Graphical options such as wireframe and rendering of animation skeletons
+
+**The Jawa Toolbox - Planned key features**
+* Favorite and recent lists for various controls and forms
+* Targetable sound and particle objects
+* Visual representation of sound objects
+* Orthographic camera view
+* Extent box and collision rendering
+* Expanded environment controls, such as lighting, fog, visibility, sky, etc
+* Object Browser preview thumbnail
+
+**Planned plugins**
+* Director cam with settable paths and keyframes
+* Graphical improvements
