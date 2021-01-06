@@ -23,3 +23,8 @@ This is the offical [ModTheGalaxy.com](https://modthegalaxy.com/) plugin reposit
 **Planned plugins**
 * Director cam with settable paths and keyframes
 * Graphical improvements
+
+
+
+**Preview**
+[![Utinni - The Jawa Toolbox Preview](https://i.imgur.com/v7aSgWv.png)](https://www.youtube.com/watch?v=QVe-oY_Sx1Y)
