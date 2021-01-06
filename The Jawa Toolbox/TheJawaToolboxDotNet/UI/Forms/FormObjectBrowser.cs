@@ -336,12 +336,7 @@ namespace TJT.UI.Forms
             }
 
             var objTemplate = ObjectTemplateList.GetObjectTemplateByFilename(filename);
-            if (objTemplate == null)
-            {
-                return;
-            }
-
-            if (objTemplate.AppearanceFilename == "" && objTemplate.ClientDataFilename == "" && objTemplate.PortalLayoutFilename == "")
+            if (objTemplate == null || (objTemplate.AppearanceFilename == "" && objTemplate.ClientDataFilename == "" && objTemplate.PortalLayoutFilename == ""))
             {
                 return;
             }

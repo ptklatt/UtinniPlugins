@@ -22,8 +22,6 @@
  * SOFTWARE.
 **/
 
-#include <mscoree.h>
-
 #include "UtinniCore/utinni.h"
 #include "UtinniCore/plugin_framework/utinni_plugin.h"
 #include "UtinniCore/swg/ui/cui_chat_window.h"
