@@ -17,12 +17,12 @@ Global
 		RelWithDbgInfo|x86 = RelWithDbgInfo|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{02B0592B-4399-4E04-97FC-73C101DDBBA8}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{02B0592B-4399-4E04-97FC-73C101DDBBA8}.Debug|x86.Build.0 = Debug|Any CPU
-		{02B0592B-4399-4E04-97FC-73C101DDBBA8}.Release|x86.ActiveCfg = Release|Any CPU
-		{02B0592B-4399-4E04-97FC-73C101DDBBA8}.Release|x86.Build.0 = Release|Any CPU
-		{02B0592B-4399-4E04-97FC-73C101DDBBA8}.RelWithDbgInfo|x86.ActiveCfg = RelWithDbgInfo|Any CPU
-		{02B0592B-4399-4E04-97FC-73C101DDBBA8}.RelWithDbgInfo|x86.Build.0 = RelWithDbgInfo|Any CPU
+		{02B0592B-4399-4E04-97FC-73C101DDBBA8}.Debug|x86.ActiveCfg = Debug|x86
+		{02B0592B-4399-4E04-97FC-73C101DDBBA8}.Debug|x86.Build.0 = Debug|x86
+		{02B0592B-4399-4E04-97FC-73C101DDBBA8}.Release|x86.ActiveCfg = Release|x86
+		{02B0592B-4399-4E04-97FC-73C101DDBBA8}.Release|x86.Build.0 = Release|x86
+		{02B0592B-4399-4E04-97FC-73C101DDBBA8}.RelWithDbgInfo|x86.ActiveCfg = RelWithDbgInfo|x86
+		{02B0592B-4399-4E04-97FC-73C101DDBBA8}.RelWithDbgInfo|x86.Build.0 = RelWithDbgInfo|x86
 		{EA1E6CED-6315-486A-8AA7-D41DF9D34888}.Debug|x86.ActiveCfg = Debug|Win32
 		{EA1E6CED-6315-486A-8AA7-D41DF9D34888}.Release|x86.ActiveCfg = Release|Win32
 		{EA1E6CED-6315-486A-8AA7-D41DF9D34888}.Release|x86.Build.0 = Release|Win32

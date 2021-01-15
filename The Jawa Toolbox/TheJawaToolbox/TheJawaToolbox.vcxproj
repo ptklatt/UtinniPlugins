@@ -18,7 +18,7 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{EA1E6CED-6315-486A-8AA7-D41DF9D34888}</ProjectGuid>
     <RootNamespace>TheJawaToolbox</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
