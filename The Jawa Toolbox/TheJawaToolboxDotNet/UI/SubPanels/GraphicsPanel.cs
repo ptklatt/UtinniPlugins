@@ -26,7 +26,6 @@ using System;
 using TJT.SWG;
 using UtinniCore.Utinni;
 using UtinniCoreDotNet.UI.Controls;
-using UtinniCoreDotNet.Utility;
 
 namespace TJT.UI.SubPanels
 {
@@ -42,8 +41,6 @@ namespace TJT.UI.SubPanels
 
             CreateSettings(ini);
             ini.Load();
-
-            Log.InfoSimple(ini.GetString("Scene", "defaultTerrainFilename"));
 
             chkWireframe.Checked = ini.GetBool("Graphics", "autoEnableWireframe");
         }

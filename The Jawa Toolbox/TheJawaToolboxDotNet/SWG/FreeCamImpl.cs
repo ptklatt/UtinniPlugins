@@ -42,9 +42,9 @@ namespace TJT.SWG
             GameCallbacks.AddCleanupSceneCall(OnCleanupCallback);
             GroundSceneCallbacks.AddCameraChangeCallback(OnCameraChangeCallback);
 
-            hotkeyManager.Add(new Hotkey("ToggleFreeCam", "Toggle FreeCam", "Shift + Tab", ToggleFreeCam, true));
-            hotkeyManager.Add(new Hotkey("CameraHalfSpeed", "Half the Camera speed", "F4", HalfSpeed, true));
-            hotkeyManager.Add(new Hotkey("CameraDoubleSpeed", "Double the Camera speed", "F5", DoubleSpeed, true));
+            hotkeyManager.Add(new Hotkey("ToggleFreeCam", "Toggle FreeCam", "Shift + Tab", ToggleFreeCam, true, true, true));
+            hotkeyManager.Add(new Hotkey("CameraHalfSpeed", "Half the Camera speed", "F4", HalfSpeed, true, true, true));
+            hotkeyManager.Add(new Hotkey("CameraDoubleSpeed", "Double the Camera speed", "F5", DoubleSpeed, true, true, true));
             // hotkeyManager.Add(new Hotkey("ToggleDefaultSpeed", "Shift, Control + F6", ToggleFreeCam, false)); ToDo
         }
 

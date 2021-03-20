@@ -64,14 +64,14 @@ namespace TJT.SWG
 
             hotkeyManager.Add(new Hotkey("ToggleSnapshotNodeEditingMode", "Toggle Snapshot Node Editing Mode", "Oemtilde", ToggleNodeEditing, true));
             hotkeyManager.Add(new Hotkey("SaveSnapshot", "Save Snapshot", "Control + S", Save, true));
-            hotkeyManager.Add(new Hotkey("CopySnapshotNode", "Copy Snapshot Node", "Control + C", CopyNode, true));
-            hotkeyManager.Add(new Hotkey("PasteSnapshotNode", "Paste Snapshot Node", "Control + V", PasteNode, true));
-            hotkeyManager.Add(new Hotkey("DuplicateSnapshotNode", "Duplicate Snapshot Node", "Control + D", DuplicateNode, true));
-            hotkeyManager.Add(new Hotkey("DeleteSnapshotNode", "Delete Snapshot Node", "Delete", RemoveNode, true));
+            hotkeyManager.Add(new Hotkey("CopySnapshotNode", "Copy Snapshot Node", "Control + C", CopyNode, true, true, true));
+            hotkeyManager.Add(new Hotkey("PasteSnapshotNode", "Paste Snapshot Node", "Control + V", PasteNode, true, true, true));
+            hotkeyManager.Add(new Hotkey("DuplicateSnapshotNode", "Duplicate Snapshot Node", "Control + D", DuplicateNode, true, true, true));
+            hotkeyManager.Add(new Hotkey("DeleteSnapshotNode", "Delete Snapshot Node", "Delete", RemoveNode, true, true, true));
 
-            hotkeyManager.Add(new Hotkey("SetGizmoTranslateOperationMode", "Set Gizmo Operation Mode to Translate", "Control + Q", SetOperationModeToTranslateHotkey, true, false));
-            hotkeyManager.Add(new Hotkey("SetGizmoRotationOperationMode", "Set Gizmo Operation Mode to Rotation", "Control + E", SetOperationModeToRotationHotkey, true, false));
-            hotkeyManager.Add(new Hotkey("ToggleGizmoSnap", "Toggle Gizmo Snap", "Control + B", ToggleGizmoSnapHotkey, true, false));
+            hotkeyManager.Add(new Hotkey("SetGizmoTranslateOperationMode", "Set Gizmo Operation Mode to Translate", "Control + Q", SetOperationModeToTranslateHotkey, true, false, true));
+            hotkeyManager.Add(new Hotkey("SetGizmoRotationOperationMode", "Set Gizmo Operation Mode to Rotation", "Control + E", SetOperationModeToRotationHotkey, true, false, true));
+            hotkeyManager.Add(new Hotkey("ToggleGizmoSnap", "Toggle Gizmo Snap", "Control + B", ToggleGizmoSnapHotkey, true, false, true));
         }
 
         private void OnInstallCallback()
