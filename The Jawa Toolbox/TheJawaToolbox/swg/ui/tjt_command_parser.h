@@ -30,7 +30,7 @@
 
 namespace tjt
 {
-class UTINNI_API TheJawaToolboxCommandParser : public utinni::CommandParser
+class TheJawaToolboxCommandParser : public utinni::CommandParser
 {
 public:
     TheJawaToolboxCommandParser();
